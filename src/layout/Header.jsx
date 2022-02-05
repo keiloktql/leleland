@@ -1,12 +1,13 @@
 import React from 'react';
 import Enums from '../config/enums';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 import LogoDark from '../assets/images/Logo-dark.png';
 import LogoLight from '../assets/images/Logo-light.png';
 
 const Header = ({ theme = Enums.headerTheme.DARK, fixed = true }) => {
 
+    const navigate = useNavigate();
     // Check if user is logged in
 
     return (
@@ -23,7 +24,7 @@ const Header = ({ theme = Enums.headerTheme.DARK, fixed = true }) => {
                 </div>
 
                 <div className="c-Header__Btns">
-                    <button className="c-Btn c-Btn__Login c-Btn__Login--dark">Login</button>
+                    <button className="c-Btn c-Btn__Header-Login c-Btn__Header-Login--dark" onClick={() => navigate("/login")}>Login</button>
                 </div>
             </div>
 
