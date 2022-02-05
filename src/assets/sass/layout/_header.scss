@@ -1,0 +1,37 @@
+.l-Header {
+    width: 100%;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    z-index: 999;
+
+    .c-Header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        height: 60px;
+        width: 70%;
+
+        &__Logo {
+            &:hover {
+                opacity: 0.8;
+            }
+
+            &:active {
+                opacity: 0.7;
+            }
+        }
+
+        &__Links {
+            a {
+                color: black;
+                font-weight: 700;
+            }
+        }
+
+        &__Btns {}
+    }
+
+}

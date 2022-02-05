@@ -11,4 +11,6 @@ $font-x-small: 12px;
 
 * {
     font-family: $font-family !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
