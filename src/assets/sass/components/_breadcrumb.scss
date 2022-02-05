@@ -1,0 +1,10 @@
+// Breadcrumb styles
+.l-Breadcrumb {
+    padding-bottom: 20px;
+    .breadcrumb {
+        margin-bottom: 0;
+        .breadcrumb-item {
+            font-weight: bold;
+        }
+    }
+}

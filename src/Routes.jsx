@@ -4,6 +4,7 @@ import { Route, BrowserRouter as Router, Routes as Switch, Navigate, Outlet, use
 import Home from './pages/Home';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
+import Gallery from './pages/Gallery';
 import ForgotPassword from './pages/ForgotPassword';
 
 import PageNotFound from './pages/error/PageNotFound';
@@ -36,6 +37,7 @@ const Routes = () => {
                 <Route path="/login" element={<Login />} />
                 <Route path="/sign-up" element={<SignUp />} />
                 <Route path="/forgot-password" element={<ForgotPassword />} />
+                <Route path="/gallery" element={<Gallery />} />
                 {/* Protected Routes */}
                 <Route element={<RequireAuth />}>
                     <Route path="/dev" element={<Sandbox />} />

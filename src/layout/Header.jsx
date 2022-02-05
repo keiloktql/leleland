@@ -20,7 +20,7 @@ const Header = ({ theme = Enums.headerTheme.DARK, fixed = true }) => {
                 </div>
 
                 <div className="c-Header__Links">
-                    <NavLink to="/projects">Projects</NavLink>
+                    <NavLink to="/gallery">Gallery</NavLink>
                 </div>
 
                 <div className="c-Header__Btns">

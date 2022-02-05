@@ -4,7 +4,7 @@ import MainLayout from '../layout/MainLayout';
 const Home = () => {
   return (
     <MainLayout title="Home">
-      <div className="c-Home">
+    <div className="c-Home">
         <div className="c-Home__Greetings">
           <div className="c-Home__Greetings-text">
             <h1>LeLeLand</h1>
