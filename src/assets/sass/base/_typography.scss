@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans');
+
+// Font styles
+$font-family: 'IBM Plex Sans', Calibri, Candara, Segoe, Segoe UI, Arial, sans-serif;
+$font-jumbo: 54px;
+$font-x-large: 40px;
+$font-large: 34px;
+$font-medium: 21px;
+$font-small: 16px;
+$font-x-small: 12px;
+
+* {
+    font-family: $font-family !important;
+}
