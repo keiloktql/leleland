@@ -1,3 +1,46 @@
 .c-Home {
-    
+    width: 100%;
+
+    &__Greetings {
+        min-height: calc(100vh - 30vh);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        &-text {
+            max-width: 350px;
+            text-align: center;
+            h1 {
+                background: $linear-stripe;
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+                -webkit-box-decoration-break: clone;
+                text-align: center;
+                font-weight: bold;
+                font-size: $font-jumbo;
+                letter-spacing: 1.6px;
+            }
+            p {
+                font-size: $font-small;
+                font-weight: bold;
+                letter-spacing: 1px;
+            }
+        }
+    }
+
+    &__Popular {
+        background-color: #FAFAFA;
+        padding: 30px 0;
+        h2 {
+            background: $linear-github;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            -webkit-box-decoration-break: clone;
+            text-align: center;
+            font-size: $font-large;
+            font-weight: bold;
+        }
+    }
 }

@@ -6,14 +6,15 @@ import Title from './Title';
 
 const MainLayout = ({ children, title, headerTheme, headerFixed }) => {
     return (
-        <main className = "c-Main">
+        <>
             <Header theme={headerTheme} headerFixed={headerFixed} />
             <Title title={title} />
-            <div className = "c-Main__Content">
+            <main className="c-Main">
                 {children}
-            </div>
+            </main>
             <Footer />
-        </main>
+        </>
+
     )
 };
 
