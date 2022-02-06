@@ -29,7 +29,7 @@ const Header = ({ theme = Enums.headerTheme.LIGHT, fixed = true }) => {
                 </div>
 
                 <div className="c-Header__Btns">
-                    <button className={`c-Btn c-Btn__Header-Login c-Btn__Header-Login--${theme === Enums.headerTheme.DARK ? "light" : "dark"}`}onClick={() => navigate("/login")}>Login</button>
+                    <button className={`c-Btn c-Btn__Header-Login c-Btn__Header-Login--${theme === Enums.headerTheme.DARK ? "light" : "dark"}`} onClick={() => navigate("/login")}>Login</button>
                 </div>
             </div>
 

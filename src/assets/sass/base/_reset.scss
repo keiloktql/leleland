@@ -25,3 +25,24 @@ body a {
         opacity: 0.7;
     }
 }
+
+// Scrollbar styling
+// Reference to https://codepen.io/devstreak/pen/dMYgeO
+// and https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_custom_scrollbar
+::-webkit-scrollbar-track
+{
+	// -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    // box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: transparent;
+}
+
+::-webkit-scrollbar
+{
+	width: 7.5px;
+}
+
+::-webkit-scrollbar-thumb
+{
+	background-color: #b3b3b3;
+    border-radius: 5px;
+}

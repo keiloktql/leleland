@@ -103,26 +103,156 @@
 
             &__Right {
                 .c-Mobile {
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    width: 290px;
-                    height: 568px;
-                    background-color: #C4C4C4;
-                    border-radius: 25px;
-                    box-shadow: #3c425714 0px 15px 35px 0px, rgba(0, 0, 0, 0.12) 0px 5px 15px 0px;
-                    &__Screen {
-                        background-color: white;
+                    &__Header {
+                        border-radius: 25px 25px 0 0;
+                        background-color: black;
                         display: flex;
-                        width: calc(100% - 5%);
-                        height: calc(100% - 2%);
-                        border-radius: 25px;
-                        pointer-events: none;
-                        user-select: none;
+                        flex-direction: row;
+                        justify-content: space-between;
+                        align-items: center;
+                        padding: 15px 20px;
+                        padding-top: 25px;
+                        -webkit-backdrop-filter: saturate(180%) blur(20px);
+                        backdrop-filter: saturate(180%) blur(20px);
+                        h1 {
+                            font-size: $font-medium;
+                            color: white;
+                            letter-spacing: 1px;
+                        }
                     }
+
+                    &__Sub-header {
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: space-between;
+                        align-items: center;
+                        padding: 15px 20px;
+                        -webkit-backdrop-filter: saturate(180%) blur(20px);
+                        backdrop-filter: saturate(180%) blur(20px);
+                        background-color: rgba(255, 255, 255, 0.72);
+                        border-bottom: thin solid #00000029;
+                        h2 {
+                            font-size: $font-small;
+                            font-weight: bold;
+                        }
+                    }
+
+                    &__Breadcrumb {
+                        width: 100%;
+                        padding: 15px 20px;
+                        li {
+                            font-size: $font-x-small;
+                            a {
+                                font-size: $font-x-small;
+                            }
+                        }
+                    }
+
+
+                    &__Demo {
+                        display: flex;
+                        flex-direction: column;
+                        padding: 15px 20px;
+                        padding-top: 0;
+                        height: 100%;
+                        .c-Demo {
+                     
+                            &__Dates {
+                                display: flex;
+                                flex-direction: column;
+                                text-align: center;
+                                margin-bottom: 20px;
+                                p {
+                                    font-size: $font-x-small;
+                                    color: #7E7E7E;
+                                }
+                            }
+
+                            &__Color-default {
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                h1 {
+                                    font-size: $font-small;
+                                }
+                            }
+
+
+                            &__Colors {
+                                display: flex;
+                                height: 100%;
+                                width: 100%;
+                                flex-direction: column;
+
+                                span {
+                                    width: 100%;
+                                    height: 60px;
+                                    display: flex;
+                                    background-color: #00000029;
+                                    justify-content: center;
+                                    align-items: center;
+                                    color: white;
+                                    font-weight: bold;
+                                    letter-spacing: 1px;
+                                    
+                                    &:first-of-type {
+                                        border-radius: 5px 5px 0 0;
+                                        background-color: #4E4187;
+                                    }
+
+                                    &:nth-of-type(2) {
+                                        background-color: #3083DC;
+                                    }
+
+                                    &:nth-of-type(3) {
+                                        background-color: #F8FFE5;
+                                        color: black;
+                                    }
+
+                                    &:last-of-type {
+                                        border-radius: 0 0 5px 5px;
+                                        background-color: #7DDE92;
+                                        color: black;
+                                    }
+                                }
+                            }
+
+                            &__Btns {
+                                width: 100%;
+                                button {
+                                    width: 100%;
+                                    margin: 20px 0;
+                                    animation: btnPress 3s cubic-bezier(0.73, 0.06, 0.52, 0.96) infinite;
+
+                                    @keyframes btnPress {
+                                        0% {
+                                            opacity: 1;
+                                        }
+                                        50% {
+                                            opacity: 0.8;
+                                            transform: translateY(3px);
+                                            box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
+                                        }
+                                        60% {
+                                            opacity: 0.7;
+                                            transform: translateY(0px);
+                                        }
+                                        70% {
+                                            opacity: 1;
+                                        }
+                                        100% {
+                                            opacity: 1;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+
                 }
             }
-
         }
     }
+
 }

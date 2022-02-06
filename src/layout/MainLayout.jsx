@@ -4,7 +4,7 @@ import Header from './Header';
 import Footer from './Footer';
 import Title from './Title';
 
-const MainLayout = ({ children, title, headerTheme, headerFixed }) => {
+const MainLayout = ({ children, title, headerTheme, headerFixed=true }) => {
     return (
         <>
             <Header theme={headerTheme} fixed={headerFixed} />
