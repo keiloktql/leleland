@@ -4,7 +4,8 @@ import TextField from '../components/TextField';
 import { NavLink } from 'react-router-dom';
 
 const SignUp = () => {
-  
+
+
   const [credentials, setCredentials] = useState({
     email: "",
     username: "",

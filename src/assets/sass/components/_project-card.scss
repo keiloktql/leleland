@@ -36,7 +36,12 @@
         padding-right: 15px;
 
         .c-Project-card__Likes {
+            display: flex;
+            flex-direction: row;
             p {
+                padding-left: 5px;
+                font-size: $font-x-small;
+                color: #E20000;
                 user-select: none;
                 -webkit-user-select: none;
                 -khtml-user-select: none;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Route, BrowserRouter as Router, Routes as Switch, Navigate, Outlet, useLocation } from 'react-router-dom';
 
 import Home from './pages/Home';
@@ -29,25 +29,38 @@ const Routes = () => {
         return <Outlet />;
     }
 
+    const ScrollToTop = ({ children }) => {
+        const { pathname } = useLocation();
+        
+        useEffect(() => {
+            window.scrollTo(0, 0);
+        }, [pathname]);
+
+        return <>{children}</>;
+    }
+
     return (
         <Router>
-            <Switch>
-                {/* Public Routes */}
-                <Route path="/" element={<Home />} />
-                <Route path="/home" element={<Navigate replace to="/"/>}/>
-                <Route path="/login" element={<Login />} />
-                <Route path="/sign-up" element={<SignUp />} />
-                <Route path="/forgot-password" element={<ForgotPassword />} />
-                <Route path="/gallery" element={<Gallery />} />
-                <Route path="/gallery/color-picker" element={<ColorPicker />}/>
-                {/* Protected Routes */}
-                <Route element={<RequireAuth />}>
-                    <Route path="/dev" element={<Sandbox />} />
-                    <Route path="/account" element={<Home />} />
-                </Route>
-                {/* Error Routes */}
-                <Route path="*" element={<PageNotFound/>} />
-            </Switch>
+            <ScrollToTop >
+                <Switch>
+                    {/* Public Routes */}
+                    <Route path="/" element={<Home />} />
+                    <Route path="/home" element={<Navigate replace to="/" />} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/sign-up" element={<SignUp />} />
+                    <Route path="/forgot-password" element={<ForgotPassword />} />
+                    <Route path="/gallery" element={<Gallery />} />
+                    <Route path="/gallery/color-picker" element={<ColorPicker />} />
+                    {/* Protected Routes */}
+                    <Route element={<RequireAuth />}>
+                        <Route path="/dev" element={<Sandbox />} />
+                        <Route path="/account" element={<Home />} />
+                    </Route>
+                    {/* Error Routes */}
+                    <Route path="*" element={<PageNotFound />} />
+
+                </Switch>
+            </ScrollToTop >
         </Router>
     );
 };

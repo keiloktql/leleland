@@ -1,13 +1,16 @@
 import React from 'react';
 import MainLayout from '../layout/MainLayout';
 import LogoColorful from '../assets/images/Logo-colorful.png';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import IphoneFrame from '../components/IphoneFrame';
 import * as GiIcons from 'react-icons/gi';
 import { IconContext } from 'react-icons';
 import Breadcrumb from 'react-bootstrap/Breadcrumb';
 
 const Home = () => {
+  
+  const navigate = useNavigate();
+
   return (
     <MainLayout title="Home">
       <div className="c-Home">
@@ -33,7 +36,7 @@ const Home = () => {
               <h1>Sign up to Gain All Access to</h1>
               <img src={LogoColorful} alt="Logo" />
               <p>View the entire collection and "like" your favourite projects! Free of Charge.</p>
-              <button type="button" className="c-Btn c-Btn__Primary">Sign Up</button>
+              <button type="button" className="c-Btn c-Btn__Primary" onClick={() => navigate("/sign-up")}>Sign Up</button>
             </div>
 
             <div className="c-Sign-up-ad__Right">
@@ -64,9 +67,9 @@ const Home = () => {
                         <p>Published on 25th July 2022</p>
                         <p>Last Updated on 25th July 2022</p>
                       </div>
-                      <div className="c-Demo__Color-default">
+                      {/* <div className="c-Demo__Color-default">
                           <h1>Click Generate to start!</h1>
-                        </div>
+                        </div> */}
                       <div className="c-Demo__Colors">
                        
                         <span className="c-Demo__Color">4E4187</span>
