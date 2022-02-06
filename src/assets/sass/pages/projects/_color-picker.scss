@@ -2,9 +2,26 @@
     &__Demo {
         width: 100%;
         height: 100vh;
+
+        .c-Demo {
+            width: 70%;
+            margin: auto;
+
+            &__Dates {
+                font-size: $font-x-small;
+                color: #7E7E7E;
+            }
+        }
+
     }
+
     &__Story {
         width: 100%;
         height: 100vh;
+
+        .c-Story {
+            width: 70%;
+            margin: auto;
+        }
     }
 }

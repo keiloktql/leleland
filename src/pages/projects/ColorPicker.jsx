@@ -31,11 +31,20 @@ const ColorPicker = () => {
                     <Breadcrumb.Item href="/gallery">Gallery</Breadcrumb.Item>
                     <Breadcrumb.Item active>Color Picker</Breadcrumb.Item>
                 </Breadcrumb>
+
+                {/* Demo */}
                 <div ref={subLinkArr[0].ref} className="c-Color-picker__Demo">
-
+                    <div className = "c-Demo">
+                    <p className = "c-Demo__Dates">Published on: 25th July 2022 | Last Updated on: 25th July 2022</p>
+                    </div>
+                   
                 </div>
-                <div ref={subLinkArr[1].ref} className="c-Color-picker__Story">
 
+                {/* Story */}
+                <div ref={subLinkArr[1].ref} className="c-Color-picker__Story">
+                    <div className = "c-Story">
+
+                    </div>
                 </div>
             </div>
         </MainLayout>

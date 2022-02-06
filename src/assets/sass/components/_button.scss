@@ -31,6 +31,29 @@
         color: white;
     }
 
+    &__Like {
+        border: thin solid #EC0357;
+        &--liked {
+            background-color:#EC0357;
+            color: white;
+
+            &:hover {
+                background-color: transparent;
+                color: #EC0357;
+            }
+        }
+
+        &--default {
+            background-color: transparent;
+            color: #EC0357;
+            &:hover {
+                background-color:#EC0357;
+                color: white;
+            }
+        }
+
+    }
+
     &:hover {
         opacity: 0.8;
         transform: translateY(-1px);

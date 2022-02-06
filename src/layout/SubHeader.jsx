@@ -23,7 +23,7 @@ const SubHeader = ({ name = "No Name", subLinkArr }) => {
                     }
                 </div>
                 <div className="c-Sub-header__Like">
-                    <button type="button">10 Likes</button>
+                    <button type="button" className = "c-Btn c-Btn__Like c-Btn__Like--default">10 Likes</button>
                 </div>
             </div>
         </div>
