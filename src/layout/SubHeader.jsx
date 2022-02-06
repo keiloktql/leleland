@@ -13,7 +13,7 @@ const SubHeader = ({ name = "No Name", subLinkArr }) => {
         <div className="l-Sub-header">
             <div className="c-Sub-header">
                 <div className="c-Sub-header__Name">
-                    <h1>{name}</h1>
+                    <h1 onClick={() =>   window.scrollTo(0, 0)}>{name}</h1>
                 </div>
                 <div className="c-Sub-header__Links">
                     {

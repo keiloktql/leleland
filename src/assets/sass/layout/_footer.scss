@@ -32,5 +32,12 @@ footer {
                 font-weight: bold;
             }
         }
+
+        &__Copyright {
+            p {
+                font-size: $font-x-small;
+                letter-spacing: 1px;
+            }
+        }
     }
 }

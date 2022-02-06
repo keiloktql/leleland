@@ -49,11 +49,11 @@
         span {
             display: block;
             z-index: 0;
-            background: linear-gradient(-45deg, #ED4E50, #9867F0, #0071E3, #7A6FF2);
+            background: linear-gradient(-45deg, #0071E3, #ED4E50, #9867F0, #7A6FF2, #B92020);
             background-size: 400% 400%;
             height: 170px;
             width: 100%;
-            animation: gradient 15s ease infinite;
+            animation: gradient 10s ease infinite;
             transform: matrix(1, -0.07, 0, 1, 0, 0);
             transform-origin: 0px 250px;
         }
