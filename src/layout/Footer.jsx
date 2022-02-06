@@ -1,5 +1,5 @@
 import React from 'react';
-import LogoLight from '../assets/images/Logo-light.png';
+import LogoColorful from '../assets/images/Logo-colorful.png';
 import { NavLink } from 'react-router-dom';
 
 const Footer = () => {
@@ -7,7 +7,7 @@ const Footer = () => {
         <footer className="l-Footer">
             <div className="c-Footer">
                 <div className="c-Footer__Logo">
-                    <img src={LogoLight} alt="Logo" />
+                    <img src={LogoColorful} alt="Logo" />
                 </div>
                 <div className = "c-Footer__Links c-Links">
                     <a className = "c-Links__Who" href="https://keilokimnida.github.io/" target="_blank" rel="noopener noreferrer">LeLe</a>

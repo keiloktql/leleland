@@ -26,21 +26,62 @@
                 font-weight: bold;
                 letter-spacing: 1px;
             }
+            a {
+                font-weight: bold;
+            }
         }
     }
 
-    &__Popular {
-        background-color: #FAFAFA;
+    &__Sign-up-ad {
         padding: 30px 0;
-        h2 {
-            background: $linear-github;
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            -webkit-box-decoration-break: clone;
-            text-align: center;
-            font-size: $font-large;
-            font-weight: bold;
+        .c-Sign-up-ad {
+            width: 70%;
+            margin: auto;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+
+            &__Left {
+                h1 {
+                    font-weight: bold;
+                    font-size: $font-large;
+                    letter-spacing: 1.6px;
+                    margin-bottom: 10px;
+                }
+                p {
+                    font-size: $font-small;
+                    font-weight: 600;
+                    color: #5C5C5C;
+                    letter-spacing: 1px;
+                    margin-top: 10px;
+                }
+                button {
+                    margin-top: 20px;
+                }
+            }
+
+            &__Right {
+                .c-Mobile {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 290px;
+                    height: 568px;
+                    background-color: #C4C4C4;
+                    border-radius: 25px;
+                    box-shadow: #3c425714 0px 15px 35px 0px, rgba(0, 0, 0, 0.12) 0px 5px 15px 0px;
+                    &__Screen {
+                        background-color: white;
+                        display: flex;
+                        width: calc(100% - 5%);
+                        height: calc(100% - 2%);
+                        border-radius: 25px;
+
+                    }
+                }
+            }
+
         }
     }
 }
