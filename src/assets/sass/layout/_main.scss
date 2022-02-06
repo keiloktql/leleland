@@ -1,3 +1,9 @@
 .c-Main {
-    padding-top: 60px;
+    &--padded {
+        padding-top: 60px;
+    }
+ 
+    &--normal {
+        padding-top: 0;
+    }
 }

@@ -15,7 +15,13 @@ const Home = () => {
             <p>A collection of projects and components built using React & Sass.</p>
             <NavLink to="/gallery" >View Gallery</NavLink>
           </div>
+        
         </div>
+
+          {/* Gradient */}
+          <div className = "c-Home__Gradient">
+            <span></span>
+          </div>
 
         <div className="c-Home__Sign-up-ad">
           {/* Sign up Ad */}
@@ -28,11 +34,11 @@ const Home = () => {
             </div>
 
             <div className="c-Sign-up-ad__Right">
-              <span className="c-Sign-up-ad__Mobile c-Mobile">
+              <figure className="c-Sign-up-ad__Mobile c-Mobile">
                 <div className = "c-Mobile__Screen">
-                  
+                  <h1>test</h1>
                 </div>
-              </span>
+              </figure>
             </div>
           </div>
         </div>

@@ -1,6 +1,7 @@
 .c-Gallery {
-
+    min-height: calc(100vh - 60px);
     &__Breadcrumb {
+        padding-top: 20px;
         width: 70%;
         margin: auto;
     }

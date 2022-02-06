@@ -10,6 +10,7 @@ import ForgotPassword from './pages/ForgotPassword';
 import PageNotFound from './pages/error/PageNotFound';
 
 import Sandbox from './pages/Sandbox';
+import ColorPicker from './pages/projects/ColorPicker';
 
 const Routes = () => {
 
@@ -38,6 +39,7 @@ const Routes = () => {
                 <Route path="/sign-up" element={<SignUp />} />
                 <Route path="/forgot-password" element={<ForgotPassword />} />
                 <Route path="/gallery" element={<Gallery />} />
+                <Route path="/gallery/color-picker" element={<ColorPicker />}/>
                 {/* Protected Routes */}
                 <Route element={<RequireAuth />}>
                     <Route path="/dev" element={<Sandbox />} />

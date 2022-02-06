@@ -2,15 +2,20 @@
     width: 100%;
 
     &__Greetings {
-        min-height: calc(100vh - 30vh);
+        min-height: calc(100vh - 60vh);
         display: flex;
         flex-direction: column;
-        justify-content: center;
         align-items: center;
+        position: relative;
+        z-index: 50;
+        padding-top: calc(100vh - 90vh);
         &-text {
             max-width: 350px;
             text-align: center;
+            z-index: 50;
+
             h1 {
+                z-index: 50;
                 background: $linear-stripe;
                 -webkit-background-clip: text;
                 background-clip: text;
@@ -22,13 +27,47 @@
                 letter-spacing: 1.6px;
             }
             p {
+                z-index: 50;
                 font-size: $font-small;
                 font-weight: bold;
                 letter-spacing: 1px;
             }
             a {
+                z-index: 50;
                 font-weight: bold;
             }
+        }
+    }
+
+    .c-Home__Gradient {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        span {
+            display: block;
+            z-index: 0;
+            background: linear-gradient(-45deg, #ED4E50, #9867F0, #0071E3, #7A6FF2);
+            background-size: 400% 400%;
+            height: 170px;
+            width: 100%;
+            animation: gradient 15s ease infinite;
+            transform: matrix(1, -0.07, 0, 1, 0, 0);
+            transform-origin: 0px 250px;
+        }
+
+
+    }
+    @keyframes gradient {
+        0% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0% 50%;
         }
     }
 
@@ -77,7 +116,8 @@
                         width: calc(100% - 5%);
                         height: calc(100% - 2%);
                         border-radius: 25px;
-
+                        pointer-events: none;
+                        user-select: none;
                     }
                 }
             }

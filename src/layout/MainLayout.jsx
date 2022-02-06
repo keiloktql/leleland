@@ -7,9 +7,9 @@ import Title from './Title';
 const MainLayout = ({ children, title, headerTheme, headerFixed }) => {
     return (
         <>
-            <Header theme={headerTheme} headerFixed={headerFixed} />
+            <Header theme={headerTheme} fixed={headerFixed} />
             <Title title={title} />
-            <main className="c-Main">
+            <main className={`c-Main c-Main--${headerFixed ? "padded" : "normal"}`}>
                 {children}
             </main>
             <Footer />
