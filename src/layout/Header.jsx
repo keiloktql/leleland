@@ -4,28 +4,14 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import Tooltip from '@mui/material/Tooltip';
 import LogoDark from '../assets/images/Logo-dark.png';
 import LogoLight from '../assets/images/Logo-light.png';
-import useComponentVisible from "../hooks/useComponentVisible";
 
 const Header = ({ theme = Enums.headerTheme.LIGHT, fixed = true }) => {
 
     const navigate = useNavigate();
 
-    const [showProfilePopup, setShowProfilePopup] = useState(false);
-
-    const { ref } = useComponentVisible(showProfilePopup, setShowProfilePopup);
-
-
     // Handler
     const handleProfilePicClick = () => {
-        setShowProfilePopup((prevState) => !prevState);
-    };
-
-    const handleLogOutClick = () => {
-        // clearLocalStorage();
-        // history.push("/login");
-        // setTimeout(() => {
-        //     toast.success("Successfully logged out!");
-        // }, 0);
+        navigate("/account");
     };
 
     // Check if user is logged in
@@ -48,23 +34,10 @@ const Header = ({ theme = Enums.headerTheme.LIGHT, fixed = true }) => {
                     <NavLink to="/gallery">Gallery</NavLink>
                 </div>
 
-                <div className="c-Header__Right" ref={ref}>
+                <div className="c-Header__Right">
                     <Tooltip title="Account" arrow>
                         <span className="c-Header__Avatar" onClick={handleProfilePicClick} />
                     </Tooltip>
-                    {
-                        showProfilePopup ?
-                            <div className="l-Header__Profile-pop-up">
-                                <div className="c-Header__Profile-pop-up">
-                                    <button onClick={() => navigate("/account")}>
-                                        My Account
-                                    </button>
-                                    <hr />
-                                    <button onClick={handleLogOutClick}>Log out</button>
-                                </div>
-                            </div> :
-                            null
-                    }
 
                     {/* <button className={`c-Btn c-Btn__Header-Login c-Btn__Header-Login--${theme === Enums.headerTheme.DARK ? "light" : "dark"}`} onClick={() => navigate("/login")}>Login</button> */}
                 </div>
