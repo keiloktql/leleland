@@ -8,6 +8,12 @@ const ENUMS = {
        LOADING: "LOADING",
        ERROR: "ERROR",
        IDLE: "IDLE"
+   },
+   submitStatus: {
+       LOADING: "LOADING",
+       ERROR: "ERROR",
+       SUCCESS: "SUCCESS",
+       IDLE: "IDLE"
    }
 }
 

@@ -29,7 +29,9 @@
     }
 
     &__Error {
+        font-size: 14px;
         padding: 5px 0;
-        color: red;
+        color: $primary-error;
+        font-weight: bold;
     }
 }

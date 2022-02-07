@@ -34,10 +34,6 @@ const SearchBar = ({ searchInput, setSearchInput, data, handleSearchSubmit }) =>
         setShowSuggestion(() => true);
     };
 
-    const handleSearchInputBlur = (event) => {
-        setShowSuggestion(() => false);
-    };
-
     const handleInnerSearchSubmit = (event) => {
         event.preventDefault();
         setShowSuggestion(() => false);
@@ -88,7 +84,7 @@ const SearchBar = ({ searchInput, setSearchInput, data, handleSearchSubmit }) =>
                                 />
                             ))
                             :
-                            <p>No results found.</p>
+                            <i>No results found.</i>
                     }
 
 
