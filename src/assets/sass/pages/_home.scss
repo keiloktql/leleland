@@ -9,6 +9,7 @@
         position: relative;
         z-index: 50;
         padding: 150px 0;
+
         &-text {
             max-width: 350px;
             text-align: center;
@@ -26,12 +27,14 @@
                 font-size: $font-jumbo;
                 letter-spacing: 1.6px;
             }
+
             p {
                 z-index: 50;
                 font-size: $font-small;
                 font-weight: bold;
                 letter-spacing: 1px;
             }
+
             a {
                 z-index: 50;
                 font-weight: bold;
@@ -46,6 +49,7 @@
         flex-direction: column;
         justify-content: flex-end;
         padding: 20px 0;
+
         span {
             display: block;
             z-index: 0;
@@ -60,13 +64,16 @@
 
 
     }
+
     @keyframes gradient {
         0% {
             background-position: 0% 50%;
         }
+
         50% {
             background-position: 100% 50%;
         }
+
         100% {
             background-position: 0% 50%;
         }
@@ -74,6 +81,7 @@
 
     &__Sign-up-ad {
         padding: 30px 0;
+
         .c-Sign-up-ad {
             width: 70%;
             margin: auto;
@@ -89,6 +97,7 @@
                     letter-spacing: 1.6px;
                     margin-bottom: 10px;
                 }
+
                 p {
                     font-size: $font-small;
                     font-weight: 600;
@@ -96,6 +105,7 @@
                     letter-spacing: 1px;
                     margin-top: 10px;
                 }
+
                 button {
                     margin-top: 20px;
                 }
@@ -114,6 +124,7 @@
                         padding-top: 25px;
                         -webkit-backdrop-filter: saturate(180%) blur(20px);
                         backdrop-filter: saturate(180%) blur(20px);
+
                         h1 {
                             font-size: $font-medium;
                             color: white;
@@ -131,6 +142,7 @@
                         backdrop-filter: saturate(180%) blur(20px);
                         background-color: rgba(255, 255, 255, 0.72);
                         border-bottom: thin solid #00000029;
+
                         h2 {
                             font-size: $font-small;
                             font-weight: bold;
@@ -140,8 +152,10 @@
                     &__Breadcrumb {
                         width: 100%;
                         padding: 15px 20px;
+
                         li {
                             font-size: $font-x-small;
+
                             a {
                                 font-size: $font-x-small;
                             }
@@ -155,91 +169,158 @@
                         padding: 15px 20px;
                         padding-top: 0;
                         height: 100%;
+
                         .c-Demo {
-                     
+
                             &__Dates {
                                 display: flex;
                                 flex-direction: column;
                                 text-align: center;
                                 margin-bottom: 20px;
+
                                 p {
                                     font-size: $font-x-small;
                                     color: #7E7E7E;
                                 }
                             }
 
-                            &__Color-default {
-                                display: flex;
-                                justify-content: center;
-                                align-items: center;
-                                h1 {
-                                    font-size: $font-small;
-                                }
-                            }
+                            &__Magic {
+                                position: relative;
+                                height: 240px;
 
-
-                            &__Colors {
-                                display: flex;
-                                height: 100%;
-                                width: 100%;
-                                flex-direction: column;
-
-                                span {
+                                &-default {
+                                    position: absolute;
+                                    top: 0px;
+                                    left: 0px;
+                                    height: 100%;
                                     width: 100%;
-                                    height: 60px;
                                     display: flex;
-                                    background-color: #00000029;
+                                    flex-direction: column;
                                     justify-content: center;
                                     align-items: center;
-                                    color: white;
-                                    font-weight: bold;
-                                    letter-spacing: 1px;
-                                    
-                                    &:first-of-type {
-                                        border-radius: 5px 5px 0 0;
-                                        background-color: #4E4187;
+                                    h1 {
+                                        font-size: $font-small;
+                                        font-weight: bold;
+                                    }
+                                    animation: magicDefault 5s cubic-bezier(0.29, 0.28, 0.65, 0.66) infinite;
+                                    @keyframes magicDefault {
+                                        0% {
+                                            opacity: 1;
+                                        }
+                                        40% {
+                                            opacity: 1;
+                                        }
+                                        43% {
+                                            opacity: 0.2;
+                                        }
+                                        45% {
+                                            opacity: 0;
+                                        }
+                                        99%{
+                                            opacity: 0;
+                                        }
+                                        100% {
+                                            opacity: 1;
+                                        }
+                                    }
+                                }
+
+                                &-colors {
+                                    position: absolute;
+                                    top: 0px;
+                                    left: 0px;
+                                    display: flex;
+                                    height: 100%;
+                                    width: 100%;
+                                    flex-direction: column;
+                                    animation: magicColors 5s cubic-bezier(0.29, 0.28, 0.65, 0.66) infinite;
+                                    z-index: 99;
+                                    @keyframes magicColors {
+                                        0% {
+                                            opacity: 0;
+                                        }
+                                        50% {
+                                            opacity: 0;
+                                        }
+                                        55% {
+                                            opacity: 1;
+                                        }
+                                        95% {
+                                            opacity: 1;
+                                        }
+                                        100% {
+                                            opacity: 0;
+                                        }
                                     }
 
-                                    &:nth-of-type(2) {
-                                        background-color: #3083DC;
-                                    }
+                                    span {
+                                        width: 100%;
+                                        height: 60px;
+                                        display: flex;
+                                        background-color: #00000029;
+                                        justify-content: center;
+                                        align-items: center;
+                                        color: white;
+                                        font-weight: bold;
+                                        letter-spacing: 1px;
 
-                                    &:nth-of-type(3) {
-                                        background-color: #F8FFE5;
-                                        color: black;
-                                    }
+                                        &:first-of-type {
+                                            border-radius: 5px 5px 0 0;
+                                            background-color: #4E4187;
+                                        }
 
-                                    &:last-of-type {
-                                        border-radius: 0 0 5px 5px;
-                                        background-color: #7DDE92;
-                                        color: black;
+                                        &:nth-of-type(2) {
+                                            background-color: #3083DC;
+                                        }
+
+                                        &:nth-of-type(3) {
+                                            background-color: #F8FFE5;
+                                            color: black;
+                                        }
+
+                                        &:last-of-type {
+                                            border-radius: 0 0 5px 5px;
+                                            background-color: #7DDE92;
+                                            color: black;
+                                        }
                                     }
                                 }
                             }
 
                             &__Btns {
                                 width: 100%;
+
                                 button {
                                     width: 100%;
                                     margin: 20px 0;
-                                    animation: btnPress 3s cubic-bezier(0.73, 0.06, 0.52, 0.96) infinite;
+                                    animation: magicBtnPress 5s cubic-bezier(0.29, 0.28, 0.65, 0.66) infinite;
 
-                                    @keyframes btnPress {
+                                    @keyframes magicBtnPress {
                                         0% {
                                             opacity: 1;
                                         }
-                                        50% {
+                                        27% {
+                                            transform: translateY(0px);
+                                        }
+
+                                        30% {
                                             opacity: 0.8;
                                             transform: translateY(3px);
                                             box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
                                         }
-                                        60% {
+
+                                        31% {
                                             opacity: 0.7;
                                             transform: translateY(0px);
                                         }
-                                        70% {
+                                        33% {
+                                            opacity: 0.8;
+                                        }
+
+                                        35% {
                                             opacity: 1;
                                         }
+
                                         100% {
                                             opacity: 1;
                                         }

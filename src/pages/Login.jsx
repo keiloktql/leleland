@@ -5,6 +5,7 @@ import { NavLink } from 'react-router-dom';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import ENUMS from '../config/enums';
+import LoadingSpinner from '../components/loading/LoadingSpinner';
 
 const Login = () => {
 
@@ -43,12 +44,20 @@ const Login = () => {
           >
             {
               ({ errors, touched, submitCount, isValid, dirty }) => (
-                <Form className="c-Login__Card-wrapper">
+                <Form className="c-Login__Card-wrapper" autoComplete="off">
                   <h1>Login</h1>
-                  <Field label="Username" placeholder="Enter username" name="username" as={TextField} />
-                  <Field label="Password" placeholder="Enter password" type="password" name="password" as={TextField} />
+                  <Field disabled={submitStatus === ENUMS.submitStatus.LOADING} label="Username" placeholder="Enter username" name="username" as={TextField} />
+                  <Field disabled={submitStatus === ENUMS.submitStatus.LOADING} label="Password" placeholder="Enter password" type="password" name="password" as={TextField} />
                   <NavLink to="/forgot-password">Forgot Password</NavLink>
-                  <button disabled={!dirty || !isValid} type="submit" className="c-Btn c-Btn__Primary">Login</button>
+                  <button disabled={!dirty || !isValid || submitStatus === ENUMS.submitStatus.LOADING} type="submit" className="c-Btn c-Btn__Primary">
+                    {
+                      submitStatus === ENUMS.submitStatus.LOADING ?
+                        <LoadingSpinner
+                          variant="light" />
+                        :
+                        "Login"
+                    }
+                  </button>
                   {submitStatus === ENUMS.submitStatus.ERROR && (
                     <div className="c-Login__Card-generic-error">
                       <p>Incorrect username or password.</p>

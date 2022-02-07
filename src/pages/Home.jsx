@@ -4,11 +4,12 @@ import LogoColorful from '../assets/images/Logo-colorful.png';
 import { NavLink, useNavigate } from 'react-router-dom';
 import IphoneFrame from '../components/IphoneFrame';
 import * as GiIcons from 'react-icons/gi';
+import * as AiIcons from 'react-icons/ai';
 import { IconContext } from 'react-icons';
 import Breadcrumb from 'react-bootstrap/Breadcrumb';
 
 const Home = () => {
-  
+
   const navigate = useNavigate();
 
   return (
@@ -67,16 +68,23 @@ const Home = () => {
                         <p>Published on 25th July 2022</p>
                         <p>Last Updated on 25th July 2022</p>
                       </div>
-                      {/* <div className="c-Demo__Color-default">
+
+                      <div className="c-Demo__Magic">
+                        <div className="c-Demo__Magic-default">
+                          <IconContext.Provider className="c-Mobile__Paint" value={{ color: "#172b4d", size: "40px" }}>
+                            <AiIcons.AiFillFormatPainter />
+                          </IconContext.Provider>
                           <h1>Click Generate to start!</h1>
-                        </div> */}
-                      <div className="c-Demo__Colors">
-                       
-                        <span className="c-Demo__Color">4E4187</span>
-                        <span className="c-Demo__Color">3083DC</span>
-                        <span className="c-Demo__Color">F8FFE5</span>
-                        <span className="c-Demo__Color">7DDE92</span>
+                        </div>
+                        <div className="c-Demo__Magic-colors">
+
+                          <span className="c-Demo__Color">4E4187</span>
+                          <span className="c-Demo__Color">3083DC</span>
+                          <span className="c-Demo__Color">F8FFE5</span>
+                          <span className="c-Demo__Color">7DDE92</span>
+                        </div>
                       </div>
+
 
                       <div className="c-Demo__Btns">
                         <button type="button" className="c-Btn c-Btn__CP c-Btn__Primary">Generate</button>

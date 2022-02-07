@@ -3,7 +3,276 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    -webkit-perspective: 800px;
+    perspective: 800px;
+    background-image: url("../../images/Login-BG.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+
     &__Card {
+
+        &--smh {
+            @-moz-keyframes panelShakeAnimation {
+                0% {
+                    -webkit-transform: translateX(0);
+                    -moz-transform: translateX(0);
+                    -ms-transform: translateX(0);
+                    -o-transform: translateX(0);
+                    transform: translateX(0)
+                }
+
+                12.5% {
+                    -webkit-transform: translateX(-6px) rotateY(-5deg);
+                    -moz-transform: translateX(-6px) rotateY(-5deg);
+                    -ms-transform: translateX(-6px) rotateY(-5deg);
+                    -o-transform: translateX(-6px) rotateY(-5deg);
+                    transform: translateX(-6px) rotateY(-5deg)
+                }
+
+                37.5% {
+                    -webkit-transform: translateX(5px) rotateY(4deg);
+                    -moz-transform: translateX(5px) rotateY(4deg);
+                    -ms-transform: translateX(5px) rotateY(4deg);
+                    -o-transform: translateX(5px) rotateY(4deg);
+                    transform: translateX(5px) rotateY(4deg)
+                }
+
+                62.5% {
+                    -webkit-transform: translateX(-3px) rotateY(-2deg);
+                    -moz-transform: translateX(-3px) rotateY(-2deg);
+                    -ms-transform: translateX(-3px) rotateY(-2deg);
+                    -o-transform: translateX(-3px) rotateY(-2deg);
+                    transform: translateX(-3px) rotateY(-2deg)
+                }
+
+                87.5% {
+                    -webkit-transform: translateX(2px) rotateY(1deg);
+                    -moz-transform: translateX(2px) rotateY(1deg);
+                    -ms-transform: translateX(2px) rotateY(1deg);
+                    -o-transform: translateX(2px) rotateY(1deg);
+                    transform: translateX(2px) rotateY(1deg)
+                }
+
+                100% {
+                    -webkit-transform: translateX(0);
+                    -moz-transform: translateX(0);
+                    -ms-transform: translateX(0);
+                    -o-transform: translateX(0);
+                    transform: translateX(0)
+                }
+            }
+
+            @-webkit-keyframes panelShakeAnimation {
+                0% {
+                    -webkit-transform: translateX(0);
+                    -moz-transform: translateX(0);
+                    -ms-transform: translateX(0);
+                    -o-transform: translateX(0);
+                    transform: translateX(0)
+                }
+
+                12.5% {
+                    -webkit-transform: translateX(-6px) rotateY(-5deg);
+                    -moz-transform: translateX(-6px) rotateY(-5deg);
+                    -ms-transform: translateX(-6px) rotateY(-5deg);
+                    -o-transform: translateX(-6px) rotateY(-5deg);
+                    transform: translateX(-6px) rotateY(-5deg)
+                }
+
+                37.5% {
+                    -webkit-transform: translateX(5px) rotateY(4deg);
+                    -moz-transform: translateX(5px) rotateY(4deg);
+                    -ms-transform: translateX(5px) rotateY(4deg);
+                    -o-transform: translateX(5px) rotateY(4deg);
+                    transform: translateX(5px) rotateY(4deg)
+                }
+
+                62.5% {
+                    -webkit-transform: translateX(-3px) rotateY(-2deg);
+                    -moz-transform: translateX(-3px) rotateY(-2deg);
+                    -ms-transform: translateX(-3px) rotateY(-2deg);
+                    -o-transform: translateX(-3px) rotateY(-2deg);
+                    transform: translateX(-3px) rotateY(-2deg)
+                }
+
+                87.5% {
+                    -webkit-transform: translateX(2px) rotateY(1deg);
+                    -moz-transform: translateX(2px) rotateY(1deg);
+                    -ms-transform: translateX(2px) rotateY(1deg);
+                    -o-transform: translateX(2px) rotateY(1deg);
+                    transform: translateX(2px) rotateY(1deg)
+                }
+
+                100% {
+                    -webkit-transform: translateX(0);
+                    -moz-transform: translateX(0);
+                    -ms-transform: translateX(0);
+                    -o-transform: translateX(0);
+                    transform: translateX(0)
+                }
+            }
+
+            @-o-keyframes panelShakeAnimation {
+                0% {
+                    -webkit-transform: translateX(0);
+                    -moz-transform: translateX(0);
+                    -ms-transform: translateX(0);
+                    -o-transform: translateX(0);
+                    transform: translateX(0)
+                }
+
+                12.5% {
+                    -webkit-transform: translateX(-6px) rotateY(-5deg);
+                    -moz-transform: translateX(-6px) rotateY(-5deg);
+                    -ms-transform: translateX(-6px) rotateY(-5deg);
+                    -o-transform: translateX(-6px) rotateY(-5deg);
+                    transform: translateX(-6px) rotateY(-5deg)
+                }
+
+                37.5% {
+                    -webkit-transform: translateX(5px) rotateY(4deg);
+                    -moz-transform: translateX(5px) rotateY(4deg);
+                    -ms-transform: translateX(5px) rotateY(4deg);
+                    -o-transform: translateX(5px) rotateY(4deg);
+                    transform: translateX(5px) rotateY(4deg)
+                }
+
+                62.5% {
+                    -webkit-transform: translateX(-3px) rotateY(-2deg);
+                    -moz-transform: translateX(-3px) rotateY(-2deg);
+                    -ms-transform: translateX(-3px) rotateY(-2deg);
+                    -o-transform: translateX(-3px) rotateY(-2deg);
+                    transform: translateX(-3px) rotateY(-2deg)
+                }
+
+                87.5% {
+                    -webkit-transform: translateX(2px) rotateY(1deg);
+                    -moz-transform: translateX(2px) rotateY(1deg);
+                    -ms-transform: translateX(2px) rotateY(1deg);
+                    -o-transform: translateX(2px) rotateY(1deg);
+                    transform: translateX(2px) rotateY(1deg)
+                }
+
+                100% {
+                    -webkit-transform: translateX(0);
+                    -moz-transform: translateX(0);
+                    -ms-transform: translateX(0);
+                    -o-transform: translateX(0);
+                    transform: translateX(0)
+                }
+            }
+
+            @-ms-keyframes panelShakeAnimation {
+                0% {
+                    -webkit-transform: translateX(0);
+                    -moz-transform: translateX(0);
+                    -ms-transform: translateX(0);
+                    -o-transform: translateX(0);
+                    transform: translateX(0)
+                }
+
+                12.5% {
+                    -webkit-transform: translateX(-6px) rotateY(-5deg);
+                    -moz-transform: translateX(-6px) rotateY(-5deg);
+                    -ms-transform: translateX(-6px) rotateY(-5deg);
+                    -o-transform: translateX(-6px) rotateY(-5deg);
+                    transform: translateX(-6px) rotateY(-5deg)
+                }
+
+                37.5% {
+                    -webkit-transform: translateX(5px) rotateY(4deg);
+                    -moz-transform: translateX(5px) rotateY(4deg);
+                    -ms-transform: translateX(5px) rotateY(4deg);
+                    -o-transform: translateX(5px) rotateY(4deg);
+                    transform: translateX(5px) rotateY(4deg)
+                }
+
+                62.5% {
+                    -webkit-transform: translateX(-3px) rotateY(-2deg);
+                    -moz-transform: translateX(-3px) rotateY(-2deg);
+                    -ms-transform: translateX(-3px) rotateY(-2deg);
+                    -o-transform: translateX(-3px) rotateY(-2deg);
+                    transform: translateX(-3px) rotateY(-2deg)
+                }
+
+                87.5% {
+                    -webkit-transform: translateX(2px) rotateY(1deg);
+                    -moz-transform: translateX(2px) rotateY(1deg);
+                    -ms-transform: translateX(2px) rotateY(1deg);
+                    -o-transform: translateX(2px) rotateY(1deg);
+                    transform: translateX(2px) rotateY(1deg)
+                }
+
+                100% {
+                    -webkit-transform: translateX(0);
+                    -moz-transform: translateX(0);
+                    -ms-transform: translateX(0);
+                    -o-transform: translateX(0);
+                    transform: translateX(0)
+                }
+            }
+
+            @keyframes panelShakeAnimation {
+                0% {
+                    -webkit-transform: translateX(0);
+                    -moz-transform: translateX(0);
+                    -ms-transform: translateX(0);
+                    -o-transform: translateX(0);
+                    transform: translateX(0)
+                }
+
+                12.5% {
+                    -webkit-transform: translateX(-6px) rotateY(-5deg);
+                    -moz-transform: translateX(-6px) rotateY(-5deg);
+                    -ms-transform: translateX(-6px) rotateY(-5deg);
+                    -o-transform: translateX(-6px) rotateY(-5deg);
+                    transform: translateX(-6px) rotateY(-5deg)
+                }
+
+                37.5% {
+                    -webkit-transform: translateX(5px) rotateY(4deg);
+                    -moz-transform: translateX(5px) rotateY(4deg);
+                    -ms-transform: translateX(5px) rotateY(4deg);
+                    -o-transform: translateX(5px) rotateY(4deg);
+                    transform: translateX(5px) rotateY(4deg)
+                }
+
+                62.5% {
+                    -webkit-transform: translateX(-3px) rotateY(-2deg);
+                    -moz-transform: translateX(-3px) rotateY(-2deg);
+                    -ms-transform: translateX(-3px) rotateY(-2deg);
+                    -o-transform: translateX(-3px) rotateY(-2deg);
+                    transform: translateX(-3px) rotateY(-2deg)
+                }
+
+                87.5% {
+                    -webkit-transform: translateX(2px) rotateY(1deg);
+                    -moz-transform: translateX(2px) rotateY(1deg);
+                    -ms-transform: translateX(2px) rotateY(1deg);
+                    -o-transform: translateX(2px) rotateY(1deg);
+                    transform: translateX(2px) rotateY(1deg)
+                }
+
+                100% {
+                    -webkit-transform: translateX(0);
+                    -moz-transform: translateX(0);
+                    -ms-transform: translateX(0);
+                    -o-transform: translateX(0);
+                    transform: translateX(0)
+                }
+            }
+
+            -webkit-animation-duration: 400ms;
+            -webkit-animation-timing-function: ease-in-out;
+            -webkit-animation-name: panelShakeAnimation;
+            -moz-animation-duration: 400ms;
+            -moz-animation-timing-function: ease-in-out;
+            -moz-animation-name: panelShakeAnimation;
+        }
+
+
         box-shadow: #3c425714 0px 15px 35px 0px,
         rgba(0, 0, 0, 0.12) 0px 5px 15px 0px;
         // max-width: 500px;
@@ -13,6 +282,10 @@
         justify-content: center;
         align-items: center;
         padding: 50px 0;
+        z-index: 99;
+        background-color: white;
+        border-radius: 5px;
+
         &-wrapper {
             display: flex;
             justify-content: center;
@@ -30,6 +303,16 @@
                 padding-bottom: 10px;
             }
 
+            
+            .c-Sign-up__Card-generic-error {
+                p {
+                    color: $primary-error;
+                    font-weight: bold;
+                    font-size: 14px;
+                }
+                padding-bottom: 15px;
+            }
+
             a {
                 margin-right: auto;
             }
@@ -37,15 +320,20 @@
             button {
                 width: 100%;
                 margin: 20px 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
             }
 
             .c-Sign-up__Login {
                 display: flex;
                 flex-direction: row;
+
                 p {
                     padding-right: 2.5px;
                     padding-bottom: 0;
                 }
+
                 a {
                     padding-left: 2.5px;
                     font-weight: bold;

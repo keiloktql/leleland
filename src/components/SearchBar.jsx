@@ -15,6 +15,10 @@ const SearchBar = ({ searchInput, setSearchInput, data, handleSearchSubmit }) =>
     const handleSearchInputChange = (event) => {
 
         const newSearchInput = event.target.value;
+        if (newSearchInput !== "" && showSuggestion === false) {
+            setShowSuggestion(() => true);
+        }
+
         setSearchInput(() => newSearchInput);
 
         let matchSearchArr = [];

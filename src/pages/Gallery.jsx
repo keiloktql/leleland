@@ -49,7 +49,7 @@ const Gallery = () => {
                     setSearchProjects(() => fakeProjects);
                     setTimeout(() => {
                         setPageStatus(() => ENUMS.pageStatus.IDLE);
-                    }, 2000);
+                    }, 500);
                   
                 }
             } catch (error) {

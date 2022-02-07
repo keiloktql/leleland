@@ -54,7 +54,7 @@ const Routes = () => {
                     {/* Protected Routes */}
                     <Route element={<RequireAuth />}>
                         <Route path="/dev" element={<Sandbox />} />
-                        <Route path="/account" element={<Home />} />
+                        {/* <Route path="/account" element={<Home />} /> */}
                     </Route>
                     {/* Error Routes */}
                     <Route path="*" element={<PageNotFound />} />

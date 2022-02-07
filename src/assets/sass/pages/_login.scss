@@ -5,6 +5,11 @@
     align-items: center;
     -webkit-perspective: 800px;
     perspective: 800px;
+    background-image: url("../../images/Login-BG.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
 
     &__Card {
         &--smh {
@@ -275,6 +280,9 @@
         justify-content: center;
         align-items: center;
         padding: 50px 0;
+        z-index: 99;
+        background-color: white;
+        border-radius: 5px;
 
         &-wrapper {
             display: flex;
@@ -299,6 +307,7 @@
                     font-weight: bold;
                     font-size: 14px;
                 }
+                padding-bottom: 15px;
             }
 
             a {
@@ -308,6 +317,10 @@
             button {
                 width: 100%;
                 margin: 20px 0;
+                text-align: center;
+                display: flex;
+                justify-content: center;
+                align-items: center;
             }
 
             .c-Login__Sign-up {
