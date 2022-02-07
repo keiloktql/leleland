@@ -53,7 +53,7 @@ const Home = () => {
                     </div>
 
                     <div className="c-Mobile__Sub-header">
-                      <h2>Color Picker</h2>
+                      <h2>Color Palette Generator</h2>
                     </div>
 
                     {/* Breadcrumb */}

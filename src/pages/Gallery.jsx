@@ -1,18 +1,96 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import MainLayout from '../layout/MainLayout';
 import Breadcrumb from 'react-bootstrap/Breadcrumb';
-import * as AiIcons from 'react-icons/ai';
-import { IconContext } from 'react-icons';
 import ProjectCard from '../components/ProjectCard';
+import ENUMS from '../config/enums';
+import SearchBar from '../components/SearchBar';
+import LoadingSpinner from '../components/loading/LoadingSpinner';
+import ProjectCardSkeleton from '../components/loading/ProjectCardSkeleton';
 
 const Gallery = () => {
-    const [searchInput, setSearchInput] = useState("");
 
-    const handleInputChange = (event) => {
-        setSearchInput((prevState) => ({
-            ...prevState,
-            [event.target.name]: event.target.value
-        }));
+    // States
+    const [projects, setProjects] = useState([]);
+    const [searchProjects, setSearchProjects] = useState([]);
+    const [searchInput, setSearchInput] = useState("");
+    const [pageStatus, setPageStatus] = useState(ENUMS.pageStatus.LOADING);
+
+    // useEffect
+    useEffect(() => {
+        const fakeProjects = [
+            {
+                id: 1,
+                name: "Color Picker",
+                link: "/gallery/color-picker",
+                likes: "10",
+                imgName: `Logo-colorful.png`
+            },
+            {
+                id: 2,
+                name: "Color Palette Generator",
+                link: "/gallery/color-picker",
+                likes: "10",
+                imgName: `Logo-colorful.png`
+            },
+            {
+                id: 3,
+                name: "Search",
+                link: "/gallery/color-picker",
+                likes: "10",
+                imgName: `Logo-colorful.png`
+            }
+        ];
+
+        let componentMounted = true;
+        (async () => {
+            try {
+                if (componentMounted) {
+                    setProjects(() => fakeProjects);
+                    setSearchProjects(() => fakeProjects);
+                    setTimeout(() => {
+                        setPageStatus(() => ENUMS.pageStatus.IDLE);
+                    }, 2000);
+                  
+                }
+            } catch (error) {
+                console.log(error);
+                setPageStatus(() => ENUMS.pageStatus.ERROR);
+            }
+
+
+        })();
+        return (() => {
+            componentMounted = false;
+        });
+    }, []);
+
+    // Handlers
+    const handleSearchSubmit = (reset, event) => {
+
+        if (projects.length < 1) {
+            return;
+        }
+
+        let searchInputValue = "";
+
+        if (!reset) {
+            searchInputValue = searchInput.toLowerCase();
+        }
+
+        let matchSearchArr = [];
+
+        projects.forEach((project) => {
+            let projectNameLowercase = project.name.toLowerCase();
+            let matchSearch = projectNameLowercase.includes(searchInputValue.toLowerCase());
+            if (matchSearch) {
+                matchSearchArr.push(project);
+            }
+        });
+
+        setSearchProjects(() => matchSearchArr);
+        console.log(searchInputValue)
+        console.log(matchSearchArr)
+
     };
 
     return (
@@ -25,35 +103,44 @@ const Gallery = () => {
                 </Breadcrumb>
                 {/* Search */}
                 <div className="c-Gallery__Search">
-                    <div className="c-Search">
-                        <IconContext.Provider className="c-Search__Icon" value={{ color: "#1C1C1C", size: "21px" }}>
-                            <AiIcons.AiOutlineSearch />
-                        </IconContext.Provider>
-                        <input type="text" placeholder="Search for project..." value={searchInput} onChange={(event) => handleInputChange(event)} />
-                    </div>
+                    <SearchBar
+                        searchInput={searchInput}
+                        setSearchInput={setSearchInput}
+                        data={projects}
+                        handleSearchSubmit={handleSearchSubmit}
+                    />
                 </div>
                 {/* Projects */}
                 <div className="c-Gallery__Projects">
                     <div className="c-Projects">
-                        <ProjectCard
-                            likes="10"
-                            name="Color Picker"
-                            link="/gallery/color-picker"
-                        />
-                         <ProjectCard
-                            likes="10"
-                            name="Color Picker"
-                            link="/gallery/color-picker"
-                        />
-                         <ProjectCard
-                            likes="10"
-                            name="Color Picker"
-                            link="/gallery/color-picker"
-                        />
+                        {
+                            pageStatus === ENUMS.pageStatus.LOADING ?
+                                <>
+                                    <ProjectCardSkeleton />
+                                    <ProjectCardSkeleton />
+                                    <ProjectCardSkeleton />
+                                </>
+                                :
+                                searchProjects.length > 0 ?
+                                    searchProjects.map((project, index) => (
+                                        <ProjectCard
+                                            key={index}
+                                            img={project.imgName}
+                                            likes={project.likes}
+                                            name={project.name}
+                                            link={project.link}
+                                        />
+                                    ))
+                                    :
+                                    "Cannot find projects"
+                        }
                     </div>
+
+
                 </div>
 
                 {/* Pagination */}
+
             </div>
         </MainLayout>
     );

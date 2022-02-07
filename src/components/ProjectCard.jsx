@@ -12,7 +12,7 @@ const ProjectCard = ({ img, likes = "error", name = "error", link }) => {
       <div className="c-Project-card__Img">
         {
           img ?
-            <img src={img} alt="Img" /> :
+            <img src={require(`../assets/images/${img}`)} alt="Img" /> :
             <p>Nothing to display.</p>
         }
       </div>
