@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext, useEffect} from 'react';
 import MainLayout from '../layout/MainLayout';
 import LogoColorful from '../assets/images/Logo-colorful.png';
 import { NavLink, useNavigate } from 'react-router-dom';
@@ -7,11 +7,14 @@ import * as GiIcons from 'react-icons/gi';
 import * as AiIcons from 'react-icons/ai';
 import { IconContext } from 'react-icons';
 import Breadcrumb from 'react-bootstrap/Breadcrumb';
+import {Context} from '../context/FirebaseProvider';
+
 
 const Home = () => {
 
   const navigate = useNavigate();
-
+  const currentUser = useContext(Context);
+  console.log(currentUser)
   return (
     <MainLayout title="Home">
       <div className="c-Home">
