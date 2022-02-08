@@ -11,10 +11,10 @@ import {Context} from '../context/FirebaseProvider';
 
 
 const Home = () => {
-
+  
   const navigate = useNavigate();
   const currentUser = useContext(Context);
-  console.log(currentUser)
+
   return (
     <MainLayout title="Home">
       <div className="c-Home">

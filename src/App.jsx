@@ -5,7 +5,7 @@ import './assets/sass/main.scss';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from "react-toastify";
 
-import { useAuth } from './utilities/firebase';
+import { useAuth } from './utils/firebase';
 import FirebaseProvider from './context/FirebaseProvider';
 
 

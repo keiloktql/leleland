@@ -6,6 +6,7 @@ import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import ENUMS from '../config/enums';
 import LoadingSpinner from '../components/loading/LoadingSpinner';
+import { firebaseFn } from '../utils/firebase';
 
 const SignUp = () => {
   const [smh, setSmh] = useState(false);
@@ -26,11 +27,17 @@ const SignUp = () => {
       .required('Confirm password is required')
   });
 
-  const handleLoginSubmit = (values) => {
+  const handleLoginSubmit = async (values) => {
     console.log(values);
 
     setSubmitStatus(() => ENUMS.submitStatus.LOADING);
 
+    const email = values.email;
+    const username = values.username;
+    const password = values.password;
+
+    const returnVal = await firebaseFn.signUp(username, email, password);
+    console.log(returnVal);
 
     setSubmitStatus(() => ENUMS.submitStatus.ERROR);
 

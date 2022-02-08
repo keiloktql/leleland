@@ -11,6 +11,7 @@ import PageNotFound from './pages/error/PageNotFound';
 
 import Sandbox from './pages/Sandbox';
 import ColorPicker from './pages/projects/ColorPicker';
+import MyAccount from './pages/MyAccount';
 
 const Routes = () => {
 
@@ -54,7 +55,7 @@ const Routes = () => {
                     {/* Protected Routes */}
                     <Route element={<RequireAuth />}>
                         <Route path="/dev" element={<Sandbox />} />
-                        {/* <Route path="/account" element={<Home />} /> */}
+                        <Route path="/account" element={<MyAccount />} />
                     </Route>
                     {/* Error Routes */}
                     <Route path="*" element={<PageNotFound />} />
