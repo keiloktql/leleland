@@ -1,7 +1,64 @@
-.c-My-account {
+.l-My-account {
     min-height: 100vh;
     width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
+    .c-My-account {
+        width: 70%;
+        margin: auto;
+
+        &__Profile {
+            margin-top: 50px;
+    
+            .c-Heading {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+    
+                h1 {
+                    width: 100%;
+                    font-weight: bold;
+                    font-size: $font-large;
+                }
+    
+                &__Btn {
+                    display: flex;
+                    justify-content: flex-end;
+                    align-items: center;
+                }
+            }
+    
+            hr {
+                opacity: 0.7;
+            }
+    
+            .c-Profile {
+                &__Details {
+                    display: flex;
+                    flex-direction: row;
+    
+                    .c-Profile {
+                        &__Labels {
+                            display: flex;
+                            flex-direction: column;
+    
+                            label {
+                                font-weight: bold;
+                                font-size: $font-small;
+                            }
+                        }
+    
+                        &__Info {
+                            padding-left: 100px;
+                            display: flex;
+                            flex-direction: column;
+    
+                            p {
+                                font-size: $font-small;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

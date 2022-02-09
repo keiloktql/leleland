@@ -2,7 +2,7 @@
     width: 100%;
     label {
         font-size: $font-small;
-        font-weight: bold;
+        font-weight: 600;
     }
     input {
         border: thin solid #cfcfcf;
@@ -17,7 +17,9 @@
     
         &::placeholder {
             color: #9D9D9D;
-            font-weight: bold;
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: 0.5px;
         }
 
         &:active, &:focus {
@@ -46,6 +48,6 @@
         font-size: 14px;
         padding: 5px 0;
         color: $primary-error;
-        font-weight: bold;
+        font-weight: 600;
     }
 }

@@ -13,6 +13,7 @@ const Gallery = () => {
     const [projects, setProjects] = useState([]);
     const [searchProjects, setSearchProjects] = useState([]);
     const [searchInput, setSearchInput] = useState("");
+    const [searchedValue, setSearchedValue] = useState("");
     const [pageStatus, setPageStatus] = useState(ENUMS.pageStatus.LOADING);
 
     // useEffect
@@ -64,34 +65,32 @@ const Gallery = () => {
         });
     }, []);
 
-    // Handlers
-    const handleSearchSubmit = (reset, event) => {
-
+    useEffect(() => {
         if (projects.length < 1) {
             return;
         }
 
-        let searchInputValue = "";
+        let currentSearchValue = "";
 
-        if (!reset) {
-            searchInputValue = searchInput.toLowerCase();
+        if (searchedValue !== "") {
+            console.log(searchedValue)
+            currentSearchValue = searchedValue.toLowerCase();
         }
 
         let matchSearchArr = [];
 
         projects.forEach((project) => {
             let projectNameLowercase = project.name.toLowerCase();
-            let matchSearch = projectNameLowercase.includes(searchInputValue.toLowerCase());
+            let matchSearch = projectNameLowercase.includes(currentSearchValue.toLowerCase());
             if (matchSearch) {
                 matchSearchArr.push(project);
             }
         });
 
         setSearchProjects(() => matchSearchArr);
-        console.log(searchInputValue)
+        console.log(currentSearchValue)
         console.log(matchSearchArr)
-
-    };
+    }, [searchedValue]);
 
     return (
         <MainLayout title="Gallery">
@@ -103,20 +102,23 @@ const Gallery = () => {
                         <Breadcrumb.Item active>Gallery</Breadcrumb.Item>
                     </Breadcrumb>
 
-                    <div className = "c-Gallery__Heading">
+                    <div className="c-Gallery__Heading">
                         <h1>Search LeLeLand</h1>
-                        <p>Sign in to "like" your favourite projects</p>
+                        <p>Discover awesome projects built using React & Sass =)</p>
                     </div>
                 </div>
 
                 {/* Search */}
                 <div className="c-Gallery__Search">
-                    <SearchBar
-                        searchInput={searchInput}
-                        setSearchInput={setSearchInput}
-                        data={projects}
-                        handleSearchSubmit={handleSearchSubmit}
-                    />
+                    <div className="c-Gallery__Search-wrapper">
+                        <SearchBar
+                            searchInput={searchInput}
+                            setSearchInput={setSearchInput}
+                            searchedValue={searchedValue}
+                            setSearchedValue={setSearchedValue}
+                            data={projects}
+                        />
+                    </div>
                 </div>
                 {/* Projects */}
                 <div className="c-Gallery__Projects">

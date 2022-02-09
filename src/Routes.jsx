@@ -12,6 +12,7 @@ import PageNotFound from './pages/error/PageNotFound';
 import Sandbox from './pages/Sandbox';
 import ColorPicker from './pages/projects/ColorPicker';
 import MyAccount from './pages/MyAccount';
+import LoggedOut from './pages/LoggedOut';
 
 const Routes = () => {
 
@@ -49,6 +50,7 @@ const Routes = () => {
                     <Route path="/home" element={<Navigate replace to="/" />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/sign-up" element={<SignUp />} />
+                    <Route path="/logged-out" element={<LoggedOut />} />
                     <Route path="/forgot-password" element={<ForgotPassword />} />
                     <Route path="/gallery" element={<Gallery />} />
                     <Route path="/gallery/color-picker" element={<ColorPicker />} />

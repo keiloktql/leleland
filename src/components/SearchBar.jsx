@@ -3,11 +3,10 @@ import * as AiIcons from 'react-icons/ai';
 import { IconContext } from 'react-icons';
 import useComponentVisible from '../hooks/useComponentVisible';
 
-const SearchBar = ({ searchInput, setSearchInput, data, handleSearchSubmit }) => {
+const SearchBar = ({ searchInput, setSearchInput, searchedValue, setSearchedValue, data }) => {
 
     const [showSuggestion, setShowSuggestion] = useState(false);
     const [suggestionArr, setSuggestionArr] = useState([]);
-    const [searchedValue, setSearchedValue] = useState("");
 
     const { ref } = useComponentVisible(showSuggestion, setShowSuggestion);
 
@@ -43,7 +42,6 @@ const SearchBar = ({ searchInput, setSearchInput, data, handleSearchSubmit }) =>
         setShowSuggestion(() => false);
         setSearchedValue(() => searchInput);
         setSearchInput(() => "");
-        handleSearchSubmit(false, event);
     };
 
     const handleShowAllProjects = (event) => {
@@ -51,14 +49,12 @@ const SearchBar = ({ searchInput, setSearchInput, data, handleSearchSubmit }) =>
         setSearchInput(() => "");
         setSearchedValue(() => "");
         setShowSuggestion(() => false);
-        handleSearchSubmit(true, event);
     };
 
     const handleSearchSuggestedItem = (suggestedValue) => {
         setSearchInput(() => "");
         setSearchedValue(() => suggestedValue);
         setShowSuggestion(() => false);
-        handleSearchSubmit(false);
     }
 
     return (
