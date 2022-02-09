@@ -1,10 +1,19 @@
 .c-Gallery {
     min-height: calc(100vh - 60px);
 
-    &__Breadcrumb {
-        padding-top: 20px;
-        width: 70%;
-        margin: auto;
+    &__Top {
+        width: 100%;
+        min-height: 200px;
+        background-image: url("../../images/Gallery-BG.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        // background-attachment: fixed;
+        .c-Gallery__Breadcrumb {
+            padding-top: 20px;
+            width: 70%;
+            margin: auto;
+        }
     }
 
     &__Search {

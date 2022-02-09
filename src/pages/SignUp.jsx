@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import MainLayout from '../layout/MainLayout';
+import React, { useState, useEffect } from 'react';
+import MinimalistLayout from '../layout/MinimalistLayout';
 import TextField from '../components/TextField';
 import { NavLink } from 'react-router-dom';
 import { Formik, Form, Field } from 'formik';
@@ -7,18 +7,24 @@ import * as Yup from 'yup';
 import ENUMS from '../config/enums';
 import LoadingSpinner from '../components/loading/LoadingSpinner';
 import { firebaseFn } from '../utils/firebase';
+import LogoDark from '../assets/images/Logo-dark.png';
 
 const SignUp = () => {
+
   const [smh, setSmh] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(ENUMS.submitStatus.IDLE);
+
+  useEffect(() => {
+
+  }, []);
 
   const validate = Yup.object({
     email: Yup.string()
       .email('Email is invalid')
       .required('Email is required'),
-    username: Yup.string()
+    displayName: Yup.string()
       .max(20, 'Must be 20 characters or less')
-      .required('Username is required'),
+      .required('Display name is required'),
     password: Yup.string()
       .min(8, 'Password must be at least 8 characters')
       .required('Password is required'),
@@ -33,69 +39,91 @@ const SignUp = () => {
     setSubmitStatus(() => ENUMS.submitStatus.LOADING);
 
     const email = values.email;
-    const username = values.username;
+    const displayName = values.displayName;
     const password = values.password;
 
-    const returnVal = await firebaseFn.signUp(username, email, password);
-    console.log(returnVal);
+    const signUpSuccess = await firebaseFn.signUp(displayName, email, password);
 
-    setSubmitStatus(() => ENUMS.submitStatus.ERROR);
-
-
-    // Error handling
-    setSmh(() => true);
+    if (signUpSuccess) {
+      setSubmitStatus(() => ENUMS.submitStatus.SUCCESS);
+    } else {
+      setSubmitStatus(() => ENUMS.submitStatus.ERROR);
+      // Error handling
+      setSmh(() => true);
+    }
 
   };
 
   return (
-    <MainLayout title="Sign up">
+    <MinimalistLayout title="Sign Up">
       <div className="c-Sign-up">
         <div className={`c-Sign-up__Card ${smh ? "c-Login__Card--smh" : null}`} onAnimationEnd={() => setSmh(() => false)}>
-          <Formik
-            initialValues={{
-              email: '',
-              username: '',
-              password: '',
-              confirmPassword: ''
-            }}
-            validationSchema={validate}
-            onSubmit={handleLoginSubmit}
-          >
-            {
-              ({isValid, dirty}) => (
-                <Form className="c-Sign-up__Card-wrapper" autoComplete="off">
-                  <h1>Sign Up</h1>
-                  <Field disabled={submitStatus === ENUMS.submitStatus.LOADING} label="Email" placeholder="Enter email" name="email" type="email" as={TextField} />
-                  <Field disabled={submitStatus === ENUMS.submitStatus.LOADING} label="Username" placeholder="Enter username" name="username" as={TextField} />
-                  <Field disabled={submitStatus === ENUMS.submitStatus.LOADING} label="Password" placeholder="Enter password" type="password" name="password" as={TextField} />
-                  <Field disabled={submitStatus === ENUMS.submitStatus.LOADING} label="Confirm Password" placeholder="Enter password again" type="password" name="confirmPassword" as={TextField}/>
+          {
+            submitStatus === ENUMS.submitStatus.SUCCESS ?
+              <div className="c-Sign-up__Success">
+                <span>
+                  <svg viewBox="0 0 24 24">
+                    <path strokeWidth="3" fill="none" stroke="#ffffff" d="M 3,12 l 6,6 l 12, -12" />
+                  </svg>
+                </span>
+                <h1>Sign up success!</h1>
+                <p>You are currently logged in.</p>
+                <NavLink to="/">Go to gallery</NavLink>
+              </div>
+              :
+              <Formik
+                initialValues={{
+                  email: '',
+                  displayName: '',
+                  password: '',
+                  confirmPassword: ''
+                }}
+                validationSchema={validate}
+                onSubmit={handleLoginSubmit}
+              >
+                {
+                  ({ isValid, dirty }) => (
+                    <Form className="c-Sign-up__Card-wrapper" autoComplete="off">
+                      <NavLink to="/" className="c-Sign-up__Card-img">
+                        <img src={LogoDark} alt="Logo" />
+                      </NavLink>
+                      <Field disabled={submitStatus === ENUMS.submitStatus.LOADING} label="Email" placeholder="Enter email" name="email" type="email" as={TextField} />
+                      <Field disabled={submitStatus === ENUMS.submitStatus.LOADING} label="Display Name" placeholder="Enter display name" name="displayName" as={TextField} />
+                      <Field disabled={submitStatus === ENUMS.submitStatus.LOADING} label="Password" placeholder="Enter password" type="password" name="password" as={TextField} />
+                      <Field disabled={submitStatus === ENUMS.submitStatus.LOADING} label="Confirm Password" placeholder="Enter password again" type="password" name="confirmPassword" as={TextField} />
+                      <button disabled={!dirty || !isValid || submitStatus === ENUMS.submitStatus.LOADING} type="submit" className="c-Btn c-Btn__Primary">
+                        {
+                          submitStatus === ENUMS.submitStatus.LOADING ?
+                            <LoadingSpinner
+                              variant="light" />
+                            :
+                            "Sign Up"
+                        }
+                      </button>
+                      {submitStatus === ENUMS.submitStatus.ERROR && (
+                        <div className="c-Sign-up__Card-generic-error">
+                          <p>Something went wrong.</p>
+                        </div>
+                      )}
+                      <div className="c-Sign-up__Login">
+                        <p>Already have an account?</p>
+                        <NavLink to="/login">Login</NavLink>
+                      </div>
+                    </Form>
+                  )
+                }
+              </Formik>
+          }
 
-                  <button disabled={!dirty || !isValid || submitStatus === ENUMS.submitStatus.LOADING} type="submit" className="c-Btn c-Btn__Primary">
-                  {
-                      submitStatus === ENUMS.submitStatus.LOADING ?
-                        <LoadingSpinner
-                          variant="light" />
-                        :
-                        "Sign Up"
-                    }
-                  </button>
-                  {submitStatus === ENUMS.submitStatus.ERROR && (
-                    <div className="c-Sign-up__Card-generic-error">
-                      <p>Incorrect fields detected.</p>
-                    </div>
-                  )}
-                  <div className="c-Sign-up__Login">
-                    <p>Already have an account?</p>
-                    <NavLink to="/login">Login</NavLink>
-                  </div>
-                </Form>
-              )
-            }
-          </Formik>
+
 
         </div>
+
+        <div className="c-Sign-up__Footer c-Footer">
+          <p>Copyright &#169; 2022 LeLe. All rights reserved.</p>
+        </div>
       </div>
-    </MainLayout>
+    </MinimalistLayout>
 
   );
 };

@@ -6,20 +6,15 @@ import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from "react-toastify";
 
 import { useAuth } from './utils/firebase';
-import FirebaseProvider from './context/FirebaseProvider';
 
 
 const App = () => {
 
-    const currentUser = useAuth();
-    console.log(currentUser)
-
     return (
         <>
-            <FirebaseProvider currentUser={currentUser}>
                 <ToastContainer
                     position="top-center"
-                    autoClose={3000}
+                    autoClose={1000}
                     hideProgressBar={false}
                     newestOnTop={false}
                     closeOnClick
@@ -29,7 +24,6 @@ const App = () => {
                     pauseOnHover
                 />
                 <Routes />
-            </FirebaseProvider>
 
         </>
     );

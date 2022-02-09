@@ -3,6 +3,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     -webkit-perspective: 800px;
     perspective: 800px;
     overflow: hidden;
@@ -11,80 +12,6 @@
     // background-position: center;
     // background-size: cover;
     // background-attachment: fixed;
-
-    &__Blob {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 30vmax;
-        z-index: -1;
-        transform-origin: 50% 50%;
-
-        &--1 {
-            fill: $primary-leleblue;
-            opacity: 0.6;
-            z-index: -0.9;
-            animation: move1 100s ease-in-out infinite;
-            @keyframes move1 {
-                0% {
-                    transform: scale(1) translate(10px, -30px);
-                }
-    
-                38% {
-                    transform: scale(0.8, 1) translate(80vw, 30vh) rotate(160deg);
-                }
-    
-                40% {
-                    transform: scale(0.8, 1) translate(80vw, 30vh) rotate(160deg);
-                }
-    
-                78% {
-                    transform: scale(1.3) translate(0vw, 50vh) rotate(-20deg);
-                }
-    
-                80% {
-                    transform: scale(1.3) translate(0vw, 50vh) rotate(-20deg);
-                }
-    
-                100% {
-                    transform: scale(1) translate(10px, -30px);
-                }
-            }
-        }
-
-        &--2 {
-            z-index: -0.8;
-            fill: #ff4b82;
-            opacity: 0.3;
-            animation: move2 200s ease-in-out infinite;
-            @keyframes move2 {
-                0% {
-                    transform: scale(1) translate(90vw, 100px);
-                }
-    
-                20% {
-                    transform: scale(0.8, 1) translate(80vw, 80vh) rotate(160deg);
-                }
-    
-                30% {
-                    transform: scale(0.8, 1) translate(50vw, 50vh) rotate(160deg);
-                }
-    
-                48% {
-                    transform: scale(1.3) translate(0vw, 80vh) rotate(-20deg);
-                }
-    
-                70% {
-                    transform: scale(1.3) translate(50vw, 75vh) rotate(-20deg);
-                }
-    
-                100% {
-                    transform: scale(1) translate(90vw, 100px);
-                }
-            }
-        }
-    }
-
 
     &__Card {
         &--smh {
@@ -349,12 +276,13 @@
         box-shadow: #3c425714 0px 15px 35px 0px,
         rgba(0, 0, 0, 0.12) 0px 5px 15px 0px;
         // max-width: 500px;
-        min-width: 500px;
+        min-width: 450px;
         margin: 100px 0;
+        margin-bottom: 40px;
         display: flex;
         justify-content: center;
         align-items: center;
-        padding: 50px 0;
+        padding: 40px 0;
         z-index: 99;
         background-color: white;
         border-radius: 5px;
@@ -366,13 +294,15 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 80%;
+            width: 85%;
             flex-direction: column;
 
-            h1 {
-                font-size: $font-large;
-                font-weight: bolder;
-                padding-bottom: 10px;
+            .c-Login__Card-img {
+                margin-bottom: 20px;
+                margin-right: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
             }
 
             .c-TextField {
@@ -416,6 +346,15 @@
                     font-weight: bold;
                 }
             }
+        }
+    }
+
+    &__Footer {
+        p {
+            font-size: $font-x-small;
+            letter-spacing: 1px;
+            font-weight: bold;
+            color: #697386
         }
     }
 }

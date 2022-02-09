@@ -50,7 +50,7 @@ const Gallery = () => {
                     setTimeout(() => {
                         setPageStatus(() => ENUMS.pageStatus.IDLE);
                     }, 500);
-                  
+
                 }
             } catch (error) {
                 console.log(error);
@@ -96,11 +96,19 @@ const Gallery = () => {
     return (
         <MainLayout title="Gallery">
             <div className="c-Gallery">
-                {/* Breadcrumb */}
-                <Breadcrumb className="c-Gallery__Breadcrumb l-Breadcrumb">
-                    <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
-                    <Breadcrumb.Item active>Gallery</Breadcrumb.Item>
-                </Breadcrumb>
+                <div className="c-Gallery__Top">
+                    {/* Breadcrumb */}
+                    <Breadcrumb className="c-Gallery__Breadcrumb l-Breadcrumb">
+                        <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
+                        <Breadcrumb.Item active>Gallery</Breadcrumb.Item>
+                    </Breadcrumb>
+
+                    <div className = "c-Gallery__Heading">
+                        <h1>Search LeLeLand</h1>
+                        <p>Sign in to "like" your favourite projects</p>
+                    </div>
+                </div>
+
                 {/* Search */}
                 <div className="c-Gallery__Search">
                     <SearchBar

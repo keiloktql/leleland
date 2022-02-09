@@ -3,6 +3,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     -webkit-perspective: 800px;
     perspective: 800px;
 
@@ -271,8 +272,9 @@
         box-shadow: #3c425714 0px 15px 35px 0px,
         rgba(0, 0, 0, 0.12) 0px 5px 15px 0px;
         // max-width: 500px;
-        min-width: 500px;
+        min-width: 450px;
         margin: 100px 0;
+        margin-bottom: 40px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -280,31 +282,119 @@
         z-index: 99;
         background-color: white;
         border-radius: 5px;
+        -webkit-backdrop-filter: saturate(180%) blur(20px);
+        backdrop-filter: saturate(180%) blur(20px);
+        background-color: rgba(255, 255, 255, 0.95);
+
+        .c-Sign-up__Success {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 85%;
+            flex-direction: column;
+
+            span {
+                background-color: #1ea672;
+                opacity: 0.7;
+                width: 40px;
+                height: 40px;
+                border-radius: 40px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin: 10px 0;
+                animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;
+                cursor: pointer;
+
+                svg {
+                    width: 24px;
+                    height: 24px;
+                    animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;
+
+                    @keyframes scale {
+
+                        0%,
+                        100% {
+                            transform: none;
+                        }
+
+                        50% {
+                            transform: scale3d(1.1, 1.1, 1);
+                        }
+                    }
+
+                    @keyframes checkmark {
+                        from {
+                            stroke-dashoffset: 26px;
+                        }
+
+                        to {
+                            stroke-dashoffset: 0;
+                        }
+                    }
+
+                    @keyframes fill {
+                        100% {
+                            box-shadow: inset 0px 0px 0px 30px #1ea672;
+                            opacity: 1;
+                        }
+                    }
+
+                    path {
+                        stroke-dasharray: 26px;
+                        stroke-dashoffset: 26px;
+                        animation: checkmark 150ms 1 300ms;
+                        animation-timing-function: ease-in;
+                        animation-fill-mode: both;
+
+                    }
+                }
+            }
+
+            h1 {
+                font-size: $font-small;
+                font-weight: bold;
+                margin-bottom: 10px;
+                letter-spacing: 1px;
+            }
+
+            p {
+                font-size: $font-small;
+            }
+
+            a {
+                color: $primary-leleblue;
+                font-weight: bold;
+            }
+        }
 
         &-wrapper {
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 80%;
+            width: 85%;
             flex-direction: column;
 
-            h1 {
-                font-size: $font-large;
-                font-weight: bolder;
-                padding-bottom: 10px;
+            .c-Sign-up__Card-img {
+                margin-bottom: 20px;
+                margin-right: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
             }
 
             .c-TextField {
                 padding-bottom: 10px;
             }
 
-            
+
             .c-Sign-up__Card-generic-error {
                 p {
                     color: $primary-error;
                     font-weight: bold;
                     font-size: 14px;
                 }
+
                 padding-bottom: 15px;
             }
 
@@ -334,6 +424,15 @@
                     font-weight: bold;
                 }
             }
+        }
+    }
+
+    &__Footer {
+        p {
+            font-size: $font-x-small;
+            letter-spacing: 1px;
+            font-weight: bold;
+            color: #697386;
         }
     }
 }

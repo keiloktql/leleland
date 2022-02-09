@@ -1,16 +1,15 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import Enums from '../config/enums';
 import { NavLink, useNavigate } from 'react-router-dom';
 import Tooltip from '@mui/material/Tooltip';
 import LogoDark from '../assets/images/Logo-dark.png';
 import LogoLight from '../assets/images/Logo-light.png';
-import { Context } from '../context/FirebaseProvider';
-
+import { useAuth } from '../utils/firebase';
 
 const Header = ({ theme = Enums.headerTheme.LIGHT, fixed = true }) => {
 
     const navigate = useNavigate();
-    const currentUser = useContext(Context);
+    const currentUser = useAuth();
 
     const [showAvatar, setShowAvatar] = useState(false);
 
@@ -27,6 +26,7 @@ const Header = ({ theme = Enums.headerTheme.LIGHT, fixed = true }) => {
                 if (componentMounted) {
                     setShowAvatar(() => {
                         if (currentUser) {
+                            console.log(currentUser);
                             return true;
                         } else {
                             return false;

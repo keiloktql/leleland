@@ -15,7 +15,7 @@ const Footer = () => {
                     <a className = "c-Links__GitHub" href="https://github.com/keilokimnida/leleland" target="_blank" rel="noopener noreferrer">GitHub</a>
                 </div>
                 <div className="c-Footer__Copyright">
-                    <p>LeLe &#169; Copyright 2022. All rights reserved.</p>
+                    <p>Copyright &#169; 2022 LeLe. All rights reserved.</p>
                 </div>
             </div>
         </footer>

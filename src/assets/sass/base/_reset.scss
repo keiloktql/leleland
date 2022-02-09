@@ -46,3 +46,13 @@ body a {
 	background-color: #b3b3b3;
     border-radius: 5px;
 }
+
+// text Highlight
+::selection {
+    background: $primary-leleblue; /* WebKit/Blink Browsers */
+    color: white;
+  }
+  ::-moz-selection {
+    background: $primary-leleblue; /* Gecko Browsers */
+    color: white;
+  }
