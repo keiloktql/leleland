@@ -1,4 +1,4 @@
-.c-Page-not-found {
+.c-Logged-in-error {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -10,7 +10,6 @@
         font-size: $font-jumbo;
         font-weight: bold;
         letter-spacing: 1.6px;
-        color: rgb(247, 46, 46);
     }
     p {
         font-size: $font-small;

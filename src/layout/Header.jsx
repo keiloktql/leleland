@@ -9,7 +9,7 @@ import { useAuth } from '../utils/firebase';
 const Header = ({ theme = Enums.headerTheme.LIGHT, fixed = true }) => {
 
     const navigate = useNavigate();
-    const currentUser = useAuth();
+    const [currentUser, loading] = useAuth();
 
     const [showAvatar, setShowAvatar] = useState(false);
 

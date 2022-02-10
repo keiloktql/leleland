@@ -39,7 +39,14 @@ const Gallery = () => {
                 link: "/gallery/color-picker",
                 likes: "10",
                 imgName: `Logo-colorful.png`
-            }
+            },
+            {
+                id: 4,
+                name: "Wordle",
+                link: "/gallery/color-picker",
+                likes: "10",
+                imgName: `Logo-colorful.png`
+            },
         ];
 
         let componentMounted = true;

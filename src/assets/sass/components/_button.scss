@@ -32,6 +32,21 @@
         color: white;
     }
 
+    &__Danger {
+        color: #DC3545;
+        background-color: transparent;
+        border: thin solid #DC3545;
+        box-shadow: none;
+        opacity: 1;
+
+        &:hover, &:active {
+            color: white;
+            opacity: 1;
+            background-color: #DC3545;
+            border: 1px solid #DC3545;
+        }
+    }
+
     &__Like {
         border: thin solid #EC0357;
         &--liked {

@@ -13,27 +13,36 @@ import Sandbox from './pages/Sandbox';
 import ColorPicker from './pages/projects/ColorPicker';
 import MyAccount from './pages/MyAccount';
 import LoggedOut from './pages/LoggedOut';
+import Unauthorised from './pages/error/Unauthorised';
+import GenericError from './pages/error/GenericError';
+import { useAuth } from './utils/firebase';
+import LoggedInError from './pages/error/LoggedInError';
 
 const Routes = () => {
 
-    const RequireAuth = () => {
-        let location = useLocation();
+    const [currentUser, loading] = useAuth();
 
-        // Temporary condition due to lack of login feature
-        if (1 !== 1) {
-            // Redirect them to the /login page, but save the current location they were
-            // trying to go to when they were redirected. This allows us to send them
-            // along to that page after they login, which is a nicer user experience
-            // than dropping them off on the home page.
-            return <Navigate to="/" state={{ from: location }} />;
+    const RequireAuthGuard = () => {
+
+        if (!currentUser && !loading) {
+            return <Unauthorised />;
         }
 
         return <Outlet />;
-    }
+    };
+
+    const NoAuthGuard = () => {
+
+        if (!currentUser && !loading) {
+            return <Outlet />;
+        }
+
+        return <LoggedInError />;
+    };
 
     const ScrollToTop = ({ children }) => {
         const { pathname } = useLocation();
-        
+
         useEffect(() => {
             window.scrollTo(0, 0);
         }, [pathname]);
@@ -43,19 +52,23 @@ const Routes = () => {
 
     return (
         <Router>
-            <ScrollToTop >
+            <ScrollToTop>
                 <Switch>
                     {/* Public Routes */}
                     <Route path="/" element={<Home />} />
                     <Route path="/home" element={<Navigate replace to="/" />} />
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/sign-up" element={<SignUp />} />
-                    <Route path="/logged-out" element={<LoggedOut />} />
-                    <Route path="/forgot-password" element={<ForgotPassword />} />
+                    {/* Only avaiable for anon users */}
+                    <Route element={<NoAuthGuard />}>
+                        <Route path="/login" element={<Login />} />
+                        <Route path="/sign-up" element={<SignUp />} />
+                        <Route path="/logged-out" element={<LoggedOut />} />
+                        <Route path="/forgot-password" element={<ForgotPassword />} />
+                    </Route>
                     <Route path="/gallery" element={<Gallery />} />
                     <Route path="/gallery/color-picker" element={<ColorPicker />} />
+                    <Route path="/test" element={<GenericError />} />
                     {/* Protected Routes */}
-                    <Route element={<RequireAuth />}>
+                    <Route element={<RequireAuthGuard />}>
                         <Route path="/dev" element={<Sandbox />} />
                         <Route path="/account" element={<MyAccount />} />
                     </Route>

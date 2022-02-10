@@ -77,21 +77,36 @@ export const firebaseFn = (() => {
         }
     };
 
+    const getCurrentUser = () => {
+        try {
+            const res = auth.currentUser;
+            return res;
+        } catch (error) {
+            console.log(error);
+            return error;
+        }
+    };
+
     return {
         signUp,
         login,
-        logout
+        logout,
+        getCurrentUser
     }
 })();
 
 
 export const useAuth = () => {
     const [currentUser, setCurrentUser] = useState(null);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const unsub = onAuthStateChanged(auth, user => setCurrentUser(() => user));
+        const unsub = onAuthStateChanged(auth, (user) => {
+            setCurrentUser(() => user);
+            setLoading(() => false);
+        });
 
         return unsub;
     }, []);
-    return currentUser;
+    return [currentUser, loading, setCurrentUser];
 };

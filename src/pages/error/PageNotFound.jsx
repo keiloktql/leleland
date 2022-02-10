@@ -1,6 +1,5 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import LogoDark from '../../assets/images/Logo-dark.png';
 import MainLayout from '../../layout/MainLayout';
 
 const PageNotFound = () => {
@@ -9,7 +8,7 @@ const PageNotFound = () => {
       <div className="c-Page-not-found">
         <h1>404</h1>
         <p>Oops! The page your were looking for does not exist!</p>
-        <NavLink to="/">Back to Home</NavLink>
+        <NavLink to="/">Go to Home</NavLink>
       </div>
     </MainLayout>
 
