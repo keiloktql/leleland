@@ -1,21 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import MinimalistLayout from '../layout/MinimalistLayout';
 import TextField from '../components/TextField';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import ENUMS from '../config/enums';
 import LoadingSpinner from '../components/loading/LoadingSpinner';
-import { firebaseFn } from '../utils/firebase';
+import { firebaseFn, useAuth } from '../utils/firebase';
 import LogoDark from '../assets/images/Logo-dark.png';
+import { toast } from 'react-toastify';
 
 const SignUp = () => {
 
+  const navigate = useNavigate();
+
   const [smh, setSmh] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(ENUMS.submitStatus.IDLE);
+  const [currentUser, loading, setCurrentUser] = useAuth();
 
   useEffect(() => {
+    if (submitStatus === ENUMS.submitStatus.SUCCESS && currentUser !== null) {
 
+    }
   }, []);
 
   const validate = Yup.object({
@@ -34,7 +40,6 @@ const SignUp = () => {
   });
 
   const handleLoginSubmit = async (values) => {
-    console.log(values);
 
     setSubmitStatus(() => ENUMS.submitStatus.LOADING);
 
@@ -42,10 +47,12 @@ const SignUp = () => {
     const displayName = values.displayName;
     const password = values.password;
 
-    const signUpSuccess = await firebaseFn.signUp(displayName, email, password);
+    const signUpSuccess = await firebaseFn.signUp(displayName, email, password, navigate);
 
     if (signUpSuccess) {
-      setSubmitStatus(() => ENUMS.submitStatus.SUCCESS);
+      setTimeout(() => {
+        toast.success("Account sign up successful!");
+      }, 0);
     } else {
       setSubmitStatus(() => ENUMS.submitStatus.ERROR);
       // Error handling

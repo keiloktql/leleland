@@ -20,11 +20,12 @@ const auth = getAuth();
 
 export const firebaseFn = (() => {
 
-    const signUp = async (displayName, email, password) => {
+    const signUp = async (displayName, email, password, navigate) => {
         try {
 
             const res = await createUserWithEmailAndPassword(auth, email, password);
-            console.log(res);
+
+            navigate("/");
 
             const user = res.user;
 
