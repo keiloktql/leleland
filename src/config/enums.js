@@ -14,6 +14,10 @@ const ENUMS = {
        ERROR: "ERROR",
        SUCCESS: "SUCCESS",
        IDLE: "IDLE"
+   },
+   dangerZoneType: {
+       CHANGE_PASSWORD: "CHANGE_PASSWORD",
+       DELETE_ACCOUNT: "DELETE_ACCOUNT"
    }
 }
 

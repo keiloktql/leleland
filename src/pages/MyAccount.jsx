@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import Skeleton from '@mui/material/Skeleton';
 import ENUMS from '../config/enums';
 import LoadingSpinner from '../components/loading/LoadingSpinner';
+import DangerZoneModals from '../components/DangerZoneModals';
 
 const MyAccount = () => {
 
@@ -16,6 +17,8 @@ const MyAccount = () => {
     const [displayNameError, setDisplayNameError] = useState(null);
     const [displayNameSubmissionStatus, setDisplayNameSubmissionStatus] = useState(ENUMS.submitStatus.IDLE);
     const [rerender, setRerender] = useState(false);
+    const [showDangerZoneModal, setShowDangerZoneModal] = useState(false);
+    const [dangerZoneModalType, setDangerZoneModalType] = useState(null);
 
     useEffect(() => {
         setDisplayName(() => currentUser?.displayName);
@@ -72,11 +75,18 @@ const MyAccount = () => {
 
     };
 
-    const handleDeleteAccount = async () => {
-        console.log("clickded on delte account");
+    const handleShowDangerZoneModal = (type) => {
+        setDangerZoneModalType(() => type);
+        setShowDangerZoneModal(() => true);
+    };
+
+    const handleHideDangerZoneModal = () => {
+        setShowDangerZoneModal(() => false);
     };
 
     return (
+        <>
+        <DangerZoneModals show={showDangerZoneModal} handleClose={handleHideDangerZoneModal} type={dangerZoneModalType} />
         <MainLayout title="My Account">
             <div className="l-My-account">
                 <div className="c-My-account">
@@ -146,8 +156,15 @@ const MyAccount = () => {
                         </div>
                         <hr />
                         <div className="c-Danger-zone__Details">
+                            <div className = "c-Danger-zone__Row c-Row">
+                                <button type = "button" className = "c-Btn c-Btn__Danger" onClick = {() => handleShowDangerZoneModal(ENUMS.dangerZoneType.CHANGE_PASSWORD)}>Change password</button>
+                                <div className="c-Row__Info">
+                                    <h3>Change password</h3>
+                                    <p>Performing this action will log out all other signed in devices.</p>
+                                </div>
+                            </div>
                             <div className="c-Danger-zone__Row c-Row">
-                                <button type="button" className="c-Btn c-Btn__Danger" onClick={() => handleDeleteAccount()}>Delete account</button>
+                                <button type="button" className="c-Btn c-Btn__Danger" onClick={() => handleShowDangerZoneModal(ENUMS.dangerZoneType.DELETE_ACCOUNT)}>Delete account</button>
                                 <div className="c-Row__Info">
                                     <h3>Delete this account</h3>
                                     <p>All information associated to your account will be permanently deleted.</p>
@@ -160,6 +177,8 @@ const MyAccount = () => {
 
             </div>
         </MainLayout>
+        </>
+
     );
 };
 

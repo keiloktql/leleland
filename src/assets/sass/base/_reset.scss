@@ -56,3 +56,7 @@ body a {
     background: $primary-leleblue; /* Gecko Browsers */
     color: white;
   }
+
+  .Toastify__toast-container--top-center {
+      z-index: 99999999999;
+  }

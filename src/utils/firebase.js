@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 
 // Import the functions you need from the SDKs you need
 // import { initializeApp } from "firebase/app";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, sendPasswordResetEmail, updateProfile } from "firebase/auth";
+import { EmailAuthProvider, getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, sendPasswordResetEmail, updateProfile, reauthenticateWithCredential, updatePassword, deleteUser } from "firebase/auth";
 
 import firebaseConfig from "../config/firebase";
 // TODO: Add SDKs for Firebase products that you want to use
@@ -139,6 +139,69 @@ export const firebaseFn = (() => {
         }
     };
 
+    const deleteAccount = async (password) => {
+        try {
+            const user = auth.currentUser;
+            const credential = EmailAuthProvider.credential(
+                user.email,
+                password
+            );
+
+            await reauthenticateWithCredential(auth.currentUser, credential);
+            await deleteUser(auth.currentUser);
+
+            return [true, null];
+        } catch (error) {
+            console.log(error);
+            console.log(error.code);
+
+            const errCode = error.code;
+
+            const commonErrorExist = checkCommonError(errCode);
+
+            if (commonErrorExist) {
+                return commonErrorExist;
+            }
+
+            if (errCode === "auth/wrong-password") {
+                return [false, "Invalid password"];
+            }
+            return [false, "Something went wrong."];
+        }
+    };
+
+    const changePassword = async (currentPassword, newPassword) => {
+        try {
+            const user = auth.currentUser;
+            const credential = EmailAuthProvider.credential(
+                user.email,
+                currentPassword
+            );
+
+            await reauthenticateWithCredential(auth.currentUser, credential);
+            await updatePassword(auth.currentUser, newPassword);
+
+            return [true, null];
+
+        } catch (error) {
+            console.log(error);
+            console.log(error.code);
+
+            const errCode = error.code;
+
+            const commonErrorExist = checkCommonError(errCode);
+
+            if (commonErrorExist) {
+                return commonErrorExist;
+            }
+
+            if (errCode === "auth/wrong-password") {
+                return [false, "Invalid password"];
+            }
+            return [false, "Something went wrong."];
+        }
+    };
+
     const getCurrentUser = () => {
         try {
             const res = auth.currentUser;
@@ -167,6 +230,8 @@ export const firebaseFn = (() => {
         signUp,
         login,
         logout,
+        deleteAccount,
+        changePassword,
         getCurrentUser,
         updateUserProfile
     }

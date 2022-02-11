@@ -153,8 +153,13 @@
 
             &__Details {
                 .c-Row {
+                    margin: 20px 0;
                     display: flex;
                     flex-direction: row;
+
+                    button {
+                        min-width: 185px;
+                    }
 
                     &__Info {
                         margin-left: 20px;

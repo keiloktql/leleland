@@ -14,6 +14,9 @@
     -o-user-select: none;
     user-select: none;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     &__Header-Login {
         &--dark {
@@ -44,6 +47,15 @@
             opacity: 1;
             background-color: #DC3545;
             border: 1px solid #DC3545;
+        }
+    }
+
+    &__Empty {
+        background-color: white;
+        color: black;
+        padding: 0;
+        &:hover, &:active {
+            box-shadow: none !important;
         }
     }
 
