@@ -49,6 +49,17 @@
         justify-content: flex-end;
         padding: 20px 0;
 
+        canvas {
+            width:100%;
+            height: 170px;
+            --gradient-color-1: #c3e4ff; 
+            --gradient-color-2: #6ec3f4; 
+            --gradient-color-3: #eae2ff;  
+            --gradient-color-4: #b9beff;
+            transform: matrix(1, -0.07, 0, 1, 0, 0);
+            transform-origin: 0px 250px;
+        }
+
         span {
             display: block;
             z-index: 0;
