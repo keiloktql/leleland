@@ -16,6 +16,7 @@ const SignUp = () => {
 
   const [smh, setSmh] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(ENUMS.submitStatus.IDLE);
+  const [submitError, setSubmitError] = useState(null);
   const [currentUser, loading, setCurrentUser] = useAuth();
 
   useEffect(() => {
@@ -47,7 +48,7 @@ const SignUp = () => {
     const displayName = values.displayName;
     const password = values.password;
 
-    const signUpSuccess = await firebaseFn.signUp(displayName, email, password, navigate);
+    const [signUpSuccess, signUpError] = await firebaseFn.signUp(displayName, email, password, navigate);
 
     if (signUpSuccess) {
       setTimeout(() => {
@@ -55,6 +56,7 @@ const SignUp = () => {
       }, 0);
     } else {
       setSubmitStatus(() => ENUMS.submitStatus.ERROR);
+      setSubmitError(() => signUpError);
       // Error handling
       setSmh(() => true);
     }
@@ -109,7 +111,7 @@ const SignUp = () => {
                       </button>
                       {submitStatus === ENUMS.submitStatus.ERROR && (
                         <div className="c-Sign-up__Card-generic-error">
-                          <p>Something went wrong.</p>
+                          <p>{submitError ? submitError : "Something went wrong!"}</p>
                         </div>
                       )}
                       <div className="c-Sign-up__Login">

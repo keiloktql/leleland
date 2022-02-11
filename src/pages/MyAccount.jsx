@@ -4,6 +4,8 @@ import { firebaseFn, useAuth } from '../utils/firebase';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import Skeleton from '@mui/material/Skeleton';
+import ENUMS from '../config/enums';
+import LoadingSpinner from '../components/loading/LoadingSpinner';
 
 const MyAccount = () => {
 
@@ -12,11 +14,13 @@ const MyAccount = () => {
 
     const [displayName, setDisplayName] = useState("");
     const [displayNameError, setDisplayNameError] = useState(null);
+    const [displayNameSubmissionStatus, setDisplayNameSubmissionStatus] = useState(ENUMS.submitStatus.IDLE);
+    const [rerender, setRerender] = useState(false);
 
     useEffect(() => {
         setDisplayName(() => currentUser?.displayName);
 
-    }, [currentUser]);
+    }, [currentUser, rerender]);
 
     const handleLogout = async () => {
         try {
@@ -40,7 +44,7 @@ const MyAccount = () => {
         }
     };
 
-    const handleChangeDisplayName = () => {
+    const handleChangeDisplayName = async () => {
 
         if (displayName === "" || displayName === null || displayName === undefined) {
             toast.error("Display Name cannot be empty");
@@ -52,14 +56,25 @@ const MyAccount = () => {
             return;
         }
 
-        setCurrentUser(() => firebaseFn.getCurrentUser());
+        setDisplayNameSubmissionStatus(() => ENUMS.submitStatus.LOADING);
+
+        const [updateDisplayNameSuccess, updateDisplayNameError] = await firebaseFn.updateUserProfile(displayName);
+
+        if (updateDisplayNameSuccess) {
+            setCurrentUser(() => firebaseFn.getCurrentUser());
+            setRerender((prevState) => !prevState);
+            toast.success("Display name has been successfully changed!");
+        } else {
+            toast.error(updateDisplayNameError);
+        }
+
+        setDisplayNameSubmissionStatus(() => ENUMS.submitStatus.IDLE);
+
     };
 
     const handleDeleteAccount = async () => {
         console.log("clickded on delte account");
     };
-    console.log(displayName === null)
-    console.log(displayName === "")
 
     return (
         <MainLayout title="My Account">
@@ -99,7 +114,7 @@ const MyAccount = () => {
                                             <Skeleton variant="text" width={120} /> :
                                             displayName || displayName === "" ?
                                                 <div className="c-Row__Textfield">
-                                                    <input type="text" onChange={(event) => handleInputChange(event)} value={displayName} />
+                                                    <input type="text" onChange={(event) => handleInputChange(event)} value={displayName} disabled={displayNameSubmissionStatus === ENUMS.submitStatus.LOADING} />
                                                     {
                                                         displayNameError ?
                                                             <p className="c-Row__Error-message">{displayNameError}</p> :
@@ -113,7 +128,13 @@ const MyAccount = () => {
                                 </div>
                             </div>
                             <div className="c-Profile__Details-btn">
-                                <button type="button" disabled={displayName === "" || currentUser?.displayName === displayName} className="c-Btn c-Btn__Primary" onClick={() => handleChangeDisplayName()}>Update profile</button>
+                                <button type="button" disabled={displayName === "" || currentUser?.displayName === displayName || displayNameSubmissionStatus === ENUMS.submitStatus.LOADING} className="c-Btn c-Btn__Primary" onClick={() => handleChangeDisplayName()}>
+                                    {
+                                        displayNameSubmissionStatus === ENUMS.submitStatus.LOADING ?
+                                        <LoadingSpinner variant="light"/> :
+                                        "Update Profile"
+                                    }
+                                </button>
                             </div>
                         </div>
                     </div>

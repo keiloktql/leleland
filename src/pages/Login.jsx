@@ -16,6 +16,7 @@ const Login = () => {
 
   const [smh, setSmh] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(ENUMS.submitStatus.IDLE);
+  const [submitError, setSubmitError] = useState(null);
 
   const validate = Yup.object({
     email: Yup.string()
@@ -30,7 +31,7 @@ const Login = () => {
     const email = values.email;
     const password = values.password;
 
-    const loginSuccess = await firebaseFn.login(email, password);
+    const [loginSuccess, loginError] = await firebaseFn.login(email, password);
 
     if (loginSuccess) {
       navigate("/home");
@@ -41,6 +42,7 @@ const Login = () => {
     }
 
     setSubmitStatus(() => ENUMS.submitStatus.ERROR);
+    setSubmitError(() => loginError);
     setSmh(() => true);
   };
 
@@ -78,7 +80,7 @@ const Login = () => {
                   </button>
                   {submitStatus === ENUMS.submitStatus.ERROR && (
                     <div className="c-Login__Card-generic-error">
-                      <p>Incorrect email or password.</p>
+                      <p>{submitError ? submitError : "Something went wrong."}</p>
                     </div>
                   )}
                   <div className="c-Login__Sign-up">

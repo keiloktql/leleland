@@ -114,7 +114,12 @@
                     }
                     &-btn {
                         margin-top: 20px;
-                        
+                        button {
+                            min-width: 158px;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                        }
                     }
                 }
 
