@@ -9,6 +9,7 @@ const DangerZoneModals = ({ show, handleClose, type }) => {
     const [inputs, setInputs] = useState(null);
     const [inputsError, setInputsError] = useState(null);
     const [submissionStatus, setSubmissionStatus] = useState(ENUMS.submitStatus.IDLE);
+    const [smh, setSmh] = useState(false);
 
     useEffect(() => {
         let componentMounted = true;
@@ -69,6 +70,7 @@ const DangerZoneModals = ({ show, handleClose, type }) => {
             } else {
                 toast.error(deleteError);
                 setSubmissionStatus(() => ENUMS.submitStatus.IDLE);
+                setSmh(() => true);
             }
         }
 
@@ -82,6 +84,7 @@ const DangerZoneModals = ({ show, handleClose, type }) => {
             } else {
                 toast.error(changePasswordError);
                 setSubmissionStatus(() => ENUMS.submitStatus.IDLE);
+                setSmh(() => true);
             }
         }
     };
@@ -91,13 +94,27 @@ const DangerZoneModals = ({ show, handleClose, type }) => {
             ...prevState,
             [event.target.name]: event.target.value
         }));
+
+        if (event.target.value === "") {
+            setInputsError((prevState) => ({
+                ...prevState,
+                [event.target.name]: "Invalid field"
+            }));
+        } else {
+            if (inputsError[event.target.name] !== null) {
+                setInputsError((prevState) => ({
+                    ...prevState,
+                    [event.target.name]: ""
+                }));
+            }
+        }
     };
 
     return (
         <form className={showHideClassName} onSubmit={(event) => handleSubmit(event)}>
             {
                 type === ENUMS.dangerZoneType.DELETE_ACCOUNT ?
-                    <div className="c-Danger-zone-modal c-Danger-zone-modal--delete-account">
+                    <div className={`c-Danger-zone-modal c-Danger-zone-modal--delete-account ${smh ? "c-Danger-zone-modal--smh" : null}`} onAnimationEnd={() => setSmh(() => false)}>
                         <div className="c-Danger-zone-modal__Top">
                             <h1>Delete account</h1>
                             <p>Enter your current password to continue.</p>
@@ -112,7 +129,7 @@ const DangerZoneModals = ({ show, handleClose, type }) => {
                             }
                         </div>
                         <div className="c-Danger-zone-modal__Btns">
-                            <button disabled={submissionStatus === ENUMS.submitStatus.LOADING} type="submit" className="c-Btn c-Btn__Primary">
+                            <button disabled={submissionStatus === ENUMS.submitStatus.LOADING  || inputs?.password === ""} type="submit" className="c-Btn c-Btn__Primary">
                                 {
                                     submissionStatus === ENUMS.submitStatus.LOADING ?
                                         <LoadingSpinner variant="light" /> :
@@ -123,7 +140,7 @@ const DangerZoneModals = ({ show, handleClose, type }) => {
                         </div>
                     </div>
                     :
-                    <div className="c-Danger-zone-modal c-Danger-zone-modal--change-password">
+                    <div className={`c-Danger-zone-modal c-Danger-zone-modal--change-password ${smh ? "c-Danger-zone-modal--smh" : null}`} onAnimationEnd={() => setSmh(() => false)}>
                         <div className="c-Danger-zone-modal__Top">
                             <h1>Change password</h1>
                             <p>Enter your current password to continue.</p>
@@ -156,7 +173,7 @@ const DangerZoneModals = ({ show, handleClose, type }) => {
                             }
                         </div>
                         <div className="c-Danger-zone-modal__Btns">
-                            <button disabled={submissionStatus === ENUMS.submitStatus.LOADING} type="submit" className="c-Btn c-Btn__Primary">
+                            <button disabled={submissionStatus === ENUMS.submitStatus.LOADING || inputs?.currentPassword === "" || inputs?.newPassword === "" || inputs?.confirmPassword === ""} type="submit" className="c-Btn c-Btn__Primary">
                                 {
                                     submissionStatus === ENUMS.submitStatus.LOADING ?
                                         <LoadingSpinner variant="light" /> :

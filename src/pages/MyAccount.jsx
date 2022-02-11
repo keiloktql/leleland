@@ -41,7 +41,7 @@ const MyAccount = () => {
         if (event.target.value === "") {
             setDisplayNameError(() => "Display name cannot be empty!");
         } else {
-            if (displayName !== null) {
+            if (displayNameError !== null) {
                 setDisplayNameError(() => null);
             }
         }

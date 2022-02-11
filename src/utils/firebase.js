@@ -196,8 +196,13 @@ export const firebaseFn = (() => {
             }
 
             if (errCode === "auth/wrong-password") {
-                return [false, "Invalid password"];
+                return [false, "Invalid current password"];
             }
+
+            if (errCode === "auth/weak-password") {
+                return [false, "Password should be at least 6 characters"];
+            }
+
             return [false, "Something went wrong."];
         }
     };

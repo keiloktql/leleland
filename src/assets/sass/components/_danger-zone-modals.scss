@@ -6,6 +6,11 @@
     height: 100%;
     background: rgba(0, 0, 0, 0.6);
     z-index: 100000;
+    -webkit-perspective: 800px;
+    perspective: 800px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     &--show {
         display: block;
@@ -26,6 +31,66 @@
         transform: translate(-50%, -50%);
         padding: 30px;
         border-radius: 5px;
+
+        &--smh {
+
+            @keyframes panelShakeAnimationDangerZone {
+                0% {
+                    -webkit-transform: translate(-50%, -50%);
+                    -moz-transform: translate(-50%, -50%);
+                    -ms-transform: translate(-50%, -50%);
+                    -o-transform: translate(-50%, -50%);
+                    transform: translate(-50%, -50%);
+                }
+
+                12.5% {
+                    -webkit-transform: translate(-53%, -50%) rotateY(-5deg);
+                    -moz-transform: translate(-53%, -50%) rotateY(-5deg);
+                    -ms-transform: translate(-53%, -50%) rotateY(-5deg);
+                    -o-transform: translate(-53%, -50%) rotateY(-5deg);
+                    transform: translate(-53%, -50%) rotateY(-5deg)
+                }
+
+                37.5% {
+                    -webkit-transform: translate(-48%, -50%) rotateY(4deg);
+                    -moz-transform: translate(-48%, -50%) rotateY(4deg);
+                    -ms-transform: translate(-48%, -50%) rotateY(4deg);
+                    -o-transform: translate(-48%, -50%) rotateY(4deg);
+                    transform: translate(-48%, -50%) rotateY(4deg)
+                }
+
+                62.5% {
+                    -webkit-transform: translate(-52%, -50%) rotateY(-2deg);
+                    -moz-transform: translate(-52%, -50%) rotateY(-2deg);
+                    -ms-transform: translate(-52%, -50%) rotateY(-2deg);
+                    -o-transform: translate(-52%, -50%) rotateY(-2deg);
+                    transform: translate(-52%, -50%) rotateY(-2deg)
+                }
+
+                87.5% {
+                    -webkit-transform: translate(-48.5%, -50%) rotateY(1deg);
+                    -moz-transform: translate(-48.5%, -50%) rotateY(1deg);
+                    -ms-transform: translate(-48.5%, -50%) rotateY(1deg);
+                    -o-transform: translate(-48.5%, -50%)  rotateY(1deg);
+                    transform: translate(-48.5%, -50%)  rotateY(1deg)
+                }
+
+                100% {
+                    -webkit-transform: translate(-50%, -50%);
+                    -moz-transform: translate(-50%, -50%);
+                    -ms-transform: translate(-50%, -50%);
+                    -o-transform: translate(-50%, -50%);
+                    transform: translate(-50%, -50%);
+                }
+            }
+
+            -webkit-animation-duration: 400ms;
+            -webkit-animation-timing-function: ease-in-out;
+            -webkit-animation-name: panelShakeAnimationDangerZone;
+            -moz-animation-duration: 400ms;
+            -moz-animation-timing-function: ease-in-out;
+            -moz-animation-name: panelShakeAnimationDangerZone;
+        }
 
         &__Top {
             margin: 10px 0;
