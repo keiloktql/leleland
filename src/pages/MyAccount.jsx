@@ -24,8 +24,7 @@ const MyAccount = () => {
 
     const handleLogout = async () => {
         try {
-            await firebaseFn.logout();
-            navigate("/logged-out");
+            await firebaseFn.logout(navigate);
         } catch (error) {
             toast.error("There was an error");
             console.log(error);

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import { v4 as uuidv4 } from 'uuid';
 
 // Import the functions you need from the SDKs you need
 // import { initializeApp } from "firebase/app";
@@ -39,6 +39,9 @@ export const firebaseFn = (() => {
     const signUp = async (displayName, email, password, navigate) => {
         try {
 
+            const uuid = uuidv4();
+            const photoURL = `https://avatars.dicebear.com/api/adventurer-neutral/${uuid}.svg`;
+
             const res = await createUserWithEmailAndPassword(auth, email, password);
 
             navigate("/");
@@ -47,12 +50,14 @@ export const firebaseFn = (() => {
 
             // Update profile fpr firebase authentication
             await updateProfile(user, {
-                displayName
+                displayName,
+                photoURL
             });
 
             // Insert details to database
             await set(ref(firebaseDatabase, `users/${user.uid}`), {
                 displayName,
+                photoURL,
                 email
             });
 
@@ -129,9 +134,10 @@ export const firebaseFn = (() => {
         }
     };
 
-    const logout = async () => {
+    const logout = async (navigate) => {
         try {
             const res = await signOut(auth);
+            navigate("/logged-out");
             return res;
         } catch (error) {
             console.log(error);
