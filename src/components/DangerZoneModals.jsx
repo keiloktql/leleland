@@ -75,10 +75,11 @@ const DangerZoneModals = ({ show, handleClose, type }) => {
         }
 
         if (type === ENUMS.dangerZoneType.CHANGE_PASSWORD) {
+
             const [changePasswordSuccess, changePasswordError] = await firebaseFn.changePassword(inputs.currentPassword, inputs.newPassword);
             if (changePasswordSuccess) {
                 setTimeout(() => {
-                    toast.success("Account has been deleted successfully!");
+                    toast.success("Password has been changed successfully!");
                 }, 0);
                 handleClose();
             } else {
