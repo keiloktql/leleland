@@ -15,9 +15,10 @@ const ENUMS = {
        SUCCESS: "SUCCESS",
        IDLE: "IDLE"
    },
-   dangerZoneType: {
+   inputModalType: {
        CHANGE_PASSWORD: "CHANGE_PASSWORD",
-       DELETE_ACCOUNT: "DELETE_ACCOUNT"
+       DELETE_ACCOUNT: "DELETE_ACCOUNT",
+       CHANGE_DISPLAY_NAME: "CHANGE_DISPLAY_NAME"
    }
 }
 

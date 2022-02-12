@@ -64,7 +64,12 @@ const Header = ({ theme = Enums.headerTheme.LIGHT, fixed = true }) => {
                     {
                         showAvatar ?
                             <Tooltip title="Account" arrow>
-                                <span className="c-Header__Avatar" onClick={handleProfilePicClick} />
+                                {
+                                    currentUser?.photoURL ? 
+                                    <img className="c-Header__Avatar" src = {currentUser.photoURL} alt="Avatar" onClick={handleProfilePicClick} /> :
+                                    <span className="c-Header__Avatar" onClick={handleProfilePicClick} />
+                                }
+                               
                             </Tooltip> :
                             <button className={`c-Btn c-Btn__Header-Login c-Btn__Header-Login--${theme === Enums.headerTheme.DARK ? "light" : "dark"}`} onClick={() => navigate("/login")}>Login</button>
                     }

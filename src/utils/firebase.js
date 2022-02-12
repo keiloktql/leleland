@@ -217,7 +217,7 @@ export const firebaseFn = (() => {
         }
     };
 
-    const updateUserProfile = async (displayName) => {
+    const updateUserDisplayName = async (displayName) => {
         try {
             await updateProfile(auth.currentUser, {
                 displayName
@@ -226,6 +226,15 @@ export const firebaseFn = (() => {
             return [true, null];
         } catch (error) {
             console.log(error);
+
+            const errCode = error.code;
+
+            const commonErrorExist = checkCommonError(errCode);
+
+            if (commonErrorExist) {
+                return commonErrorExist;
+            }
+            
             return [false, error];
         }
 
@@ -238,7 +247,7 @@ export const firebaseFn = (() => {
         deleteAccount,
         changePassword,
         getCurrentUser,
-        updateUserProfile
+        updateUserDisplayName
     }
 })();
 
