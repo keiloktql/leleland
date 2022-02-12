@@ -7,16 +7,12 @@ import * as GiIcons from 'react-icons/gi';
 import * as AiIcons from 'react-icons/ai';
 import { IconContext } from 'react-icons';
 import Breadcrumb from 'react-bootstrap/Breadcrumb';
-import { Gradient } from '../utils/webGL';
 
 const Home = () => {
   
   const navigate = useNavigate();
 
   useEffect(() => {
-    // const gradient = new Gradient();
-
-    // gradient.initGradient('#gradient-canvas');
   }, []);
 
   return (
@@ -34,8 +30,6 @@ const Home = () => {
 
         {/* Gradient */}
         <div className="c-Home__Gradient">
-        {/* <canvas id="gradient-canvas" data-transition-in>
-        </canvas> */}
         <span></span>
         </div>
 
