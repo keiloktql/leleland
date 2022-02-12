@@ -145,7 +145,7 @@ const InputModals = ({ show, handleClose, type, setRerender }) => {
                         <Field disabled={submissionStatus === ENUMS.submitStatus.LOADING} label="Current password" placeholder="Enter current password" type="password" name="currentPassword" as={TextField} />
                     </div>
                     <div className="c-Input-modals__Btns">
-                        <button disabled={!dirty || !isValid || submissionStatus === ENUMS.submitStatus.LOADING} type="submit" className="c-Btn c-Btn__Primary">
+                        <button disabled={!dirty || !isValid || submissionStatus === ENUMS.submitStatus.LOADING} type="submit" className="c-Btn c-Btn__Danger">
                             {
                                 submissionStatus === ENUMS.submitStatus.LOADING ?
                                     <LoadingSpinner variant="light" /> :
@@ -175,7 +175,7 @@ const InputModals = ({ show, handleClose, type, setRerender }) => {
                         <Field disabled={submissionStatus === ENUMS.submitStatus.LOADING} label="Confirm new password" placeholder="Enter new password again" type="password" name="confirmPassword" as={TextField} />
                     </div>
                     <div className="c-Input-modals__Btns">
-                        <button disabled={!dirty || !isValid || submissionStatus === ENUMS.submitStatus.LOADING} type="submit" className="c-Btn c-Btn__Primary">
+                        <button disabled={!dirty || !isValid || submissionStatus === ENUMS.submitStatus.LOADING} type="submit" className="c-Btn c-Btn__Danger">
                             {
                                 submissionStatus === ENUMS.submitStatus.LOADING ?
                                     <LoadingSpinner variant="light" /> :

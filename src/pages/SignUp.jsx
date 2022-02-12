@@ -64,7 +64,7 @@ const SignUp = () => {
   };
 
   return (
-    <MinimalistLayout title="Sign Up">
+    <MinimalistLayout title="Sign Up • LeLeLand">
       <div className="c-Sign-up">
         <div className={`c-Sign-up__Card ${smh ? "c-Login__Card--smh" : null}`} onAnimationEnd={() => setSmh(() => false)}>
           {

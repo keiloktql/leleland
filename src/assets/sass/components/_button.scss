@@ -35,7 +35,7 @@
         color: white;
     }
 
-    &__Danger {
+    &__Danger-outline {
         color: #DC3545;
         background-color: transparent;
         border: thin solid #DC3545;
@@ -48,6 +48,13 @@
             background-color: #DC3545;
             border: 1px solid #DC3545;
         }
+    }
+
+    &__Danger {
+        color: white;
+        background-color: #DC3545;
+        box-shadow: none;
+        opacity: 1;
     }
 
     &__Empty {

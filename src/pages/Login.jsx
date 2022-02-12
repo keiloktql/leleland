@@ -47,7 +47,7 @@ const Login = () => {
   };
 
   return (
-    <MinimalistLayout title="Login">
+    <MinimalistLayout title="Login • LeLeLand">
       <div className="c-Login">
 
         <div className={`c-Login__Card ${smh ? "c-Login__Card--smh" : null}`} onAnimationEnd={() => setSmh(() => false)}>

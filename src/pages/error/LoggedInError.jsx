@@ -4,7 +4,7 @@ import MainLayout from '../../layout/MainLayout';
 
 const LoggedInError = () => {
     return (
-        <MainLayout title="Error">
+        <MainLayout title="Error • LeLeLand">
             <div className="c-Logged-in-error">
                 <h1>Error</h1>
                 <p>Logged-in use not supported</p>

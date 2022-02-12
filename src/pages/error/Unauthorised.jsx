@@ -7,7 +7,7 @@ const Unauthorised = () => {
     const navigate = useNavigate();
 
     return (
-        <MainLayout title="Unauthorised access">
+        <MainLayout title="Unauthorised access • LeLeLand">
             <div className="l-Unauthorised">
                 <div className="c-Unauthorised">
                     <h1>401</h1>

@@ -33,7 +33,7 @@ const ForgotPassword = () => {
   };
 
   return (
-    <MinimalistLayout title="Forgot Password">
+    <MinimalistLayout title="Forgot Password • LeLeLand">
       <div className="c-Forgot-password">
         <div className={`c-Forgot-password__Card ${smh ? "c-Login__Card--smh" : null}`} onAnimationEnd={() => setSmh(() => false)}>
           <Formik

@@ -100,7 +100,7 @@ const Gallery = () => {
     }, [searchedValue]);
 
     return (
-        <MainLayout title="Gallery">
+        <MainLayout title="Gallery • LeLeLand">
             <div className="c-Gallery">
                 <div className="c-Gallery__Top">
                     {/* Breadcrumb */}

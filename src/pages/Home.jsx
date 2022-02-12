@@ -16,7 +16,7 @@ const Home = () => {
   }, []);
 
   return (
-    <MainLayout title="Home">
+    <MainLayout title="Home • LeLeLand">
       <div className="c-Home">
         <div className="c-Home__Greetings">
           {/* Greetings */}

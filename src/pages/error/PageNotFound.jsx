@@ -4,7 +4,7 @@ import MainLayout from '../../layout/MainLayout';
 
 const PageNotFound = () => {
   return (
-    <MainLayout title="Page not found">
+    <MainLayout title="Page not found • LeLeLand">
       <div className="c-Page-not-found">
         <h1>404</h1>
         <p>Oops! The page your were looking for does not exist!</p>

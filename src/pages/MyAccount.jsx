@@ -47,7 +47,7 @@ const MyAccount = () => {
                     <InputModals show={showInputModal} handleClose={handleInputModal} type={inputModalType} setRerender={setRerender} /> :
                     null
             }
-            <MainLayout title="My Account">
+            <MainLayout title="My Account • LeLeLand">
                 <div className="l-My-account">
                     <div className="c-My-account">
                         <h1>My Account</h1>
@@ -113,14 +113,14 @@ const MyAccount = () => {
                             </div>
                             <div className="c-Danger-zone__Details">
                                 <div className="c-Danger-zone__Row c-Row">
-                                    <button disabled={loading} type="button" className="c-Btn c-Btn__Danger" onClick={() => handleShowInputModal(ENUMS.inputModalType.CHANGE_PASSWORD)}>Change password</button>
+                                    <button disabled={loading} type="button" className="c-Btn c-Btn__Danger-outline" onClick={() => handleShowInputModal(ENUMS.inputModalType.CHANGE_PASSWORD)}>Change password</button>
                                     <div className="c-Row__Info">
                                         <h3>Change password</h3>
                                         <p>Performing this action will log out all other signed in devices.</p>
                                     </div>
                                 </div>
                                 <div className="c-Danger-zone__Row c-Row">
-                                    <button disabled={loading} type="button" className="c-Btn c-Btn__Danger" onClick={() => handleShowInputModal(ENUMS.inputModalType.DELETE_ACCOUNT)}>Delete account</button>
+                                    <button disabled={loading} type="button" className="c-Btn c-Btn__Danger-outline" onClick={() => handleShowInputModal(ENUMS.inputModalType.DELETE_ACCOUNT)}>Delete account</button>
                                     <div className="c-Row__Info">
                                         <h3>Delete this account</h3>
                                         <p>Information associated to this account will not be deleted e.g. likes, comments.</p>

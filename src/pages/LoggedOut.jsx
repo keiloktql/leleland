@@ -7,7 +7,7 @@ const LoggedOut = () => {
     const navigate = useNavigate();
     
     return (
-        <MainLayout title="Logged out">
+        <MainLayout title="Logged out • LeLeLand">
             <div className="l-Logged-out">
                 <div className="c-Logged-out">
                     <h1>You are now logged out</h1>

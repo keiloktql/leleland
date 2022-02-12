@@ -19,7 +19,7 @@ const ColorPicker = () => {
     ];
 
     return (
-        <MainLayout title="Color Picker" headerFixed={false} headerTheme={Enums.headerTheme.DARK}>
+        <MainLayout title="Color Picker • LeLeLand" headerFixed={false} headerTheme={Enums.headerTheme.DARK}>
             <SubHeader
                 name="Color Picker"
                 subLinkArr={subLinkArr}
