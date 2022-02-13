@@ -109,6 +109,14 @@
     padding: 10px 60px;
     cursor: pointer;
 
+    &--arrowed {
+        background-color: #f0f0f0;
+
+        p {
+            color: $primary-leleblue;
+        }
+    }
+
     p {
         -webkit-user-select: none;
         -khtml-user-select: none;

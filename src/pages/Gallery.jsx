@@ -80,7 +80,6 @@ const Gallery = () => {
         let currentSearchValue = "";
 
         if (searchedValue !== "") {
-            console.log(searchedValue)
             currentSearchValue = searchedValue.toLowerCase();
         }
 
@@ -95,8 +94,7 @@ const Gallery = () => {
         });
 
         setSearchProjects(() => matchSearchArr);
-        console.log(currentSearchValue)
-        console.log(matchSearchArr)
+
     }, [searchedValue]);
 
     return (
