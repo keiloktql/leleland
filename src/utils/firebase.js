@@ -9,7 +9,7 @@ import firebaseConfig from "../config/firebase";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 import { initializeApp } from 'firebase/app';
-import { getDatabase, ref, set } from "firebase/database";
+import { getDatabase, ref, set, onValue } from "firebase/database";
 
 console.log("firebase app ran");
 
@@ -97,7 +97,7 @@ export const firebaseFn = (() => {
             return [true, null];
         } catch (error) {
             console.log(error);
-            
+
             const errCode = error.code;
             const commonErrorExist = checkCommonError(errCode);
 
@@ -131,7 +131,7 @@ export const firebaseFn = (() => {
             return [true, null];
         } catch (error) {
             console.log(error);
-            
+
             const errCode = error.code;
 
             const commonErrorExist = checkCommonError(errCode);
@@ -253,10 +253,66 @@ export const firebaseFn = (() => {
             if (commonErrorExist) {
                 return commonErrorExist;
             }
-            
+
             return [false, error];
         }
 
+    };
+
+    const trackLikes = async (postID, updateState) => {
+        try {
+            const likesRef = ref(firebaseDatabase, `likes/${postID}/`);
+            onValue(likesRef, (snapshot) => {
+                const data = snapshot.val();
+                updateState(data);
+            });
+        } catch (error) {
+            const errCode = error.code;
+
+            const commonErrorExist = checkCommonError(errCode);
+
+            if (commonErrorExist) {
+                return commonErrorExist;
+            }
+
+            return [false, error];
+        }
+    };
+
+    const getLikes = async (postID) => {
+        try {
+
+        } catch (error) {
+            const errCode = error.code;
+
+            const commonErrorExist = checkCommonError(errCode);
+
+            if (commonErrorExist) {
+                return commonErrorExist;
+            }
+
+            return [false, error];
+        }
+    };
+
+    const likeOrUnlikePost = async (postID, boolLike) => {
+        try {
+            const user = auth.currentUser;
+            // Insert details to database
+            await set(ref(firebaseDatabase, `likes/${postID}/${user.uid}`), boolLike);
+
+            return [true, null];
+        } catch (error) {
+            const errCode = error.code;
+
+            const commonErrorExist = checkCommonError(errCode);
+
+            if (commonErrorExist) {
+                return commonErrorExist;
+            }
+
+            return [false, error];
+        }
     };
 
     return {
@@ -267,7 +323,9 @@ export const firebaseFn = (() => {
         deleteAccount,
         changePassword,
         getCurrentUser,
-        updateUserDisplayName
+        updateUserDisplayName,
+        getLikes,
+        likeOrUnlikePost
     }
 })();
 
@@ -275,7 +333,7 @@ export const firebaseFn = (() => {
 export const useAuth = () => {
     const [currentUser, setCurrentUser] = useState(null);
     const [loading, setLoading] = useState(true);
-   
+
     useEffect(() => {
         let componentMounted = true;
         let unsub;
@@ -299,3 +357,76 @@ export const useAuth = () => {
     }, []);
     return [currentUser, loading, setCurrentUser];
 };
+
+export const useTrackLikes = (postID, currentUser) => {
+    const [likesArr, setLikesArr] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [likes, setLikes] = useState(null);
+    const [liked, setLiked] = useState(false);
+
+    const likesRef = ref(firebaseDatabase, `likes/${postID}`);
+
+    const convertObjToArr = (data) => {
+        return Object.keys(data).map((key) => [key, data[key]]);
+    }
+
+    useEffect(() => {
+        const unsub = onValue(likesRef, (snapshot) => {
+            const data = snapshot.val();
+            if (data === null) {
+                setLikesArr(() => []);
+            } else {
+                setLikesArr(() => convertObjToArr(data));
+            }
+            setLoading(() => false);
+        });
+
+        return (() => unsub);
+    }, []);
+
+    useEffect(() => {
+        let noOfLikes = 0;
+        if (currentUser !== null) {
+            // Check if user has already liked the post
+            likesArr.every((like) => {
+                const oneUserID = like[0];
+                const boolLiked = like[1];
+
+                if (boolLiked) {
+                    noOfLikes += 1;
+                }
+
+                if (oneUserID === currentUser?.uid) {
+                    if (boolLiked) {
+                        setLiked(() => true);
+                    } else {
+                        setLiked(() => false);
+                    }
+                }
+                return true;
+            });
+
+        } else {
+            likesArr.every((like) => {
+                const boolLiked = like[1];
+
+                if (boolLiked) {
+                    noOfLikes += 1;
+                }
+                return true;
+            })
+        }
+
+        setLikes(() => noOfLikes);
+
+    }, [likesArr, currentUser]);
+
+    return [likesArr, loading, likes, liked];
+
+};
+
+export const postIDObj = (() => {
+    return {
+        colorPicker: "color_picker"
+    };
+})();

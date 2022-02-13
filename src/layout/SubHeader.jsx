@@ -3,8 +3,6 @@ import { NavLink } from 'react-router-dom';
 
 const SubHeader = ({ name = "No Name", subLinkArr }) => {
 
-    console.log(subLinkArr)
-
     const handleScroll = (ref) => {
         ref.current.scrollIntoView({ behavior: 'smooth' })
     };
@@ -21,9 +19,6 @@ const SubHeader = ({ name = "No Name", subLinkArr }) => {
                             <p onClick={() => handleScroll(subLink.ref)} key={index}>{subLink.name}</p>
                         ))
                     }
-                </div>
-                <div className="c-Sub-header__Like">
-                    <button type="button" className = "c-Btn c-Btn__Like c-Btn__Like--default">10 Likes</button>
                 </div>
             </div>
         </div>

@@ -39,6 +39,7 @@ const Header = ({ theme = Enums.headerTheme.LIGHT, fixed = true }) => {
         })();
         return (() => {
             componentMounted = false;
+            setShowAvatar(() => false);
         });
     }, [currentUser]);
 

@@ -8,12 +8,10 @@
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         // background-attachment: fixed;
-        .c-Gallery__Breadcrumb {
-            padding-top: 20px;
-            width: 70%;
-            margin: auto;
-        }
 
         .c-Gallery__Heading {
             display: flex;

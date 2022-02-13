@@ -26,7 +26,7 @@
             flex: 1;
             h1 {
                 font-size: $font-medium;
-                font-weight: bold;
+                font-weight: 700;
                 -webkit-user-select: none;
                 -khtml-user-select: none;
                 -moz-user-select: none;
@@ -49,7 +49,7 @@
             display: flex;
             flex-direction: row;
             justify-content: space-around;
-            flex: 0.5;
+            flex: 1;
             font-weight: 600;
             p {
                 color: black;
@@ -62,12 +62,6 @@
                     opacity: 0.7;
                 }
             }
-        }
-
-        &__Like {
-            display: flex;
-            justify-content: flex-end;
-            flex: 0.5;
         }
     }
 }

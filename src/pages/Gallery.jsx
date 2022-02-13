@@ -112,12 +112,6 @@ const Gallery = () => {
         <MainLayout title="Gallery • LeLeLand">
             <div className="c-Gallery">
                 <div className="c-Gallery__Top">
-                    {/* Breadcrumb */}
-                    <Breadcrumb className="c-Gallery__Breadcrumb l-Breadcrumb">
-                        <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
-                        <Breadcrumb.Item active>Gallery</Breadcrumb.Item>
-                    </Breadcrumb>
-
                     <div className="c-Gallery__Heading">
                         <h1>Search LeLeLand</h1>
                         <p>Discover awesome projects built using React & Sass =)</p>
