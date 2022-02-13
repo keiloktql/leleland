@@ -128,9 +128,22 @@ export const firebaseFn = (() => {
     const forgotPassword = async (email) => {
         try {
             await sendPasswordResetEmail(auth, email);
+            return [true, null];
         } catch (error) {
             console.log(error);
-            return false;
+            
+            const errCode = error.code;
+
+            const commonErrorExist = checkCommonError(errCode);
+
+            if (commonErrorExist) {
+                return commonErrorExist;
+            }
+
+            if (errCode === "auth/user-not-found") {
+                return [false, "Invalid email"];
+            }
+            return [false, "Something went wrong."];
         }
     };
 
@@ -249,6 +262,7 @@ export const firebaseFn = (() => {
     return {
         signUp,
         login,
+        forgotPassword,
         logout,
         deleteAccount,
         changePassword,
@@ -261,14 +275,27 @@ export const firebaseFn = (() => {
 export const useAuth = () => {
     const [currentUser, setCurrentUser] = useState(null);
     const [loading, setLoading] = useState(true);
-
+   
     useEffect(() => {
-        const unsub = onAuthStateChanged(auth, (user) => {
-            setCurrentUser(() => user);
-            setLoading(() => false);
+        let componentMounted = true;
+        let unsub;
+        (async () => {
+            try {
+                if (componentMounted) {
+                    unsub = onAuthStateChanged(auth, (user) => {
+                        setCurrentUser(() => user);
+                        setLoading(() => false);
+                    });
+                }
+            } catch (error) {
+                console.log(error);
+            }
+        })();
+        return (() => {
+            unsub();
+            componentMounted = false;
         });
 
-        return unsub;
     }, []);
     return [currentUser, loading, setCurrentUser];
 };

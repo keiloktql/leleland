@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import MinimalistLayout from '../layout/MinimalistLayout';
 import TextField from '../components/TextField';
 import { NavLink } from 'react-router-dom';
@@ -7,11 +7,35 @@ import * as Yup from 'yup';
 import ENUMS from '../config/enums';
 import LoadingSpinner from '../components/loading/LoadingSpinner';
 import LogoDark from '../assets/images/Logo-dark.png';
+import { firebaseFn } from '../utils/firebase';
+import { toast } from 'react-toastify';
+
 
 const ForgotPassword = () => {
 
   const [smh, setSmh] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(ENUMS.submitStatus.IDLE);
+  const [submitError, setSubmitError] = useState(null);
+  const [timerVal, setTimeVal] = useState(0);
+
+  useEffect(() => {
+    const timerEndMS = localStorage.getItem("fgp_sz");
+    const delta = timerEndMS - Date.now(); // milliseconds elapsed since start
+    const timeLeft = Math.floor(delta / 1000); // in seconds
+    
+    if (timeLeft > 0) {
+      const timer = setInterval(() => {
+        const timerEndMS = localStorage.getItem("fgp_sz");
+        const delta = timerEndMS - Date.now(); // milliseconds elapsed since start
+        const timeLeft = Math.floor(delta / 1000); // in seconds
+        if (timeLeft <= 0) {
+          clearInterval(timer);
+        }
+        setTimeVal(() => timeLeft);
+      }, 1000);
+    }
+
+  }, [submitStatus]);
 
   const validate = Yup.object({
     email: Yup.string()
@@ -19,17 +43,24 @@ const ForgotPassword = () => {
       .required('Email is required')
   });
 
-  const handleLoginSubmit = (values) => {
+  const handleLoginSubmit = async (values) => {
     console.log(values);
 
     setSubmitStatus(() => ENUMS.submitStatus.LOADING);
 
+    const [sendEmailSuccess, sendEmailError] = await firebaseFn.forgotPassword(values.email);
 
-    setSubmitStatus(() => ENUMS.submitStatus.ERROR);
+    if (sendEmailSuccess) {
+      localStorage.setItem("fgp_sz", Date.now() + 33000);
+      setSubmitError(() => null);
+      setSubmitStatus(() => ENUMS.submitStatus.SUCCESS);
+      toast.success("An email has been sent to your inbox!");
+    } else {
+      setSubmitStatus(() => ENUMS.submitStatus.ERROR);
+      setSubmitError(() => sendEmailError);
+      setSmh(() => true);
+    }
 
-
-    // Error handling
-    setSmh(() => true);
   };
 
   return (
@@ -50,20 +81,23 @@ const ForgotPassword = () => {
                     <img src={LogoDark} alt="Logo" />
                   </NavLink>
                   <p>Enter the email associated to your account and we will send a password reset link to your email.</p>
-                  <Field disabled={submitStatus === ENUMS.submitStatus.LOADING} label="Email" placeholder="Enter recovery email" name="email" type="email" as={TextField} />
-                  <button disabled={!dirty || !isValid || submitStatus === ENUMS.submitStatus.LOADING} type="submit" className="c-Btn c-Btn__Primary">
+                  <Field disabled={timerVal > 0 || submitStatus === ENUMS.submitStatus.LOADING} label="Email" placeholder="Enter recovery email" name="email" type="email" as={TextField} />
+                  <button disabled={timerVal > 0 || !dirty || !isValid || submitStatus === ENUMS.submitStatus.LOADING} type="submit" className="c-Btn c-Btn__Primary">
                     {
-                      submitStatus === ENUMS.submitStatus.LOADING ?
-                        <LoadingSpinner
-                          variant="light" />
-                        :
-                        "Send Recovery Email"
+                      timerVal > 0 ?
+                        timerVal :
+                        submitStatus === ENUMS.submitStatus.LOADING ?
+                          <LoadingSpinner
+                            variant="light" />
+                          :
+                          "Send Recovery Email"
                     }
 
                   </button>
-                  {submitStatus === ENUMS.submitStatus.ERROR && (
+                  {
+                  submitStatus === ENUMS.submitStatus.ERROR && (
                     <div className="c-Forgot-password__Card-generic-error">
-                      <p>Incorrect username or password.</p>
+                      <p>{submitError}</p>
                     </div>
                   )}
                   <div className="c-Forgot-password__Login">

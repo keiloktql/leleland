@@ -18,8 +18,20 @@ const MyAccount = () => {
     const [inputModalType, setInputModalType] = useState(null);
 
     useEffect(() => {
-        setDisplayName(() => currentUser?.displayName);
-
+        let componentMounted = true;
+        (async () => {
+            try {
+                if (componentMounted) {
+                    setDisplayName(() => currentUser?.displayName);
+                }
+            } catch (error) {
+                console.log(error);
+            }
+        })();
+        return (() => {
+            componentMounted = false;
+        });
+   
     }, [currentUser, rerender]);
 
     const handleLogout = async () => {

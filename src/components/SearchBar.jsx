@@ -16,21 +16,47 @@ const SearchBar = ({ searchInput, setSearchInput, searchedValue, setSearchedValu
 
 
     useEffect(() => {
-        if (suggestionArr.length && downPress) {
-            if (cursor === null) {
-                setCursor(() => 0);
-            } else {
-                setCursor(prevState =>
-                    prevState < suggestionArr.length - 1 ? prevState + 1 : prevState
-                );
+        let componentMounted = true;
+        (async () => {
+            try {
+                if (componentMounted) {
+                    if (suggestionArr.length && downPress) {
+                        if (cursor === null) {
+                            setCursor(() => 0);
+                        } else {
+                            setCursor(prevState =>
+                                prevState < suggestionArr.length - 1 ? prevState + 1 : prevState
+                            );
+                        }
+                    }
+                }
+            } catch (error) {
+                console.log(error);
             }
-        }
+        })();
+        return (() => {
+            componentMounted = false;
+        });
+
     }, [downPress]);
 
     useEffect(() => {
-        if (suggestionArr.length && upPress) {
-            setCursor(prevState => (prevState > 0 ? prevState - 1 : prevState));
-        }
+        let componentMounted = true;
+        (async () => {
+            try {
+                if (componentMounted) {
+                    if (suggestionArr.length && upPress) {
+                        setCursor(prevState => (prevState > 0 ? prevState - 1 : prevState));
+                    }
+                }
+            } catch (error) {
+                console.log(error);
+            }
+        })();
+        return (() => {
+            componentMounted = false;
+        });
+
     }, [upPress]);
 
     // Handlers

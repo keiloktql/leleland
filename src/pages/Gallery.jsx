@@ -16,48 +16,46 @@ const Gallery = () => {
     const [searchedValue, setSearchedValue] = useState("");
     const [pageStatus, setPageStatus] = useState(ENUMS.pageStatus.LOADING);
 
+    const fakeProjects = [
+        {
+            id: 1,
+            name: "Color Picker",
+            link: "/gallery/color-picker",
+            likes: "10",
+            imgName: `Logo-colorful.png`
+        },
+        {
+            id: 2,
+            name: "Color Palette Generator",
+            link: "/gallery/color-picker",
+            likes: "10",
+            imgName: `Logo-colorful.png`
+        },
+        {
+            id: 3,
+            name: "Search",
+            link: "/gallery/color-picker",
+            likes: "10",
+            imgName: `Logo-colorful.png`
+        },
+        {
+            id: 4,
+            name: "Wordle",
+            link: "/gallery/color-picker",
+            likes: "10",
+            imgName: `Logo-colorful.png`
+        },
+    ];
+
     // useEffect
     useEffect(() => {
-        const fakeProjects = [
-            {
-                id: 1,
-                name: "Color Picker",
-                link: "/gallery/color-picker",
-                likes: "10",
-                imgName: `Logo-colorful.png`
-            },
-            {
-                id: 2,
-                name: "Color Palette Generator",
-                link: "/gallery/color-picker",
-                likes: "10",
-                imgName: `Logo-colorful.png`
-            },
-            {
-                id: 3,
-                name: "Search",
-                link: "/gallery/color-picker",
-                likes: "10",
-                imgName: `Logo-colorful.png`
-            },
-            {
-                id: 4,
-                name: "Wordle",
-                link: "/gallery/color-picker",
-                likes: "10",
-                imgName: `Logo-colorful.png`
-            },
-        ];
-
         let componentMounted = true;
         (async () => {
             try {
                 if (componentMounted) {
                     setProjects(() => fakeProjects);
                     setSearchProjects(() => fakeProjects);
-                    setTimeout(() => {
-                        setPageStatus(() => ENUMS.pageStatus.IDLE);
-                    }, 500);
+                    setPageStatus(() => ENUMS.pageStatus.IDLE);
 
                 }
             } catch (error) {
@@ -73,27 +71,40 @@ const Gallery = () => {
     }, []);
 
     useEffect(() => {
-        if (projects.length < 1) {
-            return;
-        }
+        let componentMounted = true;
+        (async () => {
+            try {
+                if (componentMounted) {
+                    if (projects.length < 1) {
+                        return;
+                    }
 
-        let currentSearchValue = "";
+                    let currentSearchValue = "";
 
-        if (searchedValue !== "") {
-            currentSearchValue = searchedValue.toLowerCase();
-        }
+                    if (searchedValue !== "") {
+                        currentSearchValue = searchedValue.toLowerCase();
+                    }
 
-        let matchSearchArr = [];
+                    let matchSearchArr = [];
 
-        projects.forEach((project) => {
-            let projectNameLowercase = project.name.toLowerCase();
-            let matchSearch = projectNameLowercase.includes(currentSearchValue.toLowerCase());
-            if (matchSearch) {
-                matchSearchArr.push(project);
+                    projects.forEach((project) => {
+                        let projectNameLowercase = project.name.toLowerCase();
+                        let matchSearch = projectNameLowercase.includes(currentSearchValue.toLowerCase());
+                        if (matchSearch) {
+                            matchSearchArr.push(project);
+                        }
+                    });
+
+                    setSearchProjects(() => matchSearchArr);
+                }
+            } catch (error) {
+                console.log(error);
             }
+        })();
+        return (() => {
+            componentMounted = false;
         });
 
-        setSearchProjects(() => matchSearchArr);
 
     }, [searchedValue]);
 
