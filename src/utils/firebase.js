@@ -9,7 +9,7 @@ import firebaseConfig from "../config/firebase";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 import { initializeApp } from 'firebase/app';
-import { getDatabase, ref, set, onValue } from "firebase/database";
+import { getDatabase, ref, set, onValue, push, child } from "firebase/database";
 
 console.log("firebase app ran");
 
@@ -259,26 +259,6 @@ export const firebaseFn = (() => {
 
     };
 
-    const trackLikes = async (postID, updateState) => {
-        try {
-            const likesRef = ref(firebaseDatabase, `likes/${postID}/`);
-            onValue(likesRef, (snapshot) => {
-                const data = snapshot.val();
-                updateState(data);
-            });
-        } catch (error) {
-            const errCode = error.code;
-
-            const commonErrorExist = checkCommonError(errCode);
-
-            if (commonErrorExist) {
-                return commonErrorExist;
-            }
-
-            return [false, error];
-        }
-    };
-
     const getLikes = async (postID) => {
         try {
 
@@ -315,6 +295,35 @@ export const firebaseFn = (() => {
         }
     };
 
+    const postComment = async (postID, comment) => {
+        try {
+            const user = auth.currentUser;
+
+            const newPostKey = push(child(ref(firebaseDatabase), `comments/${postID}`)).key
+            // Insert details to database
+            await set(ref(firebaseDatabase, `comments/${postID}/${newPostKey}`), {
+                comment,
+                userID: user.uid,
+                photoURL: user.photoURL,
+                sender: user.displayName,
+                verified: user.emailVerified,
+                createdAt: Date.now() + 5000
+            });
+
+            return [true, null];
+        } catch (error) {
+            const errCode = error.code;
+
+            const commonErrorExist = checkCommonError(errCode);
+
+            if (commonErrorExist) {
+                return commonErrorExist;
+            }
+
+            return [false, error];
+        }
+    };
+
     return {
         signUp,
         login,
@@ -325,7 +334,8 @@ export const firebaseFn = (() => {
         getCurrentUser,
         updateUserDisplayName,
         getLikes,
-        likeOrUnlikePost
+        likeOrUnlikePost,
+        postComment
     }
 })();
 
@@ -351,6 +361,8 @@ export const useAuth = () => {
         })();
         return (() => {
             unsub();
+            setCurrentUser(() => null);
+            setLoading(() => true);
             componentMounted = false;
         });
 
@@ -422,6 +434,35 @@ export const useTrackLikes = (postID, currentUser) => {
     }, [likesArr, currentUser]);
 
     return [likesArr, loading, likes, liked];
+
+};
+
+export const useTrackComments = (postID, currentUser) => {
+    const [commentsArr, setCommentsArr] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    const commentsRef = ref(firebaseDatabase, `comments/${postID}`);
+
+    const convertObjToArr = (data) => {
+        return Object.keys(data).map((key) => ({[key]: data[key]}));
+    }
+
+    useEffect(() => {
+        const unsub = onValue(commentsRef, (snapshot) => {
+            const data = snapshot.val();
+            console.log(data);
+            if (data === null) {
+                setCommentsArr(() => []);
+            } else {
+                setCommentsArr(() => convertObjToArr(data));
+            }
+            setLoading(() => false);
+        });
+
+        return (() => unsub);
+    }, []);
+
+    return [commentsArr, loading];
 
 };
 

@@ -4,16 +4,19 @@ import { NavLink } from 'react-router-dom';
 import Enums from '../../config/enums';
 import SubHeader from '../../layout/SubHeader';
 import { Icon } from '@iconify/react';
-import { firebaseFn, useTrackLikes, useAuth, postIDObj } from '../../utils/firebase';
+import { firebaseFn, useTrackLikes, useTrackComments, useAuth, postIDObj } from '../../utils/firebase';
 import ENUMS from '../../config/enums';
 import { toast } from 'react-toastify';
+import Comments from '../../components/Comments';
 
 const ColorPicker = () => {
     const [rerender, setRerender] = useState(false);
     const postID = postIDObj.colorPicker;
 
+    const commentsRef = createRef();
     const [currentUser, loadingPage] = useAuth();
     const [likesArr, loadingLikes, likes, liked] = useTrackLikes(postID, currentUser);
+    const [commentsArr, loadingComments] = useTrackComments(postID, currentUser);
 
     const subLinkArr = [
         {
@@ -39,7 +42,10 @@ const ColorPicker = () => {
         } else {
             toast.error(resError);
         }
+    };
 
+    const handleScroll = (ref) => {
+        ref.current.scrollIntoView({ behavior: 'smooth' })
     };
 
     return (
@@ -67,8 +73,7 @@ const ColorPicker = () => {
                                     </div>
                             }
 
-
-                            <div className="c-Logo__Icon">
+                            <div className="c-Logo__Icon" onClick={() => handleScroll(commentsRef)}>
                                 <p className="c-Logo__Val">7</p>
                                 <Icon className="c-Icon c-Icon--chat" icon="bi:chat-right" />
                             </div>
@@ -90,6 +95,14 @@ const ColorPicker = () => {
                     <div className="c-Story">
 
                     </div>
+                </div>
+
+                {/* Comments */}
+                <div ref={commentsRef} className="c-Color-picker__Comments l-Comments">
+                    <Comments 
+                        commentsList = {commentsArr}
+                        postID={postID}
+                    />
                 </div>
             </div>
         </MainLayout>
