@@ -2,8 +2,9 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as AiIcons from 'react-icons/ai';
 import { IconContext } from 'react-icons';
+import { Icon } from '@iconify/react';
 
-const ProjectCard = ({ img, likes = "error", name = "error", link }) => {
+const ProjectCard = ({ img, likes = "error", name = "error", link, last_updated_date }) => {
 
   const navigate = useNavigate();
 
@@ -18,13 +19,14 @@ const ProjectCard = ({ img, likes = "error", name = "error", link }) => {
       </div>
       <div className="c-Project-card__Info">
         <div className="c-Project-card__Likes">
-          <IconContext.Provider className="c-Project-card__Icon" value={{ color: "#E20000", size: "16px" }}>
-            <AiIcons.AiFillHeart />
-          </IconContext.Provider>
-          <p>10 likes</p>
+          <Icon className="c-Project-card__Icon" icon="emojione:smiling-face-with-heart-eyes" />
+          <p>{likes}</p>
         </div>
         <div className="c-Project-card__Name">
           <p>{name}</p>
+        </div>
+        <div className = "c-Project-card__Date">
+          <p>{last_updated_date}</p>
         </div>
       </div>
     </div>

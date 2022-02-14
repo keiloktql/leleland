@@ -6,9 +6,14 @@ import ENUMS from '../config/enums';
 import SearchBar from '../components/SearchBar';
 import LoadingSpinner from '../components/loading/LoadingSpinner';
 import ProjectCardSkeleton from '../components/loading/ProjectCardSkeleton';
+import { firebaseFn } from '../utils/firebase';
+import relativeTime from 'dayjs/plugin/relativeTime';
+import dayjs from 'dayjs';
 
 const Gallery = () => {
 
+    dayjs.extend(relativeTime);
+    
     // States
     const [projects, setProjects] = useState([]);
     const [searchProjects, setSearchProjects] = useState([]);
@@ -16,35 +21,14 @@ const Gallery = () => {
     const [searchedValue, setSearchedValue] = useState("");
     const [pageStatus, setPageStatus] = useState(ENUMS.pageStatus.LOADING);
 
-    const fakeProjects = [
+    const projectList = [
         {
-            id: 1,
+            id: "color_picker",
             name: "Color Picker",
             link: "/gallery/color-picker",
-            likes: "10",
-            imgName: `Logo-colorful.png`
-        },
-        {
-            id: 2,
-            name: "Color Palette Generator",
-            link: "/gallery/color-picker",
-            likes: "10",
-            imgName: `Logo-colorful.png`
-        },
-        {
-            id: 3,
-            name: "Search",
-            link: "/gallery/color-picker",
-            likes: "10",
-            imgName: `Logo-colorful.png`
-        },
-        {
-            id: 4,
-            name: "Wordle",
-            link: "/gallery/color-picker",
-            likes: "10",
-            imgName: `Logo-colorful.png`
-        },
+            imgName: `Logo-colorful.png`,
+            last_updated_date: 1644829112
+        }
     ];
 
     // useEffect
@@ -53,8 +37,35 @@ const Gallery = () => {
         (async () => {
             try {
                 if (componentMounted) {
-                    setProjects(() => fakeProjects);
-                    setSearchProjects(() => fakeProjects);
+                
+
+                    const [resSuccess, resObj] = await firebaseFn.getLikes();
+               
+                    let formattedProjects = [];
+
+                    if (resSuccess) {
+                            formattedProjects = projectList.map((oneProject) => {
+                                let newProject = {
+                                    ...oneProject,
+                                    last_updated_date: dayjs(new Date(oneProject.last_updated_date * 1000)).fromNow()
+                                };
+                                resObj.every((oneLikeObj) => {
+                                    if (oneLikeObj.name === oneProject.id) {
+                                        newProject = {
+                                            ...newProject,
+                                            likes: Object.keys(oneLikeObj).length - 1
+                                        }
+                                        return false;
+                                    }
+                                    return true;
+                                });
+
+                                return newProject;
+                            });
+                            console.log(formattedProjects)
+                            setProjects(() => formattedProjects);
+                            setSearchProjects(() => formattedProjects);
+                    }
                     setPageStatus(() => ENUMS.pageStatus.IDLE);
 
                 }
@@ -149,6 +160,7 @@ const Gallery = () => {
                                             likes={project.likes}
                                             name={project.name}
                                             link={project.link}
+                                            last_updated_date={project.last_updated_date}
                                         />
                                     ))
                                     :

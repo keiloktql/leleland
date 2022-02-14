@@ -8,6 +8,8 @@ import { firebaseFn, useTrackLikes, useTrackComments, useAuth, postIDObj } from 
 import ENUMS from '../../config/enums';
 import { toast } from 'react-toastify';
 import Comments from '../../components/Comments';
+import Skeleton from '@mui/material/Skeleton';
+import _ from 'lodash';
 
 const ColorPicker = () => {
     const [rerender, setRerender] = useState(false);
@@ -30,19 +32,20 @@ const ColorPicker = () => {
     ];
 
     // Handlers
-    const handleLikeOrUnlikePost = async (event, boolLike) => {
-        if (currentUser === null) {
-            toast.error("Error! Please login to like this project");
-            return;
-        }
-        const [resSuccess, resError] = await firebaseFn.likeOrUnlikePost(postID, boolLike);
+    const handleLikeOrUnlikePost = _.debounce(async (event, boolLike) => {
 
-        if (resSuccess) {
-            setRerender((prevState) => !prevState);
-        } else {
-            toast.error(resError);
-        }
-    };
+            if (currentUser === null) {
+                toast.error("Error! Please login to like this project");
+                return;
+            }
+            const [resSuccess, resError] = await firebaseFn.likeOrUnlikePost(postID, boolLike);
+    
+            if (resSuccess) {
+                setRerender((prevState) => !prevState);
+            } else {
+                toast.error(resError);
+            }
+    }, 500);
 
     const handleScroll = (ref) => {
         ref.current.scrollIntoView({ behavior: 'smooth' })
@@ -62,21 +65,31 @@ const ColorPicker = () => {
                         <p className="c-Meta__Dates">Published on: 25th July 2022 | Last Updated on: 25th July 2022</p>
                         <div className="c-Meta__Logo c-Logo">
                             {
-                                liked ?
-                                    <div className="c-Logo__Icon" onClick={(event) => handleLikeOrUnlikePost(event, false)}>
-                                        <p className="c-Logo__Val">{likes}</p>
-                                        <Icon className="c-Icon c-Icon--heart-liked" icon="emojione:smiling-face-with-heart-eyes" />
+                                !loadingLikes ?
+                                    liked ?
+                                        <div className="c-Logo__Icon" onClick={(event) => handleLikeOrUnlikePost(event, false)}>
+                                            <p className="c-Logo__Val">{likes}</p>
+                                            <Icon className="c-Icon c-Icon--heart-liked" icon="emojione:smiling-face-with-heart-eyes" />
+                                        </div> :
+                                        <div className="c-Logo__Icon" onClick={(event) => handleLikeOrUnlikePost(event, true)}>
+                                            <p className="c-Logo__Val">{likes}</p>
+                                            <Icon className="c-Icon c-Icon--heart-unliked" icon="bi:emoji-heart-eyes-fill" />
+                                        </div> :
+                                    <div className="c-Logo__Icon">
+                                        <Skeleton variant="text" width={20} />
+                                    </div>
+                            }
+                            {
+                                !loadingComments ?
+                                    <div className="c-Logo__Icon" onClick={() => handleScroll(commentsRef)}>
+                                        <p className="c-Logo__Val">{commentsArr.length}</p>
+                                        <Icon className="c-Icon c-Icon--chat" icon="bi:chat-right" />
                                     </div> :
-                                    <div className="c-Logo__Icon" onClick={(event) => handleLikeOrUnlikePost(event, true)}>
-                                        <p className="c-Logo__Val">{likes}</p>
-                                        <Icon className="c-Icon c-Icon--heart-unliked" icon="bi:emoji-heart-eyes-fill" />
+                                    <div className="c-Logo__Icon">
+                                        <Skeleton variant="text" width={20} />
                                     </div>
                             }
 
-                            <div className="c-Logo__Icon" onClick={() => handleScroll(commentsRef)}>
-                                <p className="c-Logo__Val">7</p>
-                                <Icon className="c-Icon c-Icon--chat" icon="bi:chat-right" />
-                            </div>
                         </div>
                     </div>
 
@@ -99,9 +112,10 @@ const ColorPicker = () => {
 
                 {/* Comments */}
                 <div ref={commentsRef} className="c-Color-picker__Comments l-Comments">
-                    <Comments 
-                        commentsList = {commentsArr}
+                    <Comments
+                        commentsList={commentsArr}
                         postID={postID}
+                        loadingComments={loadingComments}
                     />
                 </div>
             </div>

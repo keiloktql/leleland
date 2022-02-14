@@ -9,7 +9,7 @@ import firebaseConfig from "../config/firebase";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 import { initializeApp } from 'firebase/app';
-import { getDatabase, ref, set, onValue, push, child } from "firebase/database";
+import { getDatabase, ref, set, onValue, push, child, remove, get } from "firebase/database";
 
 console.log("firebase app ran");
 
@@ -259,10 +259,28 @@ export const firebaseFn = (() => {
 
     };
 
-    const getLikes = async (postID) => {
+    const getLikes = async () => {
         try {
+            const snapshot = await get(child(ref(firebaseDatabase), `likes`));
 
+            const convertObjToArr = (data) => {
+                return Object.keys(data).map((key) => ({
+                    ...data[key],
+                    name: key
+                }));
+            }
+            
+            let formattedLikes;
+            if (snapshot.val() !== null) {
+                formattedLikes = convertObjToArr(snapshot.val());
+            } else {
+                formattedLikes = [];
+            }
+
+            console.log(formattedLikes)
+            return [true, formattedLikes];
         } catch (error) {
+            console.log(error)
             const errCode = error.code;
 
             const commonErrorExist = checkCommonError(errCode);
@@ -299,17 +317,36 @@ export const firebaseFn = (() => {
         try {
             const user = auth.currentUser;
 
-            const newPostKey = push(child(ref(firebaseDatabase), `comments/${postID}`)).key
+            const newCommentKey = push(child(ref(firebaseDatabase), `comments/${postID}`)).key
             // Insert details to database
-            await set(ref(firebaseDatabase, `comments/${postID}/${newPostKey}`), {
+            await set(ref(firebaseDatabase, `comments/${postID}/${newCommentKey}`), {
                 comment,
                 userID: user.uid,
                 photoURL: user.photoURL,
                 sender: user.displayName,
                 verified: user.emailVerified,
-                createdAt: Date.now() + 5000
+                createdAt: Date.now()
             });
 
+            return [true, null];
+        } catch (error) {
+            const errCode = error.code;
+
+            const commonErrorExist = checkCommonError(errCode);
+
+            if (commonErrorExist) {
+                return commonErrorExist;
+            }
+
+            return [false, error];
+        }
+    };
+
+    const deleteComment = async (postID, commentID) => {
+        try {
+
+            await remove(ref(firebaseDatabase, `comments/${postID}/${commentID}`));
+            
             return [true, null];
         } catch (error) {
             const errCode = error.code;
@@ -335,7 +372,8 @@ export const firebaseFn = (() => {
         updateUserDisplayName,
         getLikes,
         likeOrUnlikePost,
-        postComment
+        postComment,
+        deleteComment
     }
 })();
 
@@ -444,7 +482,13 @@ export const useTrackComments = (postID, currentUser) => {
     const commentsRef = ref(firebaseDatabase, `comments/${postID}`);
 
     const convertObjToArr = (data) => {
-        return Object.keys(data).map((key) => ({[key]: data[key]}));
+        let commentList = Object.keys(data).map((key) => ({
+            ...data[key],
+            commentID: key
+        }));
+        commentList = commentList.sort((a, b) => b.createdAt - a.createdAt);
+
+        return commentList;
     }
 
     useEffect(() => {

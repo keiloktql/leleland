@@ -31,7 +31,7 @@ const MyAccount = () => {
         return (() => {
             componentMounted = false;
         });
-   
+
     }, [currentUser, rerender]);
 
     const handleLogout = async () => {
@@ -68,9 +68,11 @@ const MyAccount = () => {
                                 <div className="c-Profile__Top c-Top">
                                     <div className="c-Top__Avatar">
                                         {
-                                            currentUser?.photoURL ?
-                                                <img className="c-Avatar" src={currentUser.photoURL} alt="Avatar" /> :
-                                                <span className="c-Avatar"></span>
+                                            loading ?
+                                                <Skeleton variant="circular" width={60} height={60} /> :
+                                                currentUser?.photoURL ?
+                                                    <img className="c-Avatar" src={currentUser.photoURL} alt="Avatar" /> :
+                                                    <span className="c-Avatar"></span>
                                         }
 
                                         <div className="c-Top__Name">
