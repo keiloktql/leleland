@@ -109,7 +109,15 @@
                 }
             }
 
+            @media (max-width: 768px) {
+                .c-Sign-up-ad__Right {
+                    margin: 50px 0;
+                }
+            }
+
             &__Right {
+
+                
                 .c-Mobile {
                     &__Header {
                         border-radius: 40px 40px 0 0;
@@ -147,25 +155,11 @@
                         }
                     }
 
-                    &__Breadcrumb {
-                        width: 100%;
-                        padding: 15px 20px;
-
-                        li {
-                            font-size: $font-x-small;
-
-                            a {
-                                font-size: $font-x-small;
-                            }
-                        }
-                    }
-
 
                     &__Demo {
                         display: flex;
                         flex-direction: column;
-                        padding: 15px 20px;
-                        padding-top: 0;
+                        padding: 30px 20px;
                         height: 100%;
 
                         .c-Demo {

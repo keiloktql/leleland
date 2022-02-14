@@ -6,7 +6,7 @@ import IphoneFrame from '../components/IphoneFrame';
 import * as GiIcons from 'react-icons/gi';
 import * as AiIcons from 'react-icons/ai';
 import { IconContext } from 'react-icons';
-import Breadcrumb from 'react-bootstrap/Breadcrumb';
+import { Container, Row, Col } from 'react-bootstrap';
 
 const Home = () => {
   
@@ -17,7 +17,7 @@ const Home = () => {
 
   return (
     <MainLayout title="LeLeLand">
-      <div className="c-Home">
+      <Container fluid={true} className="c-Home">
         <div className="c-Home__Greetings">
           {/* Greetings */}
           <div className="c-Home__Greetings-text">
@@ -35,15 +35,15 @@ const Home = () => {
 
         <div className="c-Home__Sign-up-ad">
           {/* Sign up Ad */}
-          <div className="c-Sign-up-ad">
-            <div className="c-Sign-up-ad__Left">
+          <Row className="c-Sign-up-ad">
+            <Col md={12} lg={8} className="c-Sign-up-ad__Left">
               <h1>Sign up to Gain All Access to</h1>
               <img src={LogoColorful} alt="Logo" />
               <p>View the entire collection and "like" your favourite projects! Free of Charge.</p>
               <button type="button" className="c-Btn c-Btn__Primary" onClick={() => navigate("/sign-up")}>Sign Up</button>
-            </div>
+            </Col>
 
-            <div className="c-Sign-up-ad__Right">
+            <Col md={12} lg={4} className="c-Sign-up-ad__Right">
               <IphoneFrame
                 children={
                   <div className="c-Home__Screen c-Mobile">
@@ -60,16 +60,9 @@ const Home = () => {
                       <h2>Color Palette Generator</h2>
                     </div>
 
-                    {/* Breadcrumb */}
-                    <Breadcrumb className="c-Mobile__Breadcrumb l-Breadcrumb">
-                      <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
-                      <Breadcrumb.Item active>Gallery</Breadcrumb.Item>
-                    </Breadcrumb>
-
                     <div className="c-Mobile__Demo c-Demo">
                       <div className="c-Demo__Dates">
-                        <p>Published on 25th July 2022</p>
-                        <p>Last Updated on 25th July 2022</p>
+                        <p>Last updated 4 hours ago</p>
                       </div>
 
                       <div className="c-Demo__Magic">
@@ -97,10 +90,10 @@ const Home = () => {
                   </div>
                 }
               />
-            </div>
-          </div>
+            </Col>
+          </Row>
         </div>
-      </div>
+      </Container>
     </MainLayout>
 
   );

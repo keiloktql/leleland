@@ -11,8 +11,6 @@ import firebaseConfig from "../config/firebase";
 import { initializeApp } from 'firebase/app';
 import { getDatabase, ref, set, onValue, push, child, remove, get } from "firebase/database";
 
-console.log("firebase app ran");
-
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const firebaseDatabase = getDatabase(app);
@@ -509,9 +507,3 @@ export const useTrackComments = (postID, currentUser) => {
     return [commentsArr, loading];
 
 };
-
-export const postIDObj = (() => {
-    return {
-        colorPicker: "color_picker"
-    };
-})();

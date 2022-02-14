@@ -9,6 +9,7 @@ import ProjectCardSkeleton from '../components/loading/ProjectCardSkeleton';
 import { firebaseFn } from '../utils/firebase';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import dayjs from 'dayjs';
+import { projectList } from '../data/projects';
 
 const Gallery = () => {
 
@@ -20,16 +21,6 @@ const Gallery = () => {
     const [searchInput, setSearchInput] = useState("");
     const [searchedValue, setSearchedValue] = useState("");
     const [pageStatus, setPageStatus] = useState(ENUMS.pageStatus.LOADING);
-
-    const projectList = [
-        {
-            id: "color_picker",
-            name: "Color Picker",
-            link: "/gallery/color-picker",
-            imgName: `Logo-colorful.png`,
-            last_updated_date: 1644829112
-        }
-    ];
 
     // useEffect
     useEffect(() => {
@@ -47,7 +38,7 @@ const Gallery = () => {
                             formattedProjects = projectList.map((oneProject) => {
                                 let newProject = {
                                     ...oneProject,
-                                    last_updated_date: dayjs(new Date(oneProject.last_updated_date * 1000)).fromNow()
+                                    last_updated_date: dayjs(new Date(oneProject.last_updated_date)).fromNow()
                                 };
                                 resObj.every((oneLikeObj) => {
                                     if (oneLikeObj.name === oneProject.id) {

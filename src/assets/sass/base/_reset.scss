@@ -1,4 +1,15 @@
-a, p, h1, h2, h3, h4, h5, h6, button, label, span, input {
+a,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+button,
+label,
+span,
+input {
     margin: 0;
 }
 
@@ -17,6 +28,7 @@ body {
 body a {
     text-decoration: none;
     color: $primary-leleblue;
+
     &:hover {
         opacity: 0.8;
     }
@@ -29,34 +41,38 @@ body a {
 // Scrollbar styling
 // Reference to https://codepen.io/devstreak/pen/dMYgeO
 // and https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_custom_scrollbar
-::-webkit-scrollbar-track
-{
-	// -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+::-webkit-scrollbar-track {
+    // -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
     // box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-	background-color: transparent;
+    background-color: transparent;
 }
 
-::-webkit-scrollbar
-{
-	width: 7.5px;
+::-webkit-scrollbar {
+    width: 7.5px;
 }
 
-::-webkit-scrollbar-thumb
-{
-	background-color: #b3b3b3;
+::-webkit-scrollbar-thumb {
+    background-color: #b3b3b3;
     border-radius: 5px;
 }
 
 // text Highlight
 ::selection {
-    background: $primary-leleblue; /* WebKit/Blink Browsers */
+    background: $primary-leleblue;
+    /* WebKit/Blink Browsers */
     color: white;
-  }
-  ::-moz-selection {
-    background: $primary-leleblue; /* Gecko Browsers */
-    color: white;
-  }
+}
 
-  .Toastify__toast-container--top-center {
-      z-index: 99999999999 !important;
-  }
+::-moz-selection {
+    background: $primary-leleblue;
+    /* Gecko Browsers */
+    color: white;
+}
+
+.Toastify__toast-container--top-center {
+    z-index: 99999999999 !important;
+}
+
+.container-fluid {
+    padding: 0;
+}

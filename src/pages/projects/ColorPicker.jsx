@@ -4,17 +4,21 @@ import { NavLink } from 'react-router-dom';
 import Enums from '../../config/enums';
 import SubHeader from '../../layout/SubHeader';
 import { Icon } from '@iconify/react';
-import { firebaseFn, useTrackLikes, useTrackComments, useAuth, postIDObj } from '../../utils/firebase';
+import { firebaseFn, useTrackLikes, useTrackComments, useAuth } from '../../utils/firebase';
 import ENUMS from '../../config/enums';
 import { toast } from 'react-toastify';
 import Comments from '../../components/Comments';
 import Skeleton from '@mui/material/Skeleton';
 import _ from 'lodash';
+import { projectList } from '../../data/projects';
+import relativeTime from 'dayjs/plugin/relativeTime';
+import dayjs from 'dayjs';
 
 const ColorPicker = () => {
-    const [rerender, setRerender] = useState(false);
-    const postID = postIDObj.colorPicker;
-
+  
+    dayjs.extend(relativeTime);
+    const postID = projectList[0].id;
+    const project = projectList[0];
     const commentsRef = createRef();
     const [currentUser, loadingPage] = useAuth();
     const [likesArr, loadingLikes, likes, liked] = useTrackLikes(postID, currentUser);
@@ -41,7 +45,7 @@ const ColorPicker = () => {
             const [resSuccess, resError] = await firebaseFn.likeOrUnlikePost(postID, boolLike);
     
             if (resSuccess) {
-                setRerender((prevState) => !prevState);
+ 
             } else {
                 toast.error(resError);
             }
@@ -62,7 +66,7 @@ const ColorPicker = () => {
                 {/* Meta info */}
                 <div className="c-Color-picker__Meta l-Meta">
                     <div className="c-Meta">
-                        <p className="c-Meta__Dates">Published on: 25th July 2022 | Last Updated on: 25th July 2022</p>
+                        <p className="c-Meta__Dates">Last Updated {dayjs(new Date(project.last_updated_date)).fromNow()}</p>
                         <div className="c-Meta__Logo c-Logo">
                             {
                                 !loadingLikes ?
