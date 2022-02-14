@@ -49,7 +49,7 @@ const ColorPicker = () => {
             } else {
                 toast.error(resError);
             }
-    }, 500);
+    }, 300);
 
     const handleScroll = (ref) => {
         ref.current.scrollIntoView({ behavior: 'smooth' })
