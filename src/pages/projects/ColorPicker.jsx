@@ -66,7 +66,7 @@ const ColorPicker = () => {
                 {/* Meta info */}
                 <div className="c-Color-picker__Meta l-Meta">
                     <div className="c-Meta">
-                        <p className="c-Meta__Dates">Last Updated {dayjs(new Date(project.last_updated_date)).fromNow()}</p>
+                        <p className="c-Meta__Dates">Last updated {dayjs(new Date(project.last_updated_date)).fromNow()}</p>
                         <div className="c-Meta__Logo c-Logo">
                             {
                                 !loadingLikes ?
