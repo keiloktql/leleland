@@ -1,4 +1,4 @@
-import React, { useEffect} from 'react';
+import React, { useEffect } from 'react';
 import MainLayout from '../layout/MainLayout';
 import LogoColorful from '../assets/images/Logo-colorful.png';
 import { NavLink, useNavigate } from 'react-router-dom';
@@ -9,7 +9,7 @@ import { IconContext } from 'react-icons';
 import { Container, Row, Col } from 'react-bootstrap';
 
 const Home = () => {
-  
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -21,16 +21,21 @@ const Home = () => {
         <div className="c-Home__Greetings">
           {/* Greetings */}
           <div className="c-Home__Greetings-text">
-            <h1>LeLeLand</h1>
-            <p>A collection of projects and components built using React & Sass.</p>
+            <div className="c-Greetings-text c-Greetings-text--1">
+              <div className="c-Greetings-text__Title c-Greetings-text__Title--1">Discover</div>
+            </div>
+            <div className="c-Greetings-text c-Greetings-text--2">
+              <div className="c-Greetings-text__Title c-Greetings-text__Title--2">Awesome</div>
+            </div>
+            <div className="c-Greetings-text c-Greetings-text--3">
+              <div className="c-Greetings-text__Title c-Greetings-text__Title--3">Projects</div>
+            </div>
+          </div>
+          <div className="c-Home__Greetings-bottom">
+            <p>Built using React & Sass.</p>
             <NavLink to="/gallery" >View Gallery</NavLink>
           </div>
 
-        </div>
-
-        {/* Gradient */}
-        <div className="c-Home__Gradient">
-        <span></span>
         </div>
 
         <div className="c-Home__Sign-up-ad">

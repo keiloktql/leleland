@@ -6,27 +6,208 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        position: relative;
-        z-index: 50;
-        padding: 150px 0;
+        padding: 50px 0;
 
         &-text {
-            max-width: 350px;
             text-align: center;
-            z-index: 50;
+            display: block;
+            height: 100%;
 
-            h1 {
-                z-index: 50;
-                background: $linear-stripe;
-                -webkit-background-clip: text;
-                background-clip: text;
-                -webkit-text-fill-color: transparent;
-                -webkit-box-decoration-break: clone;
-                text-align: center;
-                font-weight: bold;
-                font-size: $font-jumbo;
+            .c-Greetings-text {
+                position: relative;
+                display: block;
+                user-select: none;
+                height: 100%;
+
+                &__Title {
+                    z-index: 1;
+                    height: 100%;
+                    font-weight: 800;
+                    text-align: center;
+                    font-size: 100px;
+                    position: relative;
+                    background-clip: text;
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: #0000;
+                    z-index: 1;
+                    text-align: center;
+                    display: block;
+     
+                    margin-bottom: -50px;
+
+                    &--1 {
+                        animation: animated-gradient-overlay-1 8s infinite;
+                        background-image: $linear-stripe;
+                    }
+
+                    &--2 {
+                        animation: animated-gradient-overlay-2 8s infinite;
+                        background-image: $linear-pinky-purple;
+                    }
+
+                    &--3 {
+                        animation: animated-gradient-overlay-3 8s infinite;
+                        background-image: $linear-fire;
+                    }
+                }
+
+                @keyframes animated-gradient-title-1 {
+
+                    0%,
+                    16.667%,
+                    to {
+                        opacity: 0;
+                    }
+
+                    25%,
+                    91.667% {
+                        opacity: 1;
+                    }
+                }
+
+                @keyframes animated-gradient-title-2 {
+
+                    0%,
+                    to {
+                        opacity: 1;
+                    }
+
+                    33.333%,
+                    50% {
+                        opacity: 0;
+                    }
+
+                    25%,
+                    58.333% {
+                        opacity: 1;
+                    }
+                }
+
+                @keyframes animated-gradient-title-3 {
+
+                    0%,
+                    58.333%,
+                    91.667%,
+                    to {
+                        opacity: 1;
+                    }
+
+                    66.667%,
+                    83.333% {
+                        opacity: 0;
+                    }
+                }
+
+
+                @keyframes animated-gradient-overlay-1 {
+
+                    0%,
+                    16.667%,
+                    to {
+                        opacity: 1;
+                    }
+
+                    33.333%,
+                    83.333% {
+                        opacity: 0;
+                    }
+                }
+
+
+                @keyframes animated-gradient-overlay-2 {
+
+                    0%,
+                    to {
+                        opacity: 0;
+                    }
+
+                    33.333%,
+                    50% {
+                        opacity: 1;
+                    }
+
+                    16.667%,
+                    66.667% {
+                        opacity: 0;
+                    }
+
+                }
+
+
+                @keyframes animated-gradient-overlay-3 {
+
+                    0%,
+                    50%,
+                    to {
+                        opacity: 0;
+                    }
+
+                    66.667%,
+                    83.333% {
+                        opacity: 1;
+                    }
+                }
+
+                &--1 {
+                    &:before {
+                        height: 100%;
+                        font-weight: 800;
+                        text-align: center;
+                        font-size: 100px;
+                        content: "Discover";
+                        position: absolute;
+                        color: black;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        opacity: 1;
+                        animation: animated-gradient-title-1 8s infinite;
+                    }
+                }
+
+                &--2 {
+                    &:before {
+                        height: 100%;
+                        font-weight: 800;
+                        text-align: center;
+                        font-size: 100px;
+                        content: "Awesome";
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        opacity: 1;
+                        color: black;
+                        animation: animated-gradient-title-2 8s infinite;
+                    }
+                }
+
+                &--3 {
+                    &:before {
+                        height: 100%;
+                        font-weight: 800;
+                        text-align: center;
+                        font-size: 100px;
+                        content: "Projects";
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        opacity: 1;
+                        color: black;
+                        animation: animated-gradient-title-3 8s infinite;
+                    }
+                }
             }
+        }
 
+        &-bottom {
+            padding-top: 45px;
+            padding-bottom: 30px;
+            text-align: center;
             p {
                 z-index: 50;
                 font-size: $font-small;
@@ -38,43 +219,6 @@
                 z-index: 50;
                 font-weight: bold;
             }
-        }
-    }
-
-    .c-Home__Gradient {
-        height: 100%;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        padding: 20px 0;
-
-        span {
-            display: block;
-            z-index: 0;
-            background: linear-gradient(-45deg, #0071E3, #ED4E50, #9867F0, #7A6FF2, #B92020);
-            background-size: 400% 400%;
-            height: 170px;
-            width: 100%;
-            animation: gradient 10s ease infinite;
-            transform: matrix(1, -0.07, 0, 1, 0, 0);
-            transform-origin: 0px 250px;
-        }
-
-
-    }
-
-    @keyframes gradient {
-        0% {
-            background-position: 0% 50%;
-        }
-
-        50% {
-            background-position: 100% 50%;
-        }
-
-        100% {
-            background-position: 0% 50%;
         }
     }
 
@@ -117,7 +261,7 @@
 
             &__Right {
 
-                
+
                 .c-Mobile {
                     &__Header {
                         border-radius: 40px 40px 0 0;
@@ -190,27 +334,35 @@
                                     flex-direction: column;
                                     justify-content: center;
                                     align-items: center;
+
                                     h1 {
                                         font-size: $font-small;
                                         font-weight: bold;
                                     }
+
                                     animation: magicDefault 5s cubic-bezier(0.29, 0.28, 0.65, 0.66) infinite;
+
                                     @keyframes magicDefault {
                                         0% {
                                             opacity: 1;
                                         }
+
                                         40% {
                                             opacity: 1;
                                         }
+
                                         43% {
                                             opacity: 0.2;
                                         }
+
                                         45% {
                                             opacity: 0;
                                         }
-                                        99%{
+
+                                        99% {
                                             opacity: 0;
                                         }
+
                                         100% {
                                             opacity: 1;
                                         }
@@ -227,19 +379,24 @@
                                     flex-direction: column;
                                     animation: magicColors 5s cubic-bezier(0.29, 0.28, 0.65, 0.66) infinite;
                                     z-index: 99;
+
                                     @keyframes magicColors {
                                         0% {
                                             opacity: 0;
                                         }
+
                                         50% {
                                             opacity: 0;
                                         }
+
                                         55% {
                                             opacity: 1;
                                         }
+
                                         95% {
                                             opacity: 1;
                                         }
+
                                         100% {
                                             opacity: 0;
                                         }
@@ -291,6 +448,7 @@
                                         0% {
                                             opacity: 1;
                                         }
+
                                         27% {
                                             transform: translateY(0px);
                                         }
@@ -305,6 +463,7 @@
                                             opacity: 0.7;
                                             transform: translateY(0px);
                                         }
+
                                         33% {
                                             opacity: 0.8;
                                         }
