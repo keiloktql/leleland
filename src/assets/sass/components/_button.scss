@@ -18,6 +18,41 @@
     justify-content: center;
     align-items: center;
 
+    &--arrow {
+        .c-Btn__Arrow {
+            overflow: visible;
+            margin-left: 5px;
+            width: 8px;
+        }
+
+        .c-Btn__Arrow-head {
+            transform: translateX(0);
+            transition: transform 150ms ease-in-out;
+        }
+
+        .c-Btn__Arrow-body {
+            opacity: 0;
+            transform: scaleX(1);
+            transition: transform 150ms ease-in-out, opacity 150ms ease-in-out;
+        }
+
+        &:hover {
+            .c-Btn__Arrow-head {
+                transform: translateX(3px);
+            }
+
+            .c-Btn__Arrow-body {
+                opacity: 1;
+                transform: scaleX(2);
+            }
+        }
+    }
+
+    &__Black {
+        background-color: black;
+        color: white;
+    }
+
     &__Header-Login {
         &--dark {
             background-color: black;
@@ -42,7 +77,8 @@
         box-shadow: none;
         opacity: 1;
 
-        &:hover, &:active {
+        &:hover,
+        &:active {
             color: white;
             opacity: 1;
             background-color: #DC3545;
@@ -61,15 +97,18 @@
         background-color: white;
         color: black;
         padding: 0;
-        &:hover, &:active {
+
+        &:hover,
+        &:active {
             box-shadow: none !important;
         }
     }
 
     &__Like {
         border: thin solid #EC0357;
+
         &--liked {
-            background-color:#EC0357;
+            background-color: #EC0357;
             color: white;
 
             &:hover {
@@ -81,8 +120,9 @@
         &--default {
             background-color: transparent;
             color: #EC0357;
+
             &:hover {
-                background-color:#EC0357;
+                background-color: #EC0357;
                 color: white;
             }
         }

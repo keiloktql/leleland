@@ -19,7 +19,12 @@ const ENUMS = {
        CHANGE_PASSWORD: "CHANGE_PASSWORD",
        DELETE_ACCOUNT: "DELETE_ACCOUNT",
        CHANGE_DISPLAY_NAME: "CHANGE_DISPLAY_NAME"
+   },
+   homeFeatureIcon: {
+       VIEW: "VIEW",
+       COMMENT: "COMMENT",
+       LIKE: "LIKE"
    }
-}
+};
 
 export default ENUMS;

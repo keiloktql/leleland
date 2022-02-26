@@ -7,6 +7,8 @@ import * as GiIcons from 'react-icons/gi';
 import * as AiIcons from 'react-icons/ai';
 import { IconContext } from 'react-icons';
 import { Container, Row, Col } from 'react-bootstrap';
+import HomeFeatureIcon from '../components/HomeFeatureIcon';
+import ENUMS from '../config/enums';
 
 const Home = () => {
 
@@ -32,8 +34,56 @@ const Home = () => {
             </div>
           </div>
           <div className="c-Home__Greetings-bottom">
-            <p>Built using React & Sass.</p>
-            <NavLink to="/gallery" >View Gallery</NavLink>
+            <p>Built using React & Sass by Kei Lok.</p>
+            <button type="button" className="c-Btn c-Btn__Primary c-Btn--arrow" onClick={() => navigate("/gallery")}>
+              View Gallery
+              <svg viewBox="0 0 6 9" fill="none" xmlns="http://www.w3.org/2000/svg" className="c-Btn__Arrow">
+                <g className="c-Btn__Arrow-head">
+                  <path d="M1 1C4.5 4 5 4.38484 5 4.5C5 4.61516 4.5 5 1 8" stroke="currentColor" strokeWidth="2" />
+                </g>
+                <g className="c-Btn__Arrow-body">
+                  <path d="M3.5 4.5H0" stroke="currentColor" strokeWidth="2" />
+                </g>
+              </svg>
+            </button>
+          </div>
+
+        </div>
+
+        <div className="c-Home__Features c-Features">
+          <div className="c-Features__Top">
+            <h1>How it works</h1>
+            <p>Sign up now to have all access to these features. Free of charge.</p>
+          </div>
+          <Row className="c-Features__Icons">
+            <HomeFeatureIcon
+              type={ENUMS.homeFeatureIcon.VIEW}
+              heading="Get Inspired"
+              description="View awesome projects"
+            />
+            <HomeFeatureIcon
+              type={ENUMS.homeFeatureIcon.COMMENT}
+              heading="Comment"
+              description="This is cool!"
+            />
+            <HomeFeatureIcon
+              type={ENUMS.homeFeatureIcon.LIKE}
+              heading="Like"
+              description="Show support"
+            />
+          </Row>
+          <div className="c-Features__CTA">
+            <button className="c-Btn c-Btn__Black c-Btn--arrow" onClick={() => navigate("/sign-up")}>
+              Sign up now
+              <svg viewBox="0 0 6 9" fill="none" xmlns="http://www.w3.org/2000/svg" className="c-Btn__Arrow">
+                <g className="c-Btn__Arrow-head">
+                  <path d="M1 1C4.5 4 5 4.38484 5 4.5C5 4.61516 4.5 5 1 8" stroke="currentColor" strokeWidth="2" />
+                </g>
+                <g className="c-Btn__Arrow-body">
+                  <path d="M3.5 4.5H0" stroke="currentColor" strokeWidth="2" />
+                </g>
+              </svg>
+            </button>
           </div>
 
         </div>
