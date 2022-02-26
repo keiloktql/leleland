@@ -42,7 +42,7 @@
 
                     &--2 {
                         animation: animated-gradient-overlay-2 8s infinite;
-                        background-image: $linear-pinky-purple;
+                        background-image: $linear-github;
                     }
 
                     &--3 {
@@ -212,7 +212,6 @@
                 z-index: 50;
                 font-size: $font-small;
                 font-weight: bold;
-                letter-spacing: 1px;
             }
 
             a {
@@ -244,7 +243,6 @@
                     font-size: $font-small;
                     font-weight: 600;
                     color: #5C5C5C;
-                    letter-spacing: 1px;
                     margin-top: 10px;
                 }
 
@@ -278,7 +276,6 @@
                         h1 {
                             font-size: $font-medium;
                             color: white;
-                            letter-spacing: 1px;
                         }
                     }
 
@@ -411,7 +408,6 @@
                                         align-items: center;
                                         color: white;
                                         font-weight: bold;
-                                        letter-spacing: 1px;
 
                                         &:first-of-type {
                                             border-radius: 5px 5px 0 0;

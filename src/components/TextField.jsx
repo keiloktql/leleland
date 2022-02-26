@@ -13,4 +13,4 @@ const TextField = ({label, disabled, ...props}) => {
   );
 };
 
-export default TextField;;
+export default TextField;

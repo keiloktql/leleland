@@ -291,11 +291,11 @@ export const firebaseFn = (() => {
         }
     };
 
-    const likeOrUnlikePost = async (postID, boolLike) => {
+    const likeOrUnlikePost = async (projectID, boolLike) => {
         try {
             const user = auth.currentUser;
             // Insert details to database
-            await set(ref(firebaseDatabase, `likes/${postID}/${user.uid}`), boolLike);
+            await set(ref(firebaseDatabase, `likes/${projectID}/${user.uid}`), boolLike);
 
             return [true, null];
         } catch (error) {
@@ -311,13 +311,13 @@ export const firebaseFn = (() => {
         }
     };
 
-    const postComment = async (postID, comment) => {
+    const postComment = async (projectID, comment) => {
         try {
             const user = auth.currentUser;
 
-            const newCommentKey = push(child(ref(firebaseDatabase), `comments/${postID}`)).key
+            const newCommentKey = push(child(ref(firebaseDatabase), `comments/${projectID}`)).key
             // Insert details to database
-            await set(ref(firebaseDatabase, `comments/${postID}/${newCommentKey}`), {
+            await set(ref(firebaseDatabase, `comments/${projectID}/${newCommentKey}`), {
                 comment,
                 userID: user.uid,
                 photoURL: user.photoURL,
@@ -340,10 +340,10 @@ export const firebaseFn = (() => {
         }
     };
 
-    const deleteComment = async (postID, commentID) => {
+    const deleteComment = async (projectID, commentID) => {
         try {
 
-            await remove(ref(firebaseDatabase, `comments/${postID}/${commentID}`));
+            await remove(ref(firebaseDatabase, `comments/${projectID}/${commentID}`));
             
             return [true, null];
         } catch (error) {
@@ -406,13 +406,13 @@ export const useAuth = () => {
     return [currentUser, loading, setCurrentUser];
 };
 
-export const useTrackLikes = (postID, currentUser) => {
+export const useTrackLikes = (projectID, currentUser) => {
     const [likesArr, setLikesArr] = useState([]);
     const [loading, setLoading] = useState(true);
     const [likes, setLikes] = useState(null);
     const [liked, setLiked] = useState(false);
 
-    const likesRef = ref(firebaseDatabase, `likes/${postID}`);
+    const likesRef = ref(firebaseDatabase, `likes/${projectID}`);
 
     const convertObjToArr = (data) => {
         return Object.keys(data).map((key) => [key, data[key]]);
@@ -473,11 +473,11 @@ export const useTrackLikes = (postID, currentUser) => {
 
 };
 
-export const useTrackComments = (postID, currentUser) => {
+export const useTrackComments = (projectID, currentUser) => {
     const [commentsArr, setCommentsArr] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    const commentsRef = ref(firebaseDatabase, `comments/${postID}`);
+    const commentsRef = ref(firebaseDatabase, `comments/${projectID}`);
 
     const convertObjToArr = (data) => {
         let commentList = Object.keys(data).map((key) => ({

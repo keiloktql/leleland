@@ -12,7 +12,7 @@ import { toast } from 'react-toastify';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import dayjs from 'dayjs';
 
-const Comments = ({ commentsList, postID, loadingComments }) => {
+const Comments = ({ commentsList, projectID, loadingComments }) => {
 
     const [currentUser, loading] = useAuth();
     const [submitStatus, setSubmitStatus] = useState(ENUMS.submitStatus.IDLE);
@@ -48,7 +48,7 @@ const Comments = ({ commentsList, postID, loadingComments }) => {
     const handleSubmitComment = async (values, { resetForm }) => {
         setSubmitStatus(() => ENUMS.submitStatus.LOADING);
 
-        const [postSuccess, postError] = await firebaseFn.postComment(postID, values.comment);
+        const [postSuccess, postError] = await firebaseFn.postComment(projectID, values.comment);
         if (postSuccess) {
             resetForm();
             localStorage.setItem("c_sz", Date.now() + 20000);
@@ -66,7 +66,7 @@ const Comments = ({ commentsList, postID, loadingComments }) => {
             return;
         }
 
-        const [deleteSuccess, deleteError] = await firebaseFn.deleteComment(postID, commentID);
+        const [deleteSuccess, deleteError] = await firebaseFn.deleteComment(projectID, commentID);
 
         if (deleteSuccess) {
             toast.success("Comment has been successfully deleted!");

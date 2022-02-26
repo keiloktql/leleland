@@ -129,7 +129,7 @@ const SignUp = () => {
         </div>
 
         <div className="c-Sign-up__Footer c-Footer">
-          <p>Copyright &#169; 2022 LeLe. All rights reserved.</p>
+          <p>Copyright &#169; 2022 Tham Kei Lok. All rights reserved.</p>
         </div>
       </div>
     </MinimalistLayout>
