@@ -1,4 +1,4 @@
-import React, { createRef } from 'react';
+import React, { createRef, useState } from 'react';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import dayjs from 'dayjs';
 import Skeleton from '@mui/material/Skeleton';
@@ -15,6 +15,8 @@ import SubHeader from './SubHeader';
 
 import ENUMS from '../config/enums';
 import Comments from '../components/Comments';
+import RequireAccountModal from '../components/RequireAccountModal';
+import useComponentVisible from '../hooks/useComponentVisible';
 
 
 const ProjectLayout = ({ children, title, subTitle, subLinkArr, projectID, project }) => {
@@ -24,12 +26,14 @@ const ProjectLayout = ({ children, title, subTitle, subLinkArr, projectID, proje
     const [currentUser, loadingPage] = useAuth();
     const [likesArr, loadingLikes, likes, liked] = useTrackLikes(projectID, currentUser);
     const [commentsArr, loadingComments] = useTrackComments(projectID, currentUser);
+    const [showRequireAccountModal, setShowRequireAccountModal] = useState(false);
+    const { ref } = useComponentVisible(showRequireAccountModal, setShowRequireAccountModal);
 
     // Handlers
     const handleLikeOrUnlikePost = _.debounce(async (event, boolLike) => {
 
         if (currentUser === null) {
-            toast.error("Error! Please login to like this project");
+            setShowRequireAccountModal(() => true);
             return;
         }
         const [resSuccess, resError] = await firebaseFn.likeOrUnlikePost(projectID, boolLike);
@@ -53,7 +57,11 @@ const ProjectLayout = ({ children, title, subTitle, subLinkArr, projectID, proje
                 name={subTitle}
                 subLinkArr={subLinkArr}
             />
-            <main className={`c-Project-layout`}>
+            <RequireAccountModal 
+                show={showRequireAccountModal}
+                setShow={setShowRequireAccountModal}
+            />
+            <main className={`c-Project-layout`} ref={ref}>
                 
                 {/* Meta info */}
                 <div className="c-Project-layout__Meta l-Meta">
