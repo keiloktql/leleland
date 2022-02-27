@@ -14,11 +14,11 @@ const RequireAccountModal = ({ show, setShow }) => {
     <div className={`l-Require-account-modal l-Require-account-modal--${showHideClassName}`}>
       <div className="c-Require-account-modal">
         <Icon className="c-Require-account-modal__Close" onClick={() => setShow(() => false)} icon="ant-design:close-circle-filled" />
-        <div className="c-Require-account-modal__Top">
+        <div className="c-Require-account-modal__Top"  onClick={() => setShow(() => true)}>
           <h1>LeLeLand</h1>
           <p>Create an account to access this feature and more.</p>
         </div>
-        <div className="c-Require-account-modal__Btns">
+        <div className="c-Require-account-modal__Btns"  onClick={() => setShow(() => true)}>
           <Button
             text="Sign Up"
             variation={ENUMS.btnVariation.PRIMARY}
