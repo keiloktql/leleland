@@ -1,0 +1,38 @@
+.c-Teaser {
+    height: 300px;
+    width: 100%;
+    padding: 90px 100px 80px;
+    border-radius: 5px;
+
+    &--light-blue {
+        background-color: #E9FBFF;
+        color: #0065B1;
+    }
+
+    &__Info {
+        display: flex;
+        height: 100%;
+        flex-direction: column;
+        justify-content: center;
+        align-items:  flex-start;
+
+        h1 {
+            text-align: start;
+            margin: 0 !important;
+        }
+
+        p {
+            font-weight: bold;
+        }
+    }
+
+    &:hover {
+        transition: all 0.2s ease 0s, transform 200ms ease 0s;
+        transform: scaleX(0.95) scaleY(0.95);
+    }
+
+    &:active {
+        transition: all 0.2s ease 0s, transform 200ms ease 0s;
+        transform: scaleX(0.90) scaleY(0.90);
+    }
+}

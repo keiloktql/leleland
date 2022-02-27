@@ -86,7 +86,7 @@ const Header = ({ theme = Enums.headerTheme.LIGHT, fixed = true }) => {
                                             }
 
                                         </Tooltip> :
-                                        <button className={`c-Btn c-Btn__Header-Login c-Btn__Header-Login--${theme === Enums.headerTheme.DARK ? "light" : "dark"}`} onClick={() => navigate("/login")}>Login</button>
+                                        <button className={`c-Btn c-Btn__${theme === Enums.headerTheme.DARK ? "White" : "Primary"}`} onClick={() => navigate("/login")}>Login</button>
                                 }
                             </div>
                         </div>

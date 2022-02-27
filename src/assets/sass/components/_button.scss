@@ -53,16 +53,9 @@
         color: white;
     }
 
-    &__Header-Login {
-        &--dark {
-            background-color: black;
-            color: white;
-        }
-
-        &--light {
-            background-color: white;
-            color: black;
-        }
+    &__White {
+        background-color: white;
+        color: black;
     }
 
     &__Primary {
@@ -102,31 +95,6 @@
         &:active {
             box-shadow: none !important;
         }
-    }
-
-    &__Like {
-        border: thin solid #EC0357;
-
-        &--liked {
-            background-color: #EC0357;
-            color: white;
-
-            &:hover {
-                background-color: transparent;
-                color: #EC0357;
-            }
-        }
-
-        &--default {
-            background-color: transparent;
-            color: #EC0357;
-
-            &:hover {
-                background-color: #EC0357;
-                color: white;
-            }
-        }
-
     }
 
     &:hover {
