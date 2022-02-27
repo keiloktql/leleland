@@ -4,7 +4,7 @@ import * as AiIcons from 'react-icons/ai';
 import { IconContext } from 'react-icons';
 import { Icon } from '@iconify/react';
 
-const ProjectCard = ({ img, likes = "error", name = "error", link, last_updated_date }) => {
+const ProjectCard = ({ img, likes = 0, name = "error", link, last_updated_date }) => {
 
   const navigate = useNavigate();
 

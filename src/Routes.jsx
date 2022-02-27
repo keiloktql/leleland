@@ -10,7 +10,7 @@ import ForgotPassword from './pages/ForgotPassword';
 import PageNotFound from './pages/error/PageNotFound';
 
 import Sandbox from './pages/Sandbox';
-import ColorPicker from './pages/projects/ColorPicker';
+import Calculator from './pages/projects/Calculator';
 import MyAccount from './pages/MyAccount';
 import LoggedOut from './pages/LoggedOut';
 import Unauthorised from './pages/error/Unauthorised';
@@ -65,7 +65,7 @@ const Routes = () => {
                         <Route path="/forgot-password" element={<ForgotPassword />} />
                     </Route>
                     <Route path="/gallery" element={<Gallery />} />
-                    <Route path="/gallery/color-picker" element={<ColorPicker />} />
+                    <Route path="/gallery/calculator" element={<Calculator />} />
                     <Route path="/test" element={<GenericError />} />
                     {/* Protected Routes */}
                     <Route element={<RequireAuthGuard />}>

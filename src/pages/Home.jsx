@@ -20,35 +20,87 @@ const Home = () => {
   return (
     <MainLayout title="LeLeLand">
       <Container fluid={true} className="c-Home">
-        <div className="c-Home__Greetings">
-          {/* Greetings */}
-          <div className="c-Home__Greetings-text">
-            <div className="c-Greetings-text c-Greetings-text--1">
-              <div className="c-Greetings-text__Title c-Greetings-text__Title--1">Discover</div>
+        <Row className="c-Home__Greetings c-Greetings">
+          <Col md={12} lg={8} className="c-Greetings__Left">
+            {/* Greetings */}
+            <div className="c-Home__Greetings-text">
+              <div className="c-Greetings-text c-Greetings-text--1">
+                <div className="c-Greetings-text__Title c-Greetings-text__Title--1">Discover</div>
+              </div>
+              <div className="c-Greetings-text c-Greetings-text--2">
+                <div className="c-Greetings-text__Title c-Greetings-text__Title--2">Awesome</div>
+              </div>
+              <div className="c-Greetings-text c-Greetings-text--3">
+                <div className="c-Greetings-text__Title c-Greetings-text__Title--3">Projects</div>
+              </div>
             </div>
-            <div className="c-Greetings-text c-Greetings-text--2">
-              <div className="c-Greetings-text__Title c-Greetings-text__Title--2">Awesome</div>
+            <div className="c-Home__Greetings-bottom">
+              <p>Built using React & Sass by Kei Lok.</p>
+              <button type="button" className="c-Btn c-Btn__Primary c-Btn--arrow" onClick={() => navigate("/gallery")}>
+                View Gallery
+                <svg viewBox="0 0 6 9" fill="none" xmlns="http://www.w3.org/2000/svg" className="c-Btn__Arrow">
+                  <g className="c-Btn__Arrow-head">
+                    <path d="M1 1C4.5 4 5 4.38484 5 4.5C5 4.61516 4.5 5 1 8" stroke="currentColor" strokeWidth="2" />
+                  </g>
+                  <g className="c-Btn__Arrow-body">
+                    <path d="M3.5 4.5H0" stroke="currentColor" strokeWidth="2" />
+                  </g>
+                </svg>
+              </button>
             </div>
-            <div className="c-Greetings-text c-Greetings-text--3">
-              <div className="c-Greetings-text__Title c-Greetings-text__Title--3">Projects</div>
-            </div>
-          </div>
-          <div className="c-Home__Greetings-bottom">
-            <p>Built using React & Sass by Kei Lok.</p>
-            <button type="button" className="c-Btn c-Btn__Primary c-Btn--arrow" onClick={() => navigate("/gallery")}>
-              View Gallery
-              <svg viewBox="0 0 6 9" fill="none" xmlns="http://www.w3.org/2000/svg" className="c-Btn__Arrow">
-                <g className="c-Btn__Arrow-head">
-                  <path d="M1 1C4.5 4 5 4.38484 5 4.5C5 4.61516 4.5 5 1 8" stroke="currentColor" strokeWidth="2" />
-                </g>
-                <g className="c-Btn__Arrow-body">
-                  <path d="M3.5 4.5H0" stroke="currentColor" strokeWidth="2" />
-                </g>
-              </svg>
-            </button>
-          </div>
+          </Col>
 
-        </div>
+          <Col md={12} lg={4} className="c-Greetings__Right">
+            <IphoneFrame
+              children={
+                <div className="c-Home__Screen c-Mobile">
+                  <div className="c-Mobile__Header">
+                    <h1>LeLeLand</h1>
+                    <span className="c-Mobile__Hamburger">
+                      <IconContext.Provider className="c-Mobile__Icon" value={{ color: "#fff", size: "21px" }}>
+                        <GiIcons.GiHamburgerMenu />
+                      </IconContext.Provider>
+                    </span>
+                  </div>
+
+                  <div className="c-Mobile__Sub-header">
+                    <h2>Color Palette Generator</h2>
+                  </div>
+
+                  <div className="c-Mobile__Demo c-Demo">
+                    <div className="c-Demo__Dates">
+                      <p>Last updated 4 hours ago</p>
+                    </div>
+
+                    <div className="c-Demo__Magic">
+                      <div className="c-Demo__Magic-default">
+                        <IconContext.Provider className="c-Mobile__Paint" value={{ color: "#172b4d", size: "40px" }}>
+                          <AiIcons.AiFillFormatPainter />
+                        </IconContext.Provider>
+                        <h1>Click Generate to start!</h1>
+                      </div>
+                      <div className="c-Demo__Magic-colors">
+
+                        <span className="c-Demo__Color">4E4187</span>
+                        <span className="c-Demo__Color">3083DC</span>
+                        <span className="c-Demo__Color">F8FFE5</span>
+                        <span className="c-Demo__Color">7DDE92</span>
+                      </div>
+                    </div>
+
+
+                    <div className="c-Demo__Btns">
+                      <button type="button" className="c-Btn c-Btn__CP c-Btn__Primary">Generate</button>
+                    </div>
+
+                  </div>
+                </div>
+              }
+            />
+          </Col>
+
+
+        </Row>
 
         <div className="c-Home__Features c-Features">
           <div className="c-Features__Top">
@@ -64,7 +116,7 @@ const Home = () => {
             <HomeFeatureIcon
               type={ENUMS.homeFeatureIcon.COMMENT}
               heading="Comment"
-              description="This is cool!"
+              description="Good vibes only &#128526;"
             />
             <HomeFeatureIcon
               type={ENUMS.homeFeatureIcon.LIKE}

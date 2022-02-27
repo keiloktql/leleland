@@ -1,234 +1,455 @@
 .c-Home {
     width: 100%;
 
-    &__Greetings {
+
+    .c-Greetings {
         min-height: calc(100vh - 60vh);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
         padding: 50px 0;
+        width: 60%;
+        margin: auto;
 
-        &-text {
-            text-align: center;
-            display: block;
-            height: 100%;
+        &__Left {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            .c-Home__Greetings-text {
+                display: flex;
+                justify-content: center;
+                flex-direction: column;
 
-            .c-Greetings-text {
-                position: relative;
-                display: block;
-                user-select: none;
-                height: 100%;
-
-                &__Title {
-                    z-index: 1;
-                    height: 100%;
-                    font-weight: 800;
-                    text-align: center;
-                    font-size: 70px;
+                .c-Greetings-text {
                     position: relative;
-                    background-clip: text;
-                    -webkit-background-clip: text;
-                    -webkit-text-fill-color: #0000;
-                    z-index: 1;
-                    text-align: center;
                     display: block;
+                    user-select: none;
                     margin-bottom: -30px;
 
+                    &__Title {
+                        z-index: 1;
+                        height: 100%;
+                        font-weight: 800;
+                        font-size: 70px;
+                        position: relative;
+                        background-clip: text;
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: #0000;
+                        z-index: 1;
+                        display: block;
+
+                        &--1 {
+                            animation: animated-gradient-overlay-1 8s infinite;
+                            background-image: $linear-stripe;
+                        }
+
+                        &--2 {
+                            animation: animated-gradient-overlay-2 8s infinite;
+                            background-image: $linear-github;
+                        }
+
+                        &--3 {
+                            animation: animated-gradient-overlay-3 8s infinite;
+                            background-image: $linear-fire;
+                        }
+                    }
+
+                    @keyframes animated-gradient-title-1 {
+
+                        0%,
+                        16.667%,
+                        to {
+                            opacity: 0;
+                        }
+
+                        25%,
+                        91.667% {
+                            opacity: 1;
+                        }
+                    }
+
+                    @keyframes animated-gradient-title-2 {
+
+                        0%,
+                        to {
+                            opacity: 1;
+                        }
+
+                        33.333%,
+                        50% {
+                            opacity: 0;
+                        }
+
+                        25%,
+                        58.333% {
+                            opacity: 1;
+                        }
+                    }
+
+                    @keyframes animated-gradient-title-3 {
+
+                        0%,
+                        58.333%,
+                        91.667%,
+                        to {
+                            opacity: 1;
+                        }
+
+                        66.667%,
+                        83.333% {
+                            opacity: 0;
+                        }
+                    }
+
+
+                    @keyframes animated-gradient-overlay-1 {
+
+                        0%,
+                        16.667%,
+                        to {
+                            opacity: 1;
+                        }
+
+                        33.333%,
+                        83.333% {
+                            opacity: 0;
+                        }
+                    }
+
+
+                    @keyframes animated-gradient-overlay-2 {
+
+                        0%,
+                        to {
+                            opacity: 0;
+                        }
+
+                        33.333%,
+                        50% {
+                            opacity: 1;
+                        }
+
+                        16.667%,
+                        66.667% {
+                            opacity: 0;
+                        }
+
+                    }
+
+
+                    @keyframes animated-gradient-overlay-3 {
+
+                        0%,
+                        50%,
+                        to {
+                            opacity: 0;
+                        }
+
+                        66.667%,
+                        83.333% {
+                            opacity: 1;
+                        }
+                    }
+
                     &--1 {
-                        animation: animated-gradient-overlay-1 8s infinite;
-                        background-image: $linear-stripe;
+                        &:before {
+                            height: 100%;
+                            font-weight: 800;
+                            font-size: 70px;
+                            content: "Discover";
+                            position: absolute;
+                            color: black;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 100%;
+                            opacity: 1;
+                            animation: animated-gradient-title-1 8s infinite;
+                        }
                     }
 
                     &--2 {
-                        animation: animated-gradient-overlay-2 8s infinite;
-                        background-image: $linear-github;
+                        &:before {
+                            height: 100%;
+                            font-weight: 800;
+                            font-size: 70px;
+                            content: "Awesome";
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 100%;
+                            opacity: 1;
+                            color: black;
+                            animation: animated-gradient-title-2 8s infinite;
+                        }
                     }
 
                     &--3 {
-                        animation: animated-gradient-overlay-3 8s infinite;
-                        background-image: $linear-fire;
+                        &:before {
+                            height: 100%;
+                            font-weight: 800;
+                            font-size: 70px;
+                            content: "Projects";
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 100%;
+                            opacity: 1;
+                            color: black;
+                            animation: animated-gradient-title-3 8s infinite;
+                        }
                     }
                 }
+            }
 
-                @keyframes animated-gradient-title-1 {
+            .c-Home__Greetings-bottom {
+                padding-top: 45px;
+                padding-bottom: 30px;
+                display: flex;
+                justify-content: center;
+                flex-direction: column;
 
-                    0%,
-                    16.667%,
-                    to {
-                        opacity: 0;
-                    }
-
-                    25%,
-                    91.667% {
-                        opacity: 1;
-                    }
+                p {
+                    z-index: 50;
+                    font-size: $font-small;
+                    font-weight: bold;
                 }
 
-                @keyframes animated-gradient-title-2 {
-
-                    0%,
-                    to {
-                        opacity: 1;
-                    }
-
-                    33.333%,
-                    50% {
-                        opacity: 0;
-                    }
-
-                    25%,
-                    58.333% {
-                        opacity: 1;
-                    }
+                button {
+                    margin-top: 20px;
+                    width: fit-content;
                 }
 
-                @keyframes animated-gradient-title-3 {
-
-                    0%,
-                    58.333%,
-                    91.667%,
-                    to {
-                        opacity: 1;
-                    }
-
-                    66.667%,
-                    83.333% {
-                        opacity: 0;
-                    }
-                }
-
-
-                @keyframes animated-gradient-overlay-1 {
-
-                    0%,
-                    16.667%,
-                    to {
-                        opacity: 1;
-                    }
-
-                    33.333%,
-                    83.333% {
-                        opacity: 0;
-                    }
-                }
-
-
-                @keyframes animated-gradient-overlay-2 {
-
-                    0%,
-                    to {
-                        opacity: 0;
-                    }
-
-                    33.333%,
-                    50% {
-                        opacity: 1;
-                    }
-
-                    16.667%,
-                    66.667% {
-                        opacity: 0;
-                    }
-
-                }
-
-
-                @keyframes animated-gradient-overlay-3 {
-
-                    0%,
-                    50%,
-                    to {
-                        opacity: 0;
-                    }
-
-                    66.667%,
-                    83.333% {
-                        opacity: 1;
-                    }
-                }
-
-                &--1 {
-                    &:before {
-                        height: 100%;
-                        font-weight: 800;
-                        text-align: center;
-                        font-size: 70px;
-                        content: "Discover";
-                        position: absolute;
-                        color: black;
-                        top: 0;
-                        left: 0;
-                        width: 100%;
-                        height: 100%;
-                        opacity: 1;
-                        animation: animated-gradient-title-1 8s infinite;
-                    }
-                }
-
-                &--2 {
-                    &:before {
-                        height: 100%;
-                        font-weight: 800;
-                        text-align: center;
-                        font-size: 70px;
-                        content: "Awesome";
-                        position: absolute;
-                        top: 0;
-                        left: 0;
-                        width: 100%;
-                        height: 100%;
-                        opacity: 1;
-                        color: black;
-                        animation: animated-gradient-title-2 8s infinite;
-                    }
-                }
-
-                &--3 {
-                    &:before {
-                        height: 100%;
-                        font-weight: 800;
-                        text-align: center;
-                        font-size: 70px;
-                        content: "Projects";
-                        position: absolute;
-                        top: 0;
-                        left: 0;
-                        width: 100%;
-                        height: 100%;
-                        opacity: 1;
-                        color: black;
-                        animation: animated-gradient-title-3 8s infinite;
-                    }
+                a {
+                    z-index: 50;
+                    font-weight: bold;
                 }
             }
         }
 
-        &-bottom {
-            padding-top: 45px;
-            padding-bottom: 30px;
-            text-align: center;
-            display: flex;
-            justify-content: center;
-            flex-direction: column;
-            align-items: center;
+        &__Right {
+            .c-Mobile {
+                &__Header {
+                    border-radius: 40px 40px 0 0;
+                    background-color: black;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding: 15px 20px;
+                    padding-top: 25px;
+                    -webkit-backdrop-filter: saturate(180%) blur(20px);
+                    backdrop-filter: saturate(180%) blur(20px);
 
-            p {
-                z-index: 50;
-                font-size: $font-small;
-                font-weight: bold;
-            }
+                    h1 {
+                        font-size: $font-medium;
+                        color: white;
+                    }
+                }
 
-            button {
-                margin-top: 20px;
-                width: fit-content;
-            }
+                &__Sub-header {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding: 15px 20px;
+                    -webkit-backdrop-filter: saturate(180%) blur(20px);
+                    backdrop-filter: saturate(180%) blur(20px);
+                    background-color: rgba(255, 255, 255, 0.72);
+                    border-bottom: thin solid #00000029;
 
-            a {
-                z-index: 50;
-                font-weight: bold;
+                    h2 {
+                        font-size: $font-small;
+                        font-weight: bold;
+                    }
+                }
+
+
+                &__Demo {
+                    display: flex;
+                    flex-direction: column;
+                    padding: 30px 20px;
+                    height: 100%;
+
+                    .c-Demo {
+
+                        &__Dates {
+                            display: flex;
+                            flex-direction: column;
+                            text-align: center;
+                            margin-bottom: 20px;
+
+                            p {
+                                font-size: $font-x-small;
+                                color: #7E7E7E;
+                            }
+                        }
+
+                        &__Magic {
+                            position: relative;
+                            height: 240px;
+
+                            &-default {
+                                position: absolute;
+                                top: 0px;
+                                left: 0px;
+                                height: 100%;
+                                width: 100%;
+                                display: flex;
+                                flex-direction: column;
+                                justify-content: center;
+                                align-items: center;
+
+                                h1 {
+                                    font-size: $font-small;
+                                    font-weight: bold;
+                                }
+
+                                animation: magicDefault 5s cubic-bezier(0.29, 0.28, 0.65, 0.66) infinite;
+
+                                @keyframes magicDefault {
+                                    0% {
+                                        opacity: 1;
+                                    }
+
+                                    40% {
+                                        opacity: 1;
+                                    }
+
+                                    43% {
+                                        opacity: 0.2;
+                                    }
+
+                                    45% {
+                                        opacity: 0;
+                                    }
+
+                                    99% {
+                                        opacity: 0;
+                                    }
+
+                                    100% {
+                                        opacity: 1;
+                                    }
+                                }
+                            }
+
+                            &-colors {
+                                position: absolute;
+                                top: 0px;
+                                left: 0px;
+                                display: flex;
+                                height: 100%;
+                                width: 100%;
+                                flex-direction: column;
+                                animation: magicColors 5s cubic-bezier(0.29, 0.28, 0.65, 0.66) infinite;
+                                z-index: 99;
+
+                                @keyframes magicColors {
+                                    0% {
+                                        opacity: 0;
+                                    }
+
+                                    50% {
+                                        opacity: 0;
+                                    }
+
+                                    55% {
+                                        opacity: 1;
+                                    }
+
+                                    95% {
+                                        opacity: 1;
+                                    }
+
+                                    100% {
+                                        opacity: 0;
+                                    }
+                                }
+
+                                span {
+                                    width: 100%;
+                                    height: 60px;
+                                    display: flex;
+                                    background-color: #00000029;
+                                    justify-content: center;
+                                    align-items: center;
+                                    color: white;
+                                    font-weight: bold;
+
+                                    &:first-of-type {
+                                        border-radius: 5px 5px 0 0;
+                                        background-color: #4E4187;
+                                    }
+
+                                    &:nth-of-type(2) {
+                                        background-color: #3083DC;
+                                    }
+
+                                    &:nth-of-type(3) {
+                                        background-color: #F8FFE5;
+                                        color: black;
+                                    }
+
+                                    &:last-of-type {
+                                        border-radius: 0 0 5px 5px;
+                                        background-color: #7DDE92;
+                                        color: black;
+                                    }
+                                }
+                            }
+                        }
+
+                        &__Btns {
+                            width: 100%;
+
+                            button {
+                                width: 100%;
+                                margin: 20px 0;
+                                animation: magicBtnPress 5s cubic-bezier(0.29, 0.28, 0.65, 0.66) infinite;
+
+                                @keyframes magicBtnPress {
+                                    0% {
+                                        opacity: 1;
+                                    }
+
+                                    27% {
+                                        transform: translateY(0px);
+                                    }
+
+                                    30% {
+                                        opacity: 0.8;
+                                        transform: translateY(3px);
+                                        box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
+                                    }
+
+                                    31% {
+                                        opacity: 0.7;
+                                        transform: translateY(0px);
+                                    }
+
+                                    33% {
+                                        opacity: 0.8;
+                                    }
+
+                                    35% {
+                                        opacity: 1;
+                                    }
+
+                                    100% {
+                                        opacity: 1;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+
             }
         }
     }
+
 
     &__Features {
         display: flex;
@@ -242,6 +463,7 @@
         .c-Features__Top {
             text-align: center;
             margin: 10px 0;
+
             p {
                 margin-top: 10px;
             }

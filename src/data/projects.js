@@ -1,9 +1,9 @@
 export const projectList = [
     {
-        id: "color_picker",
-        name: "Color Picker",
-        link: "/gallery/color-picker",
-        imgName: `Logo-colorful.png`,
+        id: "calculator",
+        name: "Calculator",
+        link: "/gallery/calculator",
+        imgName: `Project_Ad_Calculator.png`,
         last_updated_date: 1644829112000
-    }
+    },
 ];
