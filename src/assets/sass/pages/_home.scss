@@ -1,7 +1,6 @@
 .c-Home {
     width: 100%;
 
-
     .c-Greetings {
         min-height: calc(100vh - 60vh);
         padding: 50px 0;
@@ -11,6 +10,13 @@
         &__Left {
             display: flex;
             flex-direction: column;
+
+            @media (max-width: 1200px) {
+                align-items: center;
+                text-align: center;
+                margin-bottom: 50px;
+            }
+
             align-items: flex-start;
             justify-content: center;
             .c-Home__Greetings-text {
@@ -35,6 +41,10 @@
                         -webkit-text-fill-color: #0000;
                         z-index: 1;
                         display: block;
+
+                        @media (max-width: 1200px) {
+                            font-size: 50px;
+                        }
 
                         &--1 {
                             animation: animated-gradient-overlay-1 8s infinite;
@@ -163,6 +173,9 @@
                             height: 100%;
                             opacity: 1;
                             animation: animated-gradient-title-1 8s infinite;
+                            @media (max-width: 1200px) {
+                                font-size: 50px;
+                            }
                         }
                     }
 
@@ -180,6 +193,9 @@
                             opacity: 1;
                             color: black;
                             animation: animated-gradient-title-2 8s infinite;
+                            @media (max-width: 1200px) {
+                                font-size: 50px;
+                            }
                         }
                     }
 
@@ -197,6 +213,9 @@
                             opacity: 1;
                             color: black;
                             animation: animated-gradient-title-3 8s infinite;
+                            @media (max-width: 1200px) {
+                                font-size: 50px;
+                            }
                         }
                     }
                 }
@@ -208,6 +227,10 @@
                 display: flex;
                 justify-content: center;
                 flex-direction: column;
+
+                @media (max-width: 1200px) {
+                    align-items: center;
+                }
 
                 p {
                     z-index: 50;
@@ -228,6 +251,9 @@
         }
 
         &__Right {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             .c-Mobile {
                 &__Header {
                     border-radius: 40px 40px 0 0;
@@ -459,6 +485,10 @@
         width: 70%;
         margin: auto;
         padding: 50px 0;
+
+        @media (max-width: 1200px) {
+            width: 90%;
+        }
 
         .c-Features__Top {
             text-align: center;

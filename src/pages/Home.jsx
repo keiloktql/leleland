@@ -23,7 +23,7 @@ const Home = () => {
     <MainLayout title="LeLeLand">
       <Container fluid={true} className="c-Home">
         <Row className="c-Home__Greetings c-Greetings">
-          <Col md={12} lg={8} className="c-Greetings__Left">
+          <Col lg={12} xl={7} className="c-Greetings__Left">
             {/* Greetings */}
             <div className="c-Home__Greetings-text">
               <div className="c-Greetings-text c-Greetings-text--1">
@@ -47,8 +47,9 @@ const Home = () => {
             </div>
           </Col>
 
-          <Col md={12} lg={4} className="c-Greetings__Right">
+          <Col lg={12} xl={5} className="c-Greetings__Right">
             <IphoneFrame
+              variation="dark"
               children={
                 <div className="c-Home__Screen c-Mobile">
                   <div className="c-Mobile__Header">
@@ -102,7 +103,7 @@ const Home = () => {
         <div className="c-Home__Features c-Features">
           <div className="c-Features__Top">
             <h1>How it works</h1>
-            <p>Sign up now to have all access to these features. Free of charge.</p>
+            <p>Sign up to have all access to these features. Free of charge.</p>
           </div>
           <Row className="c-Features__Icons">
             <HomeFeatureIcon

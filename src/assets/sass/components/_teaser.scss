@@ -4,6 +4,10 @@
     padding: 90px 100px 80px;
     border-radius: 5px;
 
+    @media (max-width: 1200px) {
+        padding: 40px 30px;
+    }
+
     &--light-blue {
         background-color: #E9FBFF;
         color: #0065B1;
@@ -15,6 +19,11 @@
         flex-direction: column;
         justify-content: center;
         align-items:  flex-start;
+
+        @media (max-width: 1200px) {
+            justify-content: flex-start;
+            align-items: center;
+        }
 
         h1 {
             text-align: start;
