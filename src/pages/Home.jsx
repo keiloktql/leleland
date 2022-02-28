@@ -49,7 +49,8 @@ const Home = () => {
 
           <Col lg={12} xl={5} className="c-Greetings__Right">
             <IphoneFrame
-              variation="dark"
+              variation="light"
+              topVariation="dark"
               children={
                 <div className="c-Home__Screen c-Mobile">
                   <div className="c-Mobile__Header">

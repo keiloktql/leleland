@@ -53,7 +53,6 @@ const Gallery = () => {
 
                                 return newProject;
                             });
-                            console.log(formattedProjects)
                             setProjects(() => formattedProjects);
                             setSearchProjects(() => formattedProjects);
                     }

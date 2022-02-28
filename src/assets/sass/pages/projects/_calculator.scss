@@ -1,16 +1,305 @@
+.l-Keypad {
+    &--light {
+        .c-Keypad--normal {
+            background-color: #F2F2F2;
+
+            p {
+                color: $primary-leleblue;
+            }
+        }
+    }
+
+    &--dark {
+        .c-Keypad--normal {
+            background-color: #555555;
+
+            p {
+                color: white;
+            }
+        }
+    }
+
+    .c-Keypad {
+        width: 50px;
+        height: 50px;
+        border-radius: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        -o-user-select: none;
+        user-select: none;
+        cursor: pointer;
+
+        &:hover {
+            opacity: 0.8;
+            transform: translateY(-1px);
+            box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
+        }
+    
+        &:active {
+            opacity: 0.7;
+            transform: translateY(0px);
+        }
+    
+        &:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        &--arithmetic {
+            background-color: #BADEFF;
+
+            p {
+                color: black;
+            }
+        }
+
+        p {
+            font-size: $font-medium;
+            font-weight: 600;
+        }
+    }
+}
+
+
+
 .c-Calculator {
 
     &__Demo {
         width: 100%;
-        height: 100vh;
 
         .c-Demo {
             width: 70%;
-            margin: auto;
+            margin: 50px auto;
 
-            &__Dates {
-                font-size: $font-x-small;
-                color: #7E7E7E;
+            .c-Left {
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                justify-content: center;
+
+                .c-Screen {
+                    padding-top: 100px;
+                    width: 90%;
+                    margin-left: auto;
+                    margin-right: auto;
+
+                    &--light {
+                        .c-Top {
+                            h1 {
+                                color: black;
+                            }
+                        }
+                    }
+
+                    &--dark {
+                        .c-Top {
+                            h1 {
+                                color: white;
+                            }
+                        }
+                    }
+
+                    .c-Top {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: flex-end;
+                        overflow: hidden;
+
+                        h2 {
+                            font-size: $font-small;
+                            font-weight: 600;
+                            color: $primary-leleblue;
+                        }
+                    }
+
+                    .c-Keypads {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        margin: 50px 0;
+
+                        &__Row {
+                            display: flex;
+                            flex-direction: row;
+                            justify-content: space-between;
+                            margin: 15px 0;
+                        }
+                    }
+
+                    &__Equal {
+                        margin: 15px 0;
+                        width: 100%;
+                        height: 50px;
+                        border: none;
+                        border-radius: 50px;
+                        background-color: $primary-leleblue;
+                        color: white;
+                        font-weight: bold;
+                        -webkit-user-select: none;
+                        -khtml-user-select: none;
+                        -moz-user-select: none;
+                        -ms-user-select: none;
+                        -o-user-select: none;
+                        user-select: none;
+                        cursor: pointer;
+                        outline: none;
+                        
+                        &:hover {
+                            opacity: 0.8;
+                            transform: translateY(-1px);
+                            box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
+                        }
+                    
+                        &:active {
+                            opacity: 0.7;
+                            transform: translateY(0px);
+                        }
+                    
+                        &:disabled {
+                            opacity: 0.5;
+                            cursor: not-allowed;
+                        }
+                    }
+                }
+            }
+
+            .c-Settings {
+                display: flex;
+                justify-content: center;
+                flex-direction: column;
+
+                h1 {
+                    font-size: $font-medium;
+                    font-weight: bold;
+                }
+
+                &__Appearance {
+                    h2 {
+                        margin-top: 20px;
+                        margin-bottom: 10px;
+                        font-weight: 600;
+                        font-size: $font-small;
+                        color: #8B8B8B;
+                    }
+
+                    .c-Appearance__Types {
+                        display: flex;
+                        flex-direction: row;
+
+                        .c-Appearance__Type {
+
+                            cursor: pointer;
+                            outline: none;
+                            -webkit-user-select: none;
+                            -khtml-user-select: none;
+                            -moz-user-select: none;
+                            -ms-user-select: none;
+                            -o-user-select: none;
+                            user-select: none;
+                            display: block;
+
+                            &:hover {
+                                opacity: 0.8;
+                                transform: translateY(-1px);
+                            }
+
+                            &:active {
+                                opacity: 0.7;
+                                transform: translateY(0px);
+                            }
+
+                            &:disabled {
+                                opacity: 0.5;
+                                cursor: not-allowed;
+                            }
+
+                            h3 {
+                                font-size: $font-small;
+                                font-weight: bold;
+                                margin: 10px 0;
+                            }
+
+                            &--light {
+                                margin-right: 10px;
+
+                                .c-Appearance-Type__BG {
+                                    background-color: #DFDFDF;
+                                    border-radius: 5px;
+                                    position: relative;
+                                    display: block;
+                                    width: 135px;
+                                    height: 75px;
+
+                                    .c-Appearance-Type__Overlay {
+                                        background-color: #F1F1F1;
+                                        position: absolute;
+                                        width: 80px;
+                                        height: 50px;
+                                        bottom: 0px;
+                                        right: 0px;
+                                        border-radius: 5px 0 5px 0;
+
+                                        p {
+                                            font-weight: bold;
+                                            margin: 5px;
+                                        }
+                                    }
+                                }
+                            }
+
+                            &--dark {
+                                margin-left: 10px;
+
+                                .c-Appearance-Type__BG {
+                                    background-color: #555555;
+                                    border-radius: 5px;
+                                    position: relative;
+                                    display: block;
+                                    width: 135px;
+                                    height: 75px;
+
+                                    .c-Appearance-Type__Overlay {
+                                        background-color: #000000;
+                                        position: absolute;
+                                        width: 80px;
+                                        height: 50px;
+                                        bottom: 0px;
+                                        right: 0px;
+                                        border-radius: 5px 0 5px 0;
+
+                                        p {
+                                            font-weight: bold;
+                                            margin: 5px;
+                                            color: white;
+                                        }
+                                    }
+                                }
+                            }
+
+                            &--selected {
+                                .c-Appearance-Type__BG {
+                                    border: 1px solid $primary-leleblue;
+
+                                    p {
+                                        color: $primary-leleblue !important;
+                                    }
+                                }
+
+                                h3 {
+                                    color: $primary-leleblue;
+                                }
+                            }
+
+                        }
+                    }
+
+
+                }
             }
         }
 
