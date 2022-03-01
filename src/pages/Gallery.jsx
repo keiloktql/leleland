@@ -14,7 +14,7 @@ import { projectList } from '../data/projects';
 const Gallery = () => {
 
     dayjs.extend(relativeTime);
-    
+
     // States
     const [projects, setProjects] = useState([]);
     const [searchProjects, setSearchProjects] = useState([]);
@@ -28,48 +28,58 @@ const Gallery = () => {
         (async () => {
             try {
                 if (componentMounted) {
-                
+
 
                     const [resSuccess, resObj] = await firebaseFn.getLikes();
                     const [viewsSuccess, viewsObj] = await firebaseFn.getViews();
-               
+
                     let formattedProjects = [];
 
                     if (resSuccess) {
-                            formattedProjects = projectList.map((oneProject) => {
-                                let newProject = {
-                                    ...oneProject,
-                                    last_updated_date: dayjs(new Date(oneProject.last_updated_date)).fromNow()
-                                };
+                        formattedProjects = projectList.map((oneProject) => {
+                            let newProject = {
+                                ...oneProject,
+                                last_updated_date: dayjs(new Date(oneProject.last_updated_date)).fromNow()
+                            };
 
-                                // Set likes
-                                resObj.every((oneLikeObj) => {
-                                    if (oneLikeObj.name === oneProject.id) {
+                            // Set likes
+                            resObj.every((oneLikeObj) => {
+                                if (oneLikeObj.name === oneProject.id) {
+                                    newProject = {
+                                        ...newProject,
+                                        likes: (() => {
+                                            let likes = 0;
+                                            Object.keys(oneLikeObj).map((key) => {
+                                                if (key !== "name") {
+                                                    if (oneLikeObj[key]) {
+                                                        likes++;
+                                                    }
+                                                }
+                                            })
+                                            return likes;
+                                        })()
+                                    }
+                                    return false;
+                                }
+                                return true;
+                            });
+
+                            if (viewsSuccess) {
+                                // Set views
+                                viewsObj.every((oneViewObj) => {
+                                    if (oneViewObj.name === oneProject.id) {
                                         newProject = {
                                             ...newProject,
-                                            likes: Object.keys(oneLikeObj).length - 1
+                                            views: oneViewObj.counter
                                         }
                                         return false;
                                     }
                                     return true;
                                 });
+                            }
 
-                                if (viewsSuccess) {
-                                    // Set views
-                                    viewsObj.every((oneViewObj) => {
-                                        if (oneViewObj.name === oneProject.id) {
-                                            newProject = {
-                                                ...newProject,
-                                                views: oneViewObj.counter
-                                            }
-                                            return false;
-                                        }
-                                        return true;
-                                    });
-                                }
-
-                                return newProject;
-                            });
+                            return newProject;
+                        });
                     }
 
                     setProjects(() => formattedProjects);

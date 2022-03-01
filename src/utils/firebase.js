@@ -379,9 +379,14 @@ export const firebaseFn = (() => {
             const snapshot = await get(child(ref(firebaseDatabase), `views`));
 
             const convertObjToArr = (data) => {
+                console.log(data);
                 return Object.keys(data).map((key) => ({
                     ...data[key],
                     name: key,
+                    counter: Intl.NumberFormat('en-US', {
+                        notation: "compact",
+                        maximumFractionDigits: 1
+                    }).format(data[key].counter)
                 }));
             }
 
@@ -419,6 +424,11 @@ export const firebaseFn = (() => {
         if (snapshot?.exists()) {
             views = snapshot.val().counter;
         }
+
+        views = Intl.NumberFormat('en-US', {
+            notation: "compact",
+            maximumFractionDigits: 1
+        }).format(views)
 
         return [true, views];
     }
