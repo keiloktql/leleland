@@ -31,6 +31,7 @@ const Gallery = () => {
                 
 
                     const [resSuccess, resObj] = await firebaseFn.getLikes();
+                    const [viewsSuccess, viewsObj] = await firebaseFn.getViews();
                
                     let formattedProjects = [];
 
@@ -40,6 +41,8 @@ const Gallery = () => {
                                     ...oneProject,
                                     last_updated_date: dayjs(new Date(oneProject.last_updated_date)).fromNow()
                                 };
+
+                                // Set likes
                                 resObj.every((oneLikeObj) => {
                                     if (oneLikeObj.name === oneProject.id) {
                                         newProject = {
@@ -51,11 +54,26 @@ const Gallery = () => {
                                     return true;
                                 });
 
+                                if (viewsSuccess) {
+                                    // Set views
+                                    viewsObj.every((oneViewObj) => {
+                                        if (oneViewObj.name === oneProject.id) {
+                                            newProject = {
+                                                ...newProject,
+                                                views: oneViewObj.counter
+                                            }
+                                            return false;
+                                        }
+                                        return true;
+                                    });
+                                }
+
                                 return newProject;
                             });
-                            setProjects(() => formattedProjects);
-                            setSearchProjects(() => formattedProjects);
                     }
+
+                    setProjects(() => formattedProjects);
+                    setSearchProjects(() => formattedProjects);
                     setPageStatus(() => ENUMS.pageStatus.IDLE);
 
                 }
@@ -148,6 +166,7 @@ const Gallery = () => {
                                             key={index}
                                             img={project.imgName}
                                             likes={project.likes}
+                                            views={project.views}
                                             name={project.name}
                                             link={project.link}
                                             last_updated_date={project.last_updated_date}

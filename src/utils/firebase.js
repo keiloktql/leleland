@@ -5,14 +5,32 @@ import { v4 as uuidv4 } from 'uuid';
 // import { initializeApp } from "firebase/app";
 import { EmailAuthProvider, getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, sendPasswordResetEmail, updateProfile, reauthenticateWithCredential, updatePassword, deleteUser } from "firebase/auth";
 
-import firebaseConfig from "../config/firebase";
+import firebaseConfig, { debugToken } from "../config/firebase";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 import { initializeApp } from 'firebase/app';
+import { initializeAppCheck, ReCaptchaV3Provider } from "firebase/app-check";
 import { getDatabase, ref, set, onValue, push, child, remove, get } from "firebase/database";
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+
+// Pass your reCAPTCHA v3 site key (public key) to activate(). Make sure this
+// key is the counterpart to the secret key you set in the Firebase console.
+
+if (debugToken) {
+    window.FIREBASE_APPCHECK_DEBUG_TOKEN = debugToken;
+}
+
+
+const appCheck = initializeAppCheck(app, {
+    provider: new ReCaptchaV3Provider('6LcgDqkeAAAAAE45zjbf_4Uaxgnt2QfTmYIYrySN'),
+
+    // Optional argument. If true, the SDK automatically refreshes App Check
+    // tokens as needed.
+    isTokenAutoRefreshEnabled: true
+});
+
 const firebaseDatabase = getDatabase(app);
 const auth = getAuth();
 
@@ -267,7 +285,7 @@ export const firebaseFn = (() => {
                     name: key
                 }));
             }
-            
+
             let formattedLikes;
             if (snapshot.val() !== null) {
                 formattedLikes = convertObjToArr(snapshot.val());
@@ -275,7 +293,6 @@ export const firebaseFn = (() => {
                 formattedLikes = [];
             }
 
-            console.log(formattedLikes)
             return [true, formattedLikes];
         } catch (error) {
             console.log(error)
@@ -342,9 +359,91 @@ export const firebaseFn = (() => {
 
     const deleteComment = async (projectID, commentID) => {
         try {
-
             await remove(ref(firebaseDatabase, `comments/${projectID}/${commentID}`));
-            
+            return [true, null];
+        } catch (error) {
+            const errCode = error.code;
+
+            const commonErrorExist = checkCommonError(errCode);
+
+            if (commonErrorExist) {
+                return commonErrorExist;
+            }
+
+            return [false, error];
+        }
+    };
+
+    const getViews = async () => {
+        try {
+            const snapshot = await get(child(ref(firebaseDatabase), `views`));
+
+            const convertObjToArr = (data) => {
+                return Object.keys(data).map((key) => ({
+                    ...data[key],
+                    name: key,
+                }));
+            }
+
+            let formattedViews;
+            if (snapshot.val() !== null) {
+                formattedViews = convertObjToArr(snapshot.val());
+            } else {
+                formattedViews = [];
+            }
+
+            return [true, formattedViews];
+        } catch (error) {
+            const errCode = error.code;
+
+            const commonErrorExist = checkCommonError(errCode);
+
+            if (commonErrorExist) {
+                return commonErrorExist;
+            }
+
+            return [false, error];
+        }
+    };
+
+    const getView = async (projectID) => {
+
+        let snapshot = null;
+        let views = 0;
+        try {
+            snapshot = await get(child(ref(firebaseDatabase), `views/${projectID}`));
+        } catch (error) {
+            console.log(error);
+        }
+
+        if (snapshot?.exists()) {
+            views = snapshot.val().counter;
+        }
+
+        return [true, views];
+    }
+
+    const postView = async (projectID) => {
+
+        let snapshot = null;
+
+        try {
+            snapshot = await get(child(ref(firebaseDatabase), `views/${projectID}`));
+        } catch (error) {
+            console.log(error);
+        }
+
+        try {
+            let viewCounter = 0;
+            if (snapshot?.exists()) {
+                viewCounter = snapshot.val().counter;
+            }
+            viewCounter += 1;
+
+            await set(ref(firebaseDatabase, `views/${projectID}`), {
+                counter: viewCounter
+            });
+
             return [true, null];
         } catch (error) {
             const errCode = error.code;
@@ -371,7 +470,10 @@ export const firebaseFn = (() => {
         getLikes,
         likeOrUnlikePost,
         postComment,
-        deleteComment
+        deleteComment,
+        getViews,
+        getView,
+        postView
     }
 })();
 
@@ -492,7 +594,6 @@ export const useTrackComments = (projectID, currentUser) => {
     useEffect(() => {
         const unsub = onValue(commentsRef, (snapshot) => {
             const data = snapshot.val();
-            console.log(data);
             if (data === null) {
                 setCommentsArr(() => []);
             } else {

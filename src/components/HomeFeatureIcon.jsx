@@ -6,7 +6,7 @@ import { Col } from 'react-bootstrap';
 const HomeFeatureIcon = ({ type, heading, description }) => {
   const renderIcon = () => {
     if (type === ENUMS.homeFeatureIcon.VIEW) {
-      return <Icon className="c-Icon c-Icon__View" icon="akar-icons:eye" />
+      return <Icon className="c-Icon c-Icon__View" icon="bi:eye-fill" />
     } else if (type === ENUMS.homeFeatureIcon.COMMENT) {
       return <Icon className="c-Icon c-Icon__Comment" icon="bi:chat" />
     } else {

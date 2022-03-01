@@ -27,7 +27,6 @@ const Header = ({ theme = Enums.headerTheme.LIGHT, fixed = true }) => {
                 if (componentMounted) {
                     setShowAvatar(() => {
                         if (currentUser) {
-                            console.log(currentUser);
                             return true;
                         } else {
                             return false;

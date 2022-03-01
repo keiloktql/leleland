@@ -12,3 +12,5 @@ const firebaseConfig = {
 };
 
 export default firebaseConfig;
+
+export const debugToken = process.env.REACT_APP_APP_CHECK_DEBUG_TOKEN;

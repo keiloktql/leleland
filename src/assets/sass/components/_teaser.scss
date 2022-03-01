@@ -13,6 +13,23 @@
         color: #0065B1;
     }
 
+    &--calculator {
+        background-color: #E9FBFF;
+        background-image: url(../../images/Teaser-Calculator.png);
+        background-position: 90% 100%;
+        background-repeat: no-repeat;
+
+        @media (max-width: 900px) {
+            background-size: 300px;
+            background-position: 50% 140px !important;
+        }
+    }
+
+
+    @media (max-width: 1200px) {
+        background-position: 50% 90px;
+    }
+
     &__Info {
         display: flex;
         height: 100%;

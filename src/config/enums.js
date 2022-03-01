@@ -28,6 +28,9 @@ const ENUMS = {
     teaserVariation: {
         LIGHT_BLUE: "LIGHT_BLUE"
     },
+    teaserType: {
+        CALCULATOR: "CALCULATOR"
+    },
     btnVariation: {
         BLACK: "BLACK",
         WHITE: "WHITE",

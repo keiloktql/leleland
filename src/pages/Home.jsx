@@ -140,6 +140,7 @@ const Home = () => {
               heading="Calculator"
               description="Comes in light and dark mode"
               link="/gallery/calculator"
+              type={ENUMS.teaserType.CALCULATOR}
               variation={ENUMS.teaserVariation.LIGHT_BLUE}
             />
           </div>

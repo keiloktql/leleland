@@ -4,6 +4,6 @@ export const projectList = [
         name: "Calculator",
         link: "/gallery/calculator",
         imgName: `Project_Ad_Calculator.png`,
-        last_updated_date: 1645977776000
+        last_updated_date: 1646064701000
     },
 ];

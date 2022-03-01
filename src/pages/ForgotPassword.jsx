@@ -44,7 +44,6 @@ const ForgotPassword = () => {
   });
 
   const handleLoginSubmit = async (values) => {
-    console.log(values);
 
     setSubmitStatus(() => ENUMS.submitStatus.LOADING);
 

@@ -47,9 +47,6 @@ const Calculator = () => {
         };
 
         let computedValue;
-        console.log(secondaryValue)
-        console.log(value)
-        console.log(arithmeticOperator)
         try {
             computedValue = mathBuffet[arithmeticOperator](parseFloat(secondaryValue), parseFloat(value));
         } catch (err) {
@@ -130,9 +127,6 @@ const Calculator = () => {
                     setNewSet(() => false);
                 } else {
                     // User already has smt in this set
-                    console.log(value + `${keypadValue}`);
-                    console.log(value);
-
                     newValue = value + `${keypadValue}`;
                 }
             }

@@ -173,6 +173,11 @@
                 justify-content: center;
                 flex-direction: column;
 
+                @media (max-width: 1200px) {
+                    margin-top: 50px;
+                    align-items: center;
+                }
+
                 h1 {
                     font-size: $font-medium;
                     font-weight: bold;

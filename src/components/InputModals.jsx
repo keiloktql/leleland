@@ -128,7 +128,6 @@ const InputModals = ({ show, handleClose, type, setRerender }) => {
                 setSmh(() => true);
             }
 
-            console.log("clicked on submit");
         }
     };
 
