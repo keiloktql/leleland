@@ -1,7 +1,6 @@
 import React from 'react';
 import Routes from './Routes';
 
-
 import './assets/sass/main.scss';
 
 import ErrorBoundary from "./pages/error/ErrorBoundary";

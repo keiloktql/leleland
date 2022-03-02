@@ -9,6 +9,7 @@ import firebaseConfig, { debugToken } from "../config/firebase";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 import { initializeApp } from 'firebase/app';
+import { getAnalytics } from "firebase/analytics";
 import { initializeAppCheck, ReCaptchaV3Provider } from "firebase/app-check";
 import { getDatabase, ref, set, onValue, push, child, remove, get } from "firebase/database";
 
@@ -31,6 +32,8 @@ const appCheck = initializeAppCheck(app, {
     isTokenAutoRefreshEnabled: true
 });
 
+
+const analytics = getAnalytics();
 const firebaseDatabase = getDatabase(app);
 const auth = getAuth();
 
@@ -379,7 +382,6 @@ export const firebaseFn = (() => {
             const snapshot = await get(child(ref(firebaseDatabase), `views`));
 
             const convertObjToArr = (data) => {
-                console.log(data);
                 return Object.keys(data).map((key) => ({
                     ...data[key],
                     name: key,
@@ -436,15 +438,9 @@ export const firebaseFn = (() => {
     const postView = async (projectID) => {
 
         let snapshot = null;
-
-        try {
-            snapshot = await get(child(ref(firebaseDatabase), `views/${projectID}`));
-        } catch (error) {
-            console.log(error);
-        }
-
         try {
             let viewCounter = 0;
+            snapshot = await get(child(ref(firebaseDatabase), `views/${projectID}`));
             if (snapshot?.exists()) {
                 viewCounter = snapshot.val().counter;
             }

@@ -49,7 +49,7 @@ const Gallery = () => {
                                         ...newProject,
                                         likes: (() => {
                                             let likes = 0;
-                                            Object.keys(oneLikeObj).map((key) => {
+                                            Object.keys(oneLikeObj).forEach((key) => {
                                                 if (key !== "name") {
                                                     if (oneLikeObj[key]) {
                                                         likes++;
@@ -143,7 +143,7 @@ const Gallery = () => {
                 <div className="c-Gallery__Top">
                     <div className="c-Gallery__Heading">
                         <h1>Search LeLeLand</h1>
-                        <p>Discover awesome projects built using React & Sass =)</p>
+                        <p>Discover awesome projects =)</p>
                     </div>
                 </div>
 

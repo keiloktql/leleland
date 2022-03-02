@@ -34,7 +34,11 @@ const SignUp = () => {
       .required('Display name is required'),
     password: Yup.string()
       .min(8, 'Password must be at least 8 characters')
-      .required('Password is required'),
+      .required('Password is required')
+      .matches(/[a-z]+/, "Missing lowercase character(s)")
+      .matches(/[A-Z]+/, "Missing uppercase character(s)")
+      .matches(/[@$!%*#?&]+/, "Missing special character(s)")
+      .matches(/\d+/, "Missing number(s)"),
     confirmPassword: Yup.string()
       .oneOf([Yup.ref('password'), null], 'Password must match')
       .required('Confirm password is required')

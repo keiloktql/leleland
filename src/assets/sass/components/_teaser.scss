@@ -54,11 +54,11 @@
 
     &:hover {
         transition: all 0.2s ease 0s, transform 200ms ease 0s;
-        transform: scaleX(0.95) scaleY(0.95);
+        transform: scaleX(1.01) scaleY(1.01);
     }
 
     &:active {
         transition: all 0.2s ease 0s, transform 200ms ease 0s;
-        transform: scaleX(0.90) scaleY(0.90);
+        transform: scaleX(0.98) scaleY(0.98);
     }
 }

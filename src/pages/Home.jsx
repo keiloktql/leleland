@@ -125,7 +125,7 @@ const Home = () => {
           </Row>
           <div className="c-Features__CTA">
             <Button
-              text="Sign up now"
+              text="Sign up for free"
               variation={ENUMS.btnVariation.BLACK}
               arrow={true}
               handleOnClick={() => navigate("/sign-up")}
