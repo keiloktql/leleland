@@ -1,0 +1,190 @@
+.c-Blueberry {
+
+    .c-Demo {
+        width: 70%;
+        margin: auto;
+
+        .c-Product {
+            &__Img {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                img {
+                    max-width: 400px;
+                }
+            }
+
+            .c-Details {
+                .c-Top {
+                    margin-bottom: 20px;
+
+                    h2 {
+                        color: #999999;
+                        letter-spacing: 1.2px;
+                        font-weight: bold;
+                        font-size: $font-medium;
+                    }
+
+                    h1 {
+                        font-weight: bold;
+                        font-size: $font-large;
+                    }
+
+                    h3 {
+                        font-weight: bold;
+                        color: $primary-leleblue;
+                        font-size: $font-medium;
+                    }
+
+                    &__Rating {
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+
+                        h1 {
+                            font-weight: bold;
+                            font-size: $font-small;
+                        }
+
+                        .c-Icon__Star--colored {
+                            color: #EFC42A;
+                            margin: 0 5px;
+                        }
+
+                        p {
+                            color: #9A9A9A;
+                        }
+                    }
+                }
+
+                .c-Size {
+                    margin: 10px 0;
+
+                    h1 {
+                        font-size: $font-small;
+                        font-weight: 600;
+                        color: #8B8B8B;
+                    }
+                }
+
+                .c-Color {
+                    margin: 10px 0;
+
+                    h1 {
+                        font-size: $font-small;
+                        font-weight: 600;
+                        color: #8B8B8B;
+                    }
+                }
+
+                .c-Qty {
+                    margin: 10px 0;
+
+                    h1 {
+                        font-size: $font-small;
+                        font-weight: 600;
+                        color: #8B8B8B;
+                        margin: 10px 0;
+                    }
+
+                    &__Component {
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+
+                        p {
+                            margin: 0 10px;
+                            font-weight: bold;
+                            font-size: $font-medium;
+                        }
+                    }
+                }
+
+                .c-Btn {
+                    width: 100%;
+                    margin-top: 20px;
+                }
+            }
+        }
+
+        .c-Review {
+            .c-Infographics {}
+        }
+    }
+}
+
+.c-Select-qty-btn {
+    border: thin solid #AFAFAF;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 9px 9px;
+    height: fit-content;
+    white-space: nowrap;
+    outline: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    background-color: white;
+    &:hover {
+        opacity: 0.8;
+        transform: translateY(-1px);
+        box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
+    }
+
+    &:active {
+        opacity: 0.7;
+        transform: translateY(0px);
+    }
+
+    &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+}
+
+.c-Color-btn {
+    &__Circle {
+        &--white {
+
+        }
+
+        &--yellow {
+
+        }
+
+        &--green {
+
+        }
+
+        &--purple {
+
+        }
+
+        &--black {
+
+        }
+
+        &--red {
+
+        }
+    }
+    
+    &__Text {
+        color: black;
+        font-weight: 600;
+        font-size: $font-x-small;
+        &--selected {
+            color: $primary-leleblue;
+        }
+    }
+}

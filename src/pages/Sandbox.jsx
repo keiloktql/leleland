@@ -4,18 +4,8 @@ import { firebaseFn } from '../utils/firebase';
 
 const Sandbox = () => {
 
-  const handleOnClick = async () => {
-    try {
-      const [result, err] = await firebaseFn.postView("calculator");
-      console.log(err)
-    } catch (error){
-      console.log(error);
-    }
-
-  }
-
   return <div className="c-Sandbox">
-    <button onClick={() => handleOnClick()}>Add view</button>
+    <h1>Nothing to see here, but good job for finding this page</h1>
   </div>
 
     ;

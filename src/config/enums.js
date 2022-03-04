@@ -64,6 +64,18 @@ const ENUMS = {
         MULTIPLY: "x",
         DIVIDE: "/",
         MINUS: "-"
+    },
+    blueBerryQtyType: {
+        INCREMENT: "INCREMENT",
+        DECREMENT: "DECREMENT"
+    },
+    blueBerryColorType: {
+        WHITE: "White",
+        YELLOW: "Yellow",
+        GREEN: "Green",
+        PURPLE: "Purple",
+        BLACK: "Black",
+        RED: "Red"
     }
 };
 

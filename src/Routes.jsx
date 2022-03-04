@@ -17,6 +17,7 @@ import Unauthorised from './pages/error/Unauthorised';
 import GenericError from './pages/error/GenericError';
 import { useAuth } from './utils/firebase';
 import LoggedInError from './pages/error/LoggedInError';
+import Blueberry from './pages/projects/Blueberry';
 
 const Routes = () => {
 
@@ -66,7 +67,7 @@ const Routes = () => {
                     </Route>
                     <Route path="/gallery" element={<Gallery />} />
                     <Route path="/gallery/calculator" element={<Calculator />} />
-                    <Route path="/test" element={<GenericError />} />
+                    <Route path="/gallery/blueberry" element={<Blueberry />} />
                     {/* Protected Routes */}
                     <Route element={<RequireAuthGuard />}>
                         <Route path="/dev" element={<Sandbox />} />

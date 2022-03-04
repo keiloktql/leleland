@@ -271,8 +271,8 @@ const Calculator = () => {
             <Container fluid={true} className="c-Calculator">
                 {/* Demo */}
                 <div ref={subLinkArr[0].ref} className="c-Calculator__Demo">
-                    <Row lg={12} xl={7} className="c-Demo">
-                        <Col className="c-Demo__Left c-Left">
+                    <Row  className="c-Demo">
+                        <Col lg={12} xl={7} className="c-Demo__Left c-Left">
                             <IphoneFrame
                                 variation={appearance === ENUMS.calculatorAppearance.DARK ? "dark" : "light"}
                                 topVariation={appearance === ENUMS.calculatorAppearance.DARK ? "dark" : "light"}
