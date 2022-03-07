@@ -76,6 +76,11 @@ const ENUMS = {
         PURPLE: "Purple",
         BLACK: "Black",
         RED: "Red"
+    },
+    blueBerrySizeType: {
+        SMALL: "S",
+        MEDIUM: "M",
+        LARGE: "L"
     }
 };
 

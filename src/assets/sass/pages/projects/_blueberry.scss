@@ -66,15 +66,36 @@
                         font-weight: 600;
                         color: #8B8B8B;
                     }
+
+                    &__Component {
+                        display: flex;
+                        flex-direction: row;
+                        margin: 10px 0;
+
+                        .c-Shirt-size-btn {
+                            &:nth-child(2) {
+                                margin: 0 20px;
+                            }
+                        }
+                    }
                 }
 
                 .c-Color {
-                    margin: 10px 0;
+                    margin: 30px 0;
 
                     h1 {
                         font-size: $font-small;
                         font-weight: 600;
                         color: #8B8B8B;
+                    }
+
+                    &__Component {
+                        margin: 20px 0;
+                        &--row {
+                            display: flex;
+                            flex-direction: row;
+                            margin: 10px 0;
+                        }
                     }
                 }
 
@@ -135,6 +156,7 @@
     align-items: center;
     width: fit-content;
     background-color: white;
+
     &:hover {
         opacity: 0.8;
         transform: translateY(-1px);
@@ -153,38 +175,104 @@
 }
 
 .c-Color-btn {
-    &__Circle {
-        &--white {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin: 0 20px;
 
+    &__Circle {
+        display: block;
+        width: 40px;
+        height: 40px;
+        border-radius: 40px;
+        box-shadow: inset 0 4px 6px 0 #00000040;
+        border: 1px solid transparent;
+
+        &--white {
+            background-color: #FAF6F3;
         }
 
         &--yellow {
-
+            background-color: #FBE281;
         }
 
         &--green {
-
+            background-color: #AEDAC7;
         }
 
         &--purple {
-
+            background-color: #B7B1E2;
         }
 
         &--black {
-
+            background-color: #38363D;
         }
 
         &--red {
-
+            background-color: #C74843;
         }
     }
-    
+
     &__Text {
         color: black;
         font-weight: 600;
         font-size: $font-x-small;
-        &--selected {
+    }
+
+    &--selected {
+        .c-Color-btn__Circle {
+            border: 1px solid $primary-leleblue;
+        }
+
+        .c-Color-btn__Text {
             color: $primary-leleblue;
         }
+    }
+}
+
+.c-Shirt-size-btn {
+    border: thin solid #AFAFAF;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 9px 9px;
+    height: fit-content;
+    white-space: nowrap;
+    outline: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    background-color: white;
+    min-width: 40px;
+    max-width: 40px;
+
+    &--selected {
+        border: 2px solid $primary-leleblue;
+    }
+
+    &:hover {
+        opacity: 0.8;
+        transform: translateY(-1px);
+        box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
+    }
+
+    &:active {
+        opacity: 0.7;
+        transform: translateY(0px);
+    }
+
+    &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
     }
 }

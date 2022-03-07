@@ -5,20 +5,54 @@ import { Container, Row, Col } from 'react-bootstrap';
 import ENUMS from '../../config/enums';
 import { Icon } from '@iconify/react';
 
-const ShirtSizeButton = () => {
-    <button type="button" className="c-Shirt-size-btn"></button>
+const ShirtSizeButton = ({ type, selectedSize, setSize }) => {
+
+    const handleSetSize = () => {
+        setSize(() => type);
+    };
+
+    return (
+        <button type="button" className={`c-Shirt-size-btn ${selectedSize === type && "c-Shirt-size-btn--selected"}`} onClick={() => handleSetSize()}>{type}</button>
+    );
 };
 
-const ColorButton = ({ type, selectedColor }) => {
+const ColorButton = ({ type, selectedColor, setColor }) => {
+
+    const handleSetColor = () => {
+        setColor(() => type);
+    };
+
     return (
-        <div className = "c-Color-btn">
-            <span className ={`c-Color-btn__Circle c-Color-btn__Circle--${type}`}/>
-            <p className = {`c-Color-btn__Text ${selectedColor === type && "c-Color-btn__Text--selected"}`}>{type}</p>
+        <div className={`c-Color-btn ${selectedColor === type && 'c-Color-btn--selected'}`} onClick={handleSetColor}>
+            <span className={`c-Color-btn__Circle c-Color-btn__Circle--${type.toLowerCase()}`} />
+            <p className={`c-Color-btn__Text`}>{type}</p>
         </div>
     );
 };
 
 const SelectQtyButton = ({ type, qty, setQty }) => {
+
+    const [disabled, setDisabled] = useState(false);
+
+    useEffect(() => {
+        let isDisabled = false;
+
+        if (type === ENUMS.blueBerryQtyType.DECREMENT) {
+            if (qty <= 1) {
+                isDisabled = true;
+            } else {
+                isDisabled = false;
+            }
+        } else {
+            if (qty >= 10) {
+                isDisabled = true;
+            } else {
+                isDisabled = false;
+            }
+        }
+
+        setDisabled(() => isDisabled);
+    }, [qty]);
 
     const handleSetQty = () => {
         setQty((prevState) => {
@@ -29,10 +63,10 @@ const SelectQtyButton = ({ type, qty, setQty }) => {
                 return prevState += 1;
             }
         });
-    }
+    };
 
     return (
-        <button className="c-Select-qty-btn" type="button" onClick={() => handleSetQty()}>
+        <button disabled={disabled} className="c-Select-qty-btn" type="button" onClick={() => handleSetQty()}>
             {
                 type === ENUMS.blueBerryQtyType.DECREMENT ?
                     <Icon className="c-Icon c-Icon__Minus" icon="akar-icons:minus" /> :
@@ -48,6 +82,7 @@ const Blueberry = () => {
 
     const [qty, setQty] = useState(1);
     const [color, setColor] = useState(ENUMS.blueBerryColorType.WHITE);
+    const [size, setSize] = useState(ENUMS.blueBerrySizeType.SMALL);
 
     const subLinkArr = [
         {
@@ -68,7 +103,7 @@ const Blueberry = () => {
                 <div ref={subLinkArr[0].ref} className="c-Blueberry__Demo c-Demo">
                     <Row className="c-Demo__Product c-Product">
                         <Col lg={12} xl={6} className="c-Product__Img c-Img">
-                            <img src={require(`../../assets/images/Blueberry_T-Shirt-white.png`)} alt="BLUEBERRY T Shirt" />
+                            <img src={require(`../../assets/images/Blueberry_T-Shirt-${color.toLowerCase()}.png`)} alt="BLUEBERRY T Shirt" />
                         </Col>
 
                         <Col lg={12} xl={6} className="c-Product__Details c-Details">
@@ -85,16 +120,60 @@ const Blueberry = () => {
                             <div className="c-Details__Size c-Size">
                                 <h1>Select Size.</h1>
                                 <div className="c-Size__Component">
-
+                                    <ShirtSizeButton
+                                        type={ENUMS.blueBerrySizeType.SMALL}
+                                        selectedSize={size}
+                                        setSize={setSize}
+                                    />
+                                    <ShirtSizeButton
+                                        type={ENUMS.blueBerrySizeType.MEDIUM}
+                                        selectedSize={size}
+                                        setSize={setSize}
+                                    />
+                                    <ShirtSizeButton
+                                        type={ENUMS.blueBerrySizeType.LARGE}
+                                        selectedSize={size}
+                                        setSize={setSize}
+                                    />
                                 </div>
                             </div>
                             <div className="c-Details__Color c-Color">
                                 <h1>Select Color.</h1>
                                 <div className="c-Color__Component">
-                                    <ColorButton
-                                        type={ENUMS.blueBerryColorType.WHITE}
-                                        selectedColor={color}
-                                    />
+                                    <div className="c-Color__Component--row">
+                                        <ColorButton
+                                            type={ENUMS.blueBerryColorType.WHITE}
+                                            selectedColor={color}
+                                            setColor={setColor}
+                                        />
+                                        <ColorButton
+                                            type={ENUMS.blueBerryColorType.YELLOW}
+                                            selectedColor={color}
+                                            setColor={setColor}
+                                        />
+                                        <ColorButton
+                                            type={ENUMS.blueBerryColorType.GREEN}
+                                            selectedColor={color}
+                                            setColor={setColor}
+                                        />
+                                    </div>
+                                    <div className="c-Color__Component--row">
+                                        <ColorButton
+                                            type={ENUMS.blueBerryColorType.PURPLE}
+                                            selectedColor={color}
+                                            setColor={setColor}
+                                        />
+                                        <ColorButton
+                                            type={ENUMS.blueBerryColorType.BLACK}
+                                            selectedColor={color}
+                                            setColor={setColor}
+                                        />
+                                        <ColorButton
+                                            type={ENUMS.blueBerryColorType.RED}
+                                            selectedColor={color}
+                                            setColor={setColor}
+                                        />
+                                    </div>
                                 </div>
                             </div>
                             <div className="c-Details__Qty c-Qty">
