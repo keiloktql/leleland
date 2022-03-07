@@ -1,5 +1,24 @@
 .c-Blueberry {
 
+    .c-PSA {
+        width: 70%;
+        margin: 20px auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+
+        &__Icon {
+            color: $primary-error;
+        }
+
+        p {
+            padding-left: 10px;
+            font-size: $font-x-small;
+            color: $primary-error;
+        }
+    }
+
     .c-Demo {
         width: 70%;
         margin: auto;
@@ -91,6 +110,7 @@
 
                     &__Component {
                         margin: 20px 0;
+
                         &--row {
                             display: flex;
                             flex-direction: row;
@@ -130,7 +150,175 @@
         }
 
         .c-Review {
-            .c-Infographics {}
+            margin: 50px 0;
+
+            .c-Infographics {
+                display: flex;
+                flex-direction: row;
+                margin: 25px 0;
+
+                .c-Left {
+                    h1 {
+                        font-size: $font-medium;
+                    }
+
+                    p {
+                        color: #8B8B8B;
+                        font-weight: bold;
+                        font-size: $font-small;
+
+                        b {
+                            font-size: $font-large;
+                            color: black;
+                            font-weight: bold;
+                        }
+                    }
+                }
+
+                .c-Right {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: flex-end;
+
+                    .c-Graphs {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+
+                        .c-Graph {
+                            display: flex;
+                            flex-direction: row;
+                            width: 100%;
+                            align-items: center;
+                            margin: 3px;
+
+                            &__Heading {
+                                font-size: 10px;
+                                color: #8B8B8B;
+                            }
+
+                            &__BG {
+                                margin-left: 10px;
+                                max-width: 200px;
+                                min-width: 100px;
+                                height: 10px;
+                                border-radius: 10px;
+                                background-color: #C4C4C4;
+                                display: block;
+                                position: relative;
+
+                                .c-Graph__FG {
+                                    max-width: 100%;
+                                    border-radius: 10px;
+                                    height: 10px;
+                                    position: absolute;
+                                    top: 0;
+                                    left: 0;
+                                    background-color: #EFC42A;
+                                }
+                            }
+                        }
+                    }
+
+                    &__No {
+                        margin-left: 10px;
+                        color: #8B8B8B;
+                        font-size: $font-x-small;
+                    }
+                }
+            }
+
+            .c-List {
+                margin: 25px 0;
+                &__Review-boxes {
+                    display: grid;
+                    justify-items: center;
+                    grid-template-columns: 1fr 1fr 1fr;
+                    grid-gap: 20px;
+
+                    @media (max-width: 1200px) {
+                        grid-template-columns: 1fr;
+                        grid-gap: 30px;
+                    }
+
+                    .c-Review-box {
+                        background-color: #F4F4F4;
+                        padding: 20px;
+                        border-radius: 5px;
+                        width: 100%;
+
+                        .c-Top {
+                            display: flex;
+                            flex-direction: row;
+                            align-items: center;
+                            &__Avatar {
+                                width: 40px;
+                                height: 40px;
+                                border-radius: 40px;
+                                background-color: #38363D;
+                                display: block;
+                            }
+
+                            .c-Meta {
+                                margin-left: 10px;
+                                h1 {
+                                    font-size: $font-small;
+                                    font-weight: bold;
+                                }
+
+                                &__Membership {
+                                    font-size: 10px;
+                                    font-weight: bold;
+                                    &--standard {
+                                        color: #959595;
+                                    }
+
+                                    &--gold {
+                                        background-clip: text;
+                                        -webkit-background-clip: text;
+                                        background-image: linear-gradient(#EFC42A,#BF9600);
+                                        -webkit-text-fill-color:  #0000;
+                                    }
+
+                                    &--platinum {
+                                        background-clip: text;
+                                        -webkit-background-clip: text;
+                                        background-image: $linear-stripe;
+                                        -webkit-text-fill-color: #0000;
+                                    }
+                                }
+                            }
+
+                            &__Rating {
+                                margin-left: auto;
+                            }
+                        }
+                        
+                        .c-Content {
+                            margin-top: 20px;
+                        }
+
+                    }
+                }
+                &__View-more {
+                    text-align: center;
+                    margin: 10px 0;
+                    width: 100%;
+                    display: block;
+                    font-weight: bold;
+                    color: $primary-leleblue;
+                    cursor: pointer;
+                    user-select: none;
+
+                    &:hover {
+                        opacity: 0.7;
+                    }
+
+                    &:active {
+                        opacity: 0.6;
+                    }
+                }
+            }
         }
     }
 }
@@ -274,5 +462,18 @@
     &:disabled {
         opacity: 0.5;
         cursor: not-allowed;
+    }
+}
+
+
+.c-Icon {
+    &__Star {
+        &--colored {
+            color: #EFC42A;
+        }
+
+        &--uncolored {
+            color: #B7B7B7;
+        }
     }
 }

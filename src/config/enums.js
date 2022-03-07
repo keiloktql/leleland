@@ -26,10 +26,12 @@ const ENUMS = {
         LIKE: "LIKE"
     },
     teaserVariation: {
-        LIGHT_BLUE: "LIGHT_BLUE"
+        LIGHT_BLUE: "LIGHT_BLUE",
+        BLACK_GREY: "BLACK_GREY"
     },
     teaserType: {
-        CALCULATOR: "CALCULATOR"
+        CALCULATOR: "CALCULATOR",
+        BLUEBERRY: "BLUEBERRY"
     },
     btnVariation: {
         BLACK: "BLACK",

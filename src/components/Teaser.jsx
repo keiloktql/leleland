@@ -9,6 +9,9 @@ const Teaser = ({heading, description, link, type, variation}) => {
             case ENUMS.teaserVariation.LIGHT_BLUE: {
                 return "light-blue";
             }
+            case ENUMS.teaserVariation.BLACK_GREY: {
+                return "black-grey";
+            }
             default: {
                 return "light-blue";
             }
@@ -19,6 +22,9 @@ const Teaser = ({heading, description, link, type, variation}) => {
         switch(type) {
             case ENUMS.teaserType.CALCULATOR: {
                 return "calculator"
+            }
+            case ENUMS.teaserType.BLUEBERRY: {
+                return "blueberry"
             }
             default: {
                 return "calculator";

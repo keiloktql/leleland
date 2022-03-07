@@ -3,6 +3,7 @@
     width: 100%;
     padding: 90px 100px 80px;
     border-radius: 5px;
+    margin: 20px 0;
 
     @media (max-width: 1200px) {
         padding: 40px 30px;
@@ -11,6 +12,15 @@
     &--light-blue {
         background-color: #E9FBFF;
         color: #0065B1;
+    }
+
+    &--black-grey {
+        background-color: #F3F3F3;
+        color: #000000;
+    }
+
+    &:hover {
+        color: black;
     }
 
     &--calculator {
@@ -23,19 +33,35 @@
             background-size: 300px;
             background-position: 50% 140px !important;
         }
+
+        @media (max-width: 1200px) {
+            background-position: 50% 90px;
+        }
     }
 
+    &--blueberry {
+        background-color: #F3F3F3;
+        background-image: url(../../images/Teaser-Blueberry.png);
+        background-position: 90% 100%;
+        background-repeat: no-repeat;
+        background-size: 400px;
 
-    @media (max-width: 1200px) {
-        background-position: 50% 90px;
+        @media (max-width: 900px) {
+            background-size: 300px;
+        }
+
+        @media (max-width: 1200px) {
+            background-position: 50% 150px;
+        }
     }
+
 
     &__Info {
         display: flex;
         height: 100%;
         flex-direction: column;
         justify-content: center;
-        align-items:  flex-start;
+        align-items: flex-start;
 
         @media (max-width: 1200px) {
             justify-content: flex-start;

@@ -94,11 +94,16 @@ const Blueberry = () => {
     return (
         <ProjectLayout
             title="BLUEBERRY • LeLeLand"
-            subTitle="BLUEBERRY - Clothing store concept"
+            subTitle="BLUEBERRY"
             subLinkArr={subLinkArr}
             projectID={projectID}
             project={project}>
             <Container fluid={true} className="c-Blueberry">
+                {/* PSA */}
+                <div className="c-Blueberry__PSA c-PSA">
+                    <Icon className = "c-PSA__Icon" icon="bx:error-circle" />
+                    <p>Note: This is just for fun. Unfortunately, you can't buy BLUEBERRY shirts.</p>
+                </div>
                 {/* Demo */}
                 <div ref={subLinkArr[0].ref} className="c-Blueberry__Demo c-Demo">
                     <Row className="c-Demo__Product c-Product">
@@ -198,13 +203,120 @@ const Blueberry = () => {
 
 
                     <div className="c-Demo__Review c-Review">
-                        <Row className="c-Review-Infographics c-Infographics">
-                            <Col lg={12}>
+                        <Row className="c-Review__Infographics c-Infographics">
+                            <Col lg={12} xl={2} className="c-Infographics__Left c-Left">
+                                <h1>Reviews</h1>
+                                <p><b>4.6</b> out of 5</p>
+                                <div className="c-Left__Stars">
+                                    <Icon className="c-Icon c-Icon__Star--colored" icon="ant-design:star-filled" />
+                                    <Icon className="c-Icon c-Icon__Star--colored" icon="ant-design:star-filled" />
+                                    <Icon className="c-Icon c-Icon__Star--colored" icon="ant-design:star-filled" />
+                                    <Icon className="c-Icon c-Icon__Star--colored" icon="ant-design:star-filled" />
+                                    <Icon className="c-Icon c-Icon__Star--uncolored" icon="ant-design:star-filled" />
+                                </div>
+                            </Col>
+                            <Col lg={12} xl={10} className="c-Infographics__Right c-Right">
+                                <div className="c-Right__Graphs c-Graphs">
+                                    <div className="c-Graph">
+                                        <p className="c-Graph__Heading">5 Star</p>
+                                        <div className="c-Graph__BG">
+                                            <span className="c-Graph__FG" style={{ width: "50%" }}></span>
+                                        </div>
+                                    </div>
+                                    <div className="c-Graph">
+                                        <p className="c-Graph__Heading">4 Star</p>
+                                        <div className="c-Graph__BG">
+                                            <span className="c-Graph__FG" style={{ width: "15%" }}></span>
+                                        </div>
+                                    </div>
+                                    <div className="c-Graph">
+                                        <p className="c-Graph__Heading">3 Star</p>
+                                        <div className="c-Graph__BG">
+                                            <span className="c-Graph__FG" style={{ width: "10%" }}></span>
+                                        </div>
+                                    </div>
+                                    <div className="c-Graph">
+                                        <p className="c-Graph__Heading">2 Star</p>
+                                        <div className="c-Graph__BG">
+                                            <span className="c-Graph__FG" style={{ width: "12%" }}></span>
+                                        </div>
+                                    </div>
+                                    <div className="c-Graph">
+                                        <p className="c-Graph__Heading">1 Star</p>
+                                        <div className="c-Graph__BG">
+                                            <span className="c-Graph__FG" style={{ width: "3%" }}></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p className="c-Right__No">140 Reviews</p>
                             </Col>
                         </Row>
-                        <Row className="c-Review__List c-List">
+                        <div className="c-Review__List c-List">
+                            <div className="c-List__Review-boxes">
+                                <div className="c-Review-box">
+                                    <div className="c-Review-box__Top c-Top">
+                                        <div className="c-Top__Avatar">
+                                        </div>
+                                        <div className="c-Top__Meta c-Meta">
+                                            <h1>Crystalazer</h1>
+                                            <p className="c-Meta__Membership c-Meta__Membership--standard">Standard Member</p>
+                                        </div>
+                                        <div className="c-Top__Rating">
+                                            <Icon className="c-Icon c-Icon__Star--colored" icon="ant-design:star-filled" />
+                                            <Icon className="c-Icon c-Icon__Star--colored" icon="ant-design:star-filled" />
+                                            <Icon className="c-Icon c-Icon__Star--colored" icon="ant-design:star-filled" />
+                                            <Icon className="c-Icon c-Icon__Star--colored" icon="ant-design:star-filled" />
+                                            <Icon className="c-Icon c-Icon__Star--uncolored" icon="ant-design:star-filled" />
+                                        </div>
+                                    </div>
+                                    <div className="c-Review-box__Content c-Content">
+                                        <p>Love it!!</p>
+                                    </div>
+                                </div>
+                                <div className="c-Review-box">
+                                    <div className="c-Review-box__Top c-Top">
+                                        <div className="c-Top__Avatar">
+                                        </div>
+                                        <div className="c-Top__Meta c-Meta">
+                                            <h1>Daniel Ng</h1>
+                                            <p className="c-Meta__Membership c-Meta__Membership--gold">Gold Member</p>
+                                        </div>
+                                        <div className="c-Top__Rating">
+                                            <Icon className="c-Icon c-Icon__Star--colored" icon="ant-design:star-filled" />
+                                            <Icon className="c-Icon c-Icon__Star--colored" icon="ant-design:star-filled" />
+                                            <Icon className="c-Icon c-Icon__Star--colored" icon="ant-design:star-filled" />
+                                            <Icon className="c-Icon c-Icon__Star--colored" icon="ant-design:star-filled" />
+                                            <Icon className="c-Icon c-Icon__Star--uncolored" icon="ant-design:star-filled" />
+                                        </div>
+                                    </div>
+                                    <div className="c-Review-box__Content c-Content">
+                                        <p>Not bad lah... but material can be better for the heavy price</p>
+                                    </div>
+                                </div>
+                                <div className="c-Review-box">
+                                    <div className="c-Review-box__Top c-Top">
+                                        <div className="c-Top__Avatar">
+                                        </div>
+                                        <div className="c-Top__Meta c-Meta">
+                                            <h1>김아플</h1>
+                                            <p className="c-Meta__Membership c-Meta__Membership--platinum">Platinum Member</p>
+                                        </div>
+                                        <div className="c-Top__Rating">
+                                            <Icon className="c-Icon c-Icon__Star--colored" icon="ant-design:star-filled" />
+                                            <Icon className="c-Icon c-Icon__Star--colored" icon="ant-design:star-filled" />
+                                            <Icon className="c-Icon c-Icon__Star--colored" icon="ant-design:star-filled" />
+                                            <Icon className="c-Icon c-Icon__Star--colored" icon="ant-design:star-filled" />
+                                            <Icon className="c-Icon c-Icon__Star--colored" icon="ant-design:star-filled" />
+                                        </div>
+                                    </div>
+                                    <div className="c-Review-box__Content c-Content">
+                                        <p>My fav shirt to sleep at night</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <span className="c-List__View-more">View more</span>
+                        </div>
 
-                        </Row>
                     </div>
 
                 </div>

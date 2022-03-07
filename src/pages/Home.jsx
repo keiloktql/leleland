@@ -143,6 +143,13 @@ const Home = () => {
               type={ENUMS.teaserType.CALCULATOR}
               variation={ENUMS.teaserVariation.LIGHT_BLUE}
             />
+            <Teaser
+              heading="BLUEBERRY"
+              description="Clothing Store Concept"
+              link="/gallery/blueberry"
+              type={ENUMS.teaserType.BLUEBERRY}
+              variation={ENUMS.teaserVariation.BLACK_GREY}
+            />
           </div>
         </div>
 
