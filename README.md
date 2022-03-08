@@ -4,3 +4,6 @@
 -
 A collection of mini projects built using React &amp; Sass. Backend is powered by Firebase.
 
+<p align="center">
+  <img src="https://github.com/keilokimnida/leleland/blob/main/publicity/home.gif">
+</p>
