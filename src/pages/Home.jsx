@@ -11,6 +11,9 @@ import HomeFeatureIcon from '../components/HomeFeatureIcon';
 import ENUMS from '../config/enums';
 import Teaser from '../components/Teaser';
 import Button from '../components/Button';
+import KeiLok from '../assets/images/keilok.png';
+import IphoneBG from '../assets/videos/Iphone-BG.mp4';
+import { Icon } from '@iconify/react';
 
 const Home = () => {
 
@@ -37,7 +40,11 @@ const Home = () => {
               </div>
             </div>
             <div className="c-Home__Greetings-bottom">
-              <p>Built using React & Sass by Kei Lok.</p>
+              <p>Built using React & Sass by
+                <a href="https://www.linkedin.com/in/thamkeilok/" target="_blank" rel="noopener noreferrer">
+                &nbsp;Kei Lok. <Icon className="c-Icon--open-new" icon="ic:twotone-open-in-new" />
+                </a>
+              </p>
               <Button
                 text="View Gallery"
                 variation={ENUMS.btnVariation.PRIMARY}
@@ -53,46 +60,23 @@ const Home = () => {
               topVariation="dark"
               children={
                 <div className="c-Home__Screen c-Mobile">
-                  <div className="c-Mobile__Header">
-                    <h1>LeLeLand</h1>
-                    <span className="c-Mobile__Hamburger">
-                      <IconContext.Provider className="c-Mobile__Icon" value={{ color: "#fff", size: "21px" }}>
-                        <GiIcons.GiHamburgerMenu />
-                      </IconContext.Provider>
-                    </span>
+                  <video autoPlay muted="muted" loop>
+                    <source src={IphoneBG} type="video/mp4" />
+                  </video>
+                  <div className="c-Mobile__Glass">
+                    <div className='c-Mobile__Avatar'>
+                      <img src={KeiLok} alt="Avatar" />
+                    </div>
+                    <div className="c-Mobile__Middle">
+                      <h1>Hi, I am Kei Lok</h1>
+                      <p>Information Technology Student at Singapore Polytechnic</p>
+                    </div>
+                    <div className="c-Mobile__Bottom">
+                      <p>This is a showcase of some projects that I built. Enjoy!</p>
+                    </div>
                   </div>
 
-                  <div className="c-Mobile__Sub-header">
-                    <h2>Color Palette Generator</h2>
-                  </div>
 
-                  <div className="c-Mobile__Demo c-Demo">
-                    <div className="c-Demo__Dates">
-                      <p>Last updated 4 hours ago</p>
-                    </div>
-
-                    <div className="c-Demo__Magic">
-                      <div className="c-Demo__Magic-default">
-                        <IconContext.Provider className="c-Mobile__Paint" value={{ color: "#172b4d", size: "40px" }}>
-                          <AiIcons.AiFillFormatPainter />
-                        </IconContext.Provider>
-                        <h1>Click Generate to start!</h1>
-                      </div>
-                      <div className="c-Demo__Magic-colors">
-
-                        <span className="c-Demo__Color">4E4187</span>
-                        <span className="c-Demo__Color">3083DC</span>
-                        <span className="c-Demo__Color">F8FFE5</span>
-                        <span className="c-Demo__Color">7DDE92</span>
-                      </div>
-                    </div>
-
-
-                    <div className="c-Demo__Btns">
-                      <button type="button" className="c-Btn c-Btn__CP c-Btn__Primary">Generate</button>
-                    </div>
-
-                  </div>
                 </div>
               }
             />

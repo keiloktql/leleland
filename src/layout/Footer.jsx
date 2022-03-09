@@ -10,8 +10,8 @@ const Footer = () => {
                     <img src={LogoColorful} alt="Logo" />
                 </div>
                 <div className = "c-Footer__Links c-Links">
-                    <a className = "c-Links__Who" href="https://keilokimnida.github.io/" target="_blank" rel="noopener noreferrer">LeLe</a>
-                    <p>|</p>
+                    {/* <a className = "c-Links__Who" href="https://keilokimnida.github.io/" target="_blank" rel="noopener noreferrer">Kei Lok</a>
+                    <p>|</p> */}
                     <a className = "c-Links__GitHub" href="https://github.com/keilokimnida" target="_blank" rel="noopener noreferrer">GitHub</a>
                 </div>
                 <div className="c-Footer__Copyright">
