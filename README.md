@@ -2,7 +2,7 @@
 
 ![](https://github.com/keilokimnida/leleland/blob/main/src/assets/images/Logo-colorful.png)
 -
-A collection of mini projects built using React &amp; Sass. Backend is powered by Firebase. Sign up for an account to comment and like the projects =)
+Showcase of some projects that I've built using React &amp; Sass. Backend is powered by Firebase. Sign up for an account to comment and like the projects =)
 
 <p align="center">
   <img src="https://github.com/keilokimnida/leleland/blob/main/publicity/home.gif">
