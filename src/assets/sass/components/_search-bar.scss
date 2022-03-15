@@ -8,11 +8,7 @@
 
     &__Input-wrapper {
         width: 100%;
-        box-shadow: 0px 8px 20px rgb(0 0 0 / 6%);
-        -webkit-transform: translateY(-50%);
-        -ms-transform: translateY(-50%);
-        transform: translateY(-50%);
-
+        background-color: #F5F5F5;
         svg {
             position: absolute;
             left: 15px;
@@ -29,9 +25,9 @@
             font-size: 16px;
             border-radius: 5px;
             border: none;
-            background-color: #ffffff;
             outline: none;
             box-sizing: border-box;
+            background-color: transparent;
         }
     }
 
@@ -62,7 +58,7 @@
                 border-radius: 0 0 5px 5px;
                 box-shadow: #3c425714 0px 15px 35px 0px, rgba(0, 0, 0, 0.12) 0px 5px 15px 0px;
                 position: absolute;
-                top: -24px;
+                top: 0;
                 left: 0px;
                 height: auto;
                 width: 100%;

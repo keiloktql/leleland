@@ -141,10 +141,8 @@ const Gallery = () => {
         <MainLayout title="Gallery • LeLeLand">
             <div className="c-Gallery">
                 <div className="c-Gallery__Top">
-                    <div className="c-Gallery__Heading">
-                        <h1>Search LeLeLand</h1>
-                        <p>Discover awesome projects =)</p>
-                    </div>
+                    <h1>Gallery</h1>
+                    <p>Project Showcases & Blogs.</p>
                 </div>
 
                 {/* Search */}
