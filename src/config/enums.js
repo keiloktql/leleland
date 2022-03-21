@@ -83,6 +83,10 @@ const ENUMS = {
         SMALL: "S",
         MEDIUM: "M",
         LARGE: "L"
+    },
+    projectType: {
+        INTERACTIVE: "INTERACTIVE",
+        BLOG: "BLOG"
     }
 };
 

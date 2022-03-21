@@ -3,9 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import * as AiIcons from 'react-icons/ai';
 import { IconContext } from 'react-icons';
 import { Icon } from '@iconify/react';
+import ProjectTypePill from './ProjectTypePill';
 
-const ProjectCard = ({ img, likes = 0, views = 0, name = "error", link, last_updated_date }) => {
-
+const ProjectCard = ({ img, likes = 0, views = 0, name = "error", link, last_updated_date, type, time }) => {
+  
   const navigate = useNavigate();
 
   return (
@@ -19,8 +20,8 @@ const ProjectCard = ({ img, likes = 0, views = 0, name = "error", link, last_upd
       </div>
       <div className="c-Project-card__Info">
         <div className="c-Project-card__Emojis">
-          <div className = "c-Project-card__Views">
-          <Icon className="c-Project-card__Icon" icon="bi:eye-fill" />
+          <div className="c-Project-card__Views">
+            <Icon className="c-Project-card__Icon" icon="bi:eye-fill" />
             <p>{views}</p>
           </div>
           <div className="c-Project-card__Likes">
@@ -28,9 +29,14 @@ const ProjectCard = ({ img, likes = 0, views = 0, name = "error", link, last_upd
             <p>{likes}</p>
           </div>
         </div>
-
         <div className="c-Project-card__Name">
           <p>{name}</p>
+        </div>
+        <div className="c-Project-card__Type">
+          <ProjectTypePill
+            type={type}
+            time={time}
+          />
         </div>
         <div className="c-Project-card__Date">
           <p>{last_updated_date}</p>

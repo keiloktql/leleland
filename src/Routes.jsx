@@ -18,6 +18,7 @@ import GenericError from './pages/error/GenericError';
 import { useAuth } from './utils/firebase';
 import LoggedInError from './pages/error/LoggedInError';
 import Blueberry from './pages/projects/Blueberry';
+import EISO from './pages/projects/EISO';
 
 const Routes = () => {
 
@@ -58,7 +59,7 @@ const Routes = () => {
                     {/* Public Routes */}
                     <Route path="/" element={<Home />} />
                     <Route path="/home" element={<Navigate replace to="/" />} />
-                    {/* Only avaiable for anon users */}
+                    {/* Only available for anonynmus users */}
                     <Route element={<NoAuthGuard />}>
                         <Route path="/login" element={<Login />} />
                         <Route path="/sign-up" element={<SignUp />} />
@@ -68,6 +69,7 @@ const Routes = () => {
                     <Route path="/gallery" element={<Gallery />} />
                     <Route path="/gallery/calculator" element={<Calculator />} />
                     <Route path="/gallery/blueberry" element={<Blueberry />} />
+                    <Route path="/gallery/eiso" element={<EISO />} />
                     {/* Protected Routes */}
                     <Route element={<RequireAuthGuard />}>
                         <Route path="/dev" element={<Sandbox />} />

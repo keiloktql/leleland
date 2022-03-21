@@ -1,0 +1,103 @@
+.c-Blog-layout {
+    padding-top: 60px;
+    .l-Meta {
+        width: 100%;
+        margin: 20px 0;
+
+        .c-Meta {
+            width: 70%;
+            margin: auto;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+
+            &__Dates {
+                font-size: $font-x-small;
+                color: #7E7E7E;
+            }
+
+            &__Logo {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+
+
+                .c-Logo {
+                    &__Icon {
+
+                        &:first-of-type {
+                            margin-right: 10px;
+                        }
+
+                        &:nth-of-type(2) {
+                            margin-right: 10px;
+                        }
+
+                        display: flex;
+                        flex-direction: row;
+                        cursor: pointer;
+
+                        &:hover {
+                            opacity: 0.8;
+                            transform: translateY(-1px);
+                        }
+
+                        &:active {
+                            opacity: 0.7;
+                            transform: translateY(0px);
+                        }
+
+
+                        &:disabled {
+                            opacity: 0.5;
+                            cursor: not-allowed;
+                        }
+
+                        .c-Icon {
+
+                            &--view {
+                                font-size: 18px;
+                                color: #A5A5A5;
+                            }
+
+                            &--heart-unliked {
+                                font-size: 18px;
+                                color: #A5A5A5;
+                            }
+
+                            &--heart-liked {
+                                font-size: 18px;
+                            }
+
+                            &--chat {
+                                font-size: 18px;
+                                color: #A5A5A5;
+                            }
+                        }
+                    }
+
+                    &__Val {
+                        font-size: $font-x-small;
+                        color: #A5A5A5;
+                        -webkit-user-select: none;
+                        -khtml-user-select: none;
+                        -moz-user-select: none;
+                        -ms-user-select: none;
+                        -o-user-select: none;
+                        user-select: none;
+                        margin-right: 5px;
+                        font-weight: 600;
+                    }
+                }
+            }
+        }
+    }
+    
+    &__Comments {
+        width: 100%;
+        padding: 50px 0;
+        background-color: #fafafa;
+        height: 100%;
+    }
+}

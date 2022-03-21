@@ -1,0 +1,19 @@
+.c-Project-type-pill {
+    border-radius: 5px;
+    width: fit-content;
+    padding: 3px 4px;
+
+    &--interactive {
+        background: $linear-github;
+    }
+
+    &--blog {
+        background: $linear-stripe;
+    }
+
+    h1 {
+        font-size: 10px;
+        font-weight: bold;
+        color: white;
+    }
+}

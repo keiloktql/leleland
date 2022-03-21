@@ -178,6 +178,8 @@ const Gallery = () => {
                                             name={project.name}
                                             link={project.link}
                                             last_updated_date={project.last_updated_date}
+                                            type={project.type}
+                                            time={project.time}
                                         />
                                     ))
                                     :
