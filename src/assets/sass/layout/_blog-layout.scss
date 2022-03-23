@@ -1,20 +1,50 @@
 .c-Blog-layout {
     padding-top: 60px;
+
     .l-Meta {
         width: 100%;
         margin: 20px 0;
 
         .c-Meta {
-            width: 70%;
+            width: 100%;
+            max-width: 700px;
             margin: auto;
             display: flex;
             flex-direction: row;
             align-items: center;
             justify-content: space-between;
 
-            &__Dates {
-                font-size: $font-x-small;
-                color: #7E7E7E;
+            .c-Info {
+
+                display: flex;
+                justify-content: center;
+                flex-direction: row;
+
+                &__Left {
+                    img {
+                        width: 60px;
+                        height: 60px;
+                        border-radius: 60px;
+                    }
+                }
+
+                &__Right {
+                    display: flex;
+                    justify-content: space-around;
+                    flex-direction: column;
+                    margin-left: 20px;
+
+                    h1 {
+                        font-size: $font-small;
+                        color: black;
+                    }
+
+                    p {
+                        font-size: $font-x-small;
+                        color: #7E7E7E;
+                    }
+
+                }
             }
 
             &__Logo {
@@ -93,7 +123,7 @@
             }
         }
     }
-    
+
     &__Comments {
         width: 100%;
         padding: 50px 0;

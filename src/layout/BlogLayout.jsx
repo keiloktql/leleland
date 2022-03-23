@@ -14,11 +14,22 @@ import Footer from './Footer';
 import Title from './Title';
 import SubHeader from './SubHeader';
 
+import KeiLok from '../assets/images/keilok.png';
+
 import ENUMS from '../config/enums';
 import Comments from '../components/Comments';
 import RequireAccountModal from '../components/RequireAccountModal';
 import useComponentVisible from '../hooks/useComponentVisible';
+import ProjectTypePill from '../components/ProjectTypePill';
 
+// Shift this to a component
+// const BlogBodySection = ({children}) => {
+//     return (
+//         <div className = "c-Blog-body-section">
+
+//         </div>
+//     );
+// };
 
 const BlogLayout = ({ children, title, projectID, project }) => {
     dayjs.extend(relativeTime);
@@ -91,7 +102,19 @@ const BlogLayout = ({ children, title, projectID, project }) => {
                 {/* Meta info */}
                 <div className="c-Blog-layout__Meta l-Meta">
                     <div className="c-Meta">
-                        <p className="c-Meta__Dates">Last updated {dayjs(new Date(project.last_updated_date)).fromNow()}</p>
+                        <div className="c-Meta__Info c-Info">
+                            <div className='c-Info__Left'>
+                                <img src={KeiLok} alt="Author" />
+                            </div>
+                            <div className="c-Info__Right">
+                                <h1>Tham Kei Lok</h1>
+                                <ProjectTypePill
+                                    type={project.type}
+                                    time={project.time}
+                                />
+                                <p className="c-Info__Dates">Last updated {dayjs(new Date(project.last_updated_date)).fromNow()}</p>
+                            </div>
+                        </div>
                         <div className="c-Meta__Logo c-Logo">
                             {
                                 !loadingView ?
